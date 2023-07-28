@@ -1,0 +1,29 @@
+---
+export interface Props {
+	src: string;
+	alt: string;
+    cover?: boolean;
+    lazyLoading?: boolean;
+	fetchPriority?: boolean;
+}
+
+const { src, alt, cover = false, lazyLoading = true, fetchPriority = false } = Astro.props;
+---
+
+<img 
+    class={cover ? 'object-cover' : 'object-contain'}
+    src={src} 
+    alt={alt}
+    loading={lazyLoading ? 'lazy' : 'eager'}
+    fetchpriority={fetchPriority ? 'high' : 'auto'}
+    draggable="false"
+    decoding="async"
+>
+
+<style>
+img {
+    display: block;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+}
+</style>

@@ -1,0 +1,54 @@
+---
+export interface Props {
+	text: string,
+	color?: 'blue' | 'yellow',
+    type?: 'button' | 'submit',
+    outlined?: boolean,
+}
+
+const { text, color = 'blue', outlined = false, type = 'button' } = Astro.props;
+---
+
+<button 
+    class={`flex items-center justify-center ${color} ${outlined ? 'outlined' : ''}`}
+    type={type}
+>
+{text}
+</button>
+
+<style lang="scss">
+    
+button {
+    padding: 12.5px 25px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: solid 1px transparent;
+    white-space: nowrap;
+    transition: ease-in-out .3s;
+
+        &.blue {
+            background-color: #515BE0;
+            color: #E1FFF9;
+            box-shadow: 3px 3px 6px 0px rgba(201, 204, 245, 0.25) inset;
+            filter: drop-shadow(0px 3px 10px rgba(81, 91, 224, 0.55));
+
+            &:hover {
+                background-color: transparent;
+                border-color: #515BE0;
+            }
+        }
+
+        &.yellow {
+            background-color: #FFB800;
+            color: #171C26;
+            box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+            &:hover {
+                background-color: transparent;
+                border-color: #FFB800;
+            }
+        }
+    
+}
+</style>
