@@ -2,13 +2,16 @@
 export interface Props {
 	text?: string;
 }
-const text = Astro.props
+const prop = Astro.props 
 ---
-<h1 class="text-2xl">
-    Ma solution d'installation de
-    <span class="text-yellow">borne électrique</span> 
-    {text && (<span class="text-purple">{text}</span>)} 
+<h1 class="text-2xl font-bold w-[280px] tracking-3 mt-5 lg:mt-24">
+    Ma solution d'installation de 
+    <span class="text-yellow">borne de recharche électrique</span> 
+    {prop.text?.length > 0 && 
+        <br> <span class="text-purple">{prop.text}</span>
+    }
 </h1>
+
 
 <style>
 
