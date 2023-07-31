@@ -4,7 +4,6 @@ specifiers:
   '@astrojs/tailwind': ^4.0.0
   '@astrojs/vue': ^2.2.1
   astro: ^2.9.2
-  babel: ^6.23.0
   babel-cli: ^6.26.0
   sass: ^1.64.1
   tailwind: ^4.0.0
@@ -16,7 +15,6 @@ dependencies:
   '@astrojs/tailwind': 4.0.0_yhovrnq3hh3sbvkhqzu56u6jeq
   '@astrojs/vue': 2.2.1_ohesybmiyloh45ncaqgizj44nu
   astro: 2.9.2_sass@1.64.1
-  babel: 6.23.0
   sass: 1.64.1
   tailwind: 4.0.0
   tailwindcss: 3.3.3
@@ -1690,12 +1688,6 @@ packages:
       to-fast-properties: 1.0.3
     dev: true
 
-  /babel/6.23.0:
-    resolution: {integrity: sha512-ZDcCaI8Vlct8PJ3DvmyqUz+5X2Ylz3ZuuItBe/74yXosk2dwyVo/aN7MCJ8HJzhnnJ+6yP4o+lDgG9MBe91DLA==}
-    deprecated: In 6.x, the babel package has been deprecated in favor of babel-cli. Check https://opencollective.com/babel to support the Babel maintainers
-    hasBin: true
-    dev: false
-
   /babylon/6.18.0:
     resolution: {integrity: sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==}
     hasBin: true
@@ -1751,6 +1743,7 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -2798,6 +2791,7 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4588,6 +4582,7 @@ packages:
 
   /nan/2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 

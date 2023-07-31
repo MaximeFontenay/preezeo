@@ -38,6 +38,7 @@ body {
     margin: 0 !important;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-display: block;
     font-smooth: always;
     @include is-chrome {
         -webkit-font-smoothing: subpixel-antialiased;
