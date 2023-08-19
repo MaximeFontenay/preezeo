@@ -1,11 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Headline from '../components/Headline.astro';
+import Button from '../components/atom/Button.astro';
+import Image from '../components/atom/Image.astro';
 import H1 from '../components/H1.astro';
+import Tips from '../components/Tips.astro';
 ---
 
 <Layout title="Preezeo">
-    <div class="flex flex-col gap-14 justify-start ml-auto mr-auto lg:mr-[15%] w-fit">
+    <section class="flex flex-col gap-14 justify-start w-fit ml-auto mr-[12%]">
         <Headline />
         <p class="font-medium tracking-3 text-sm md:max-w-[650px]">
             <span class="font-semibold text-yellow">PREEZEO</span> intervient dans toute la France métropolitaine afin d’installer vos bornes de recharge pour véhicules électriques. 
@@ -14,10 +17,68 @@ import H1 from '../components/H1.astro';
             <span class="font-semibold text-purple">PREEZEO</span> forme de manière régulière ses techniciens. 
             Nous favorisons des produits fabriqués en France et nous vous garantissons une pose sous 30 jours.
         </p>
-    </div>
-    <H1 />
+    </section>
+    <section class="heading-container">
+        <div class="top">
+            <svg width="68" height="114" viewBox="0 0 68 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M33.9753 113.5V2.25439M0 2.25439H67.9507" stroke="#FFB800" stroke-width="4.50693"/>
+            </svg> 
+        </div>
+        <H1 />
+        <div class="bottom">
+            <svg width="988" height="343" viewBox="0 0 988 343" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M985.747 342.597V310.5M985.747 310.5V279.5M985.747 310.5L5.81867 309.214L5.39599 156.444L30.0683 79.4992M41.7098 94.0542L3 94.0546V0" stroke="#FFB800" stroke-width="4.50693"/>
+            </svg>
+        </div>
+    </section>
+    <section class="flex align-center justify-center">
+        <Tips>
+            <p 
+                slot="text"
+                class="inline gap-1"
+            >
+                <span class="inline-block w-[145px]">
+                    <Image 
+                        slot="logo"
+                        src="/img/logo/text_burgundy.svg" 
+                        alt="Preezeo colored Logo"
+                        display='inline'
+                        fetchPriority={true}
+                    />
+                </span>
+                <span class="leading-1">vous propose une étude technique pour votre installation et la maintenance de votre borne de recharge électrique.</span>
+            
+            </p>
+            
+            <Button 
+                slot="button"
+                text="Nous contacter"
+                color="yellow"
+            />
+        </Tips>
+    </section>
 </Layout>
 
-<style>
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
 
+.heading-container {
+    position: relative;
+    margin-top: 75px;
+
+    .top {
+        @include flex(center,flex-start);
+        @include position(-20px, 90px);
+        translate: -40px -100%;
+    }
+
+    .bottom {
+        @include flex(center,flex-start);
+        // @include position(calc(20px + 100%), $left:50%);
+        // position: absolute;
+        width: max-content;
+        max-width: unset;
+        translate: 85px 20px;
+    }
+}
 </style>

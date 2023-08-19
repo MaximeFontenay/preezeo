@@ -1,5 +1,5 @@
 ---
-import Image from "../components/Image.astro";
+import Image from "../components/atom/Image.astro";
 
 const linksFirstColumn = [
     {name: 'Contact', link: '#'},
@@ -23,54 +23,57 @@ const subLinks = [
 ---
 
 <footer class="flex flex-col align-stretch text-blue">
-    <div class="flex justify-between items-center bg-burgundy">
-        <div class="flex flex-col gap-2">
-            <a href="/" class="flex justify-center items-center w-[150px]">
-                <Image 
-                    src="/img/logo_purple.svg" 
-                    alt="Logo de Preezeo - la Borne qu’il vous faut!" 
-                    fetchPriority={true}
-                />
-            </a>
-            <h4 class="leading-8">57 avenue du marechal Juin <br>64500 Biarritz</h4>
+    <div class="bg-burgundy">
+        <div class="container flex justify-between items-center">
+            <div class="flex flex-col gap-2">
+                <a href="/" class="flex justify-center items-center w-[150px]">
+                    <Image 
+                        src="/img/logo_purple.svg" 
+                        alt="Logo de Preezeo - la Borne qu’il vous faut!" 
+                        fetchPriority={true}
+                    />
+                </a>
+                <h4 class="leading-8">57 avenue du marechal Juin <br>64500 Biarritz</h4>
+            </div>
+            <nav class="flex items-stretch gap-7 2xl:gap-14">
+                <ul class="flex flex-col gap-2">
+                    {linksFirstColumn.map((item) => (
+                        <li><a href={item.link}>{item.name}</a></li>
+                    ))}
+                </ul>
+                <span class="bg-purple w-2px"></span>
+                <ul class="flex flex-col gap-2">
+                    {linksSecondColumn.map((item) => (
+                        <li><a href={item.link}>{item.name}</a></li>
+                    ))}
+                </ul>
+            </nav>
         </div>
-       
-        <nav class="flex items-stretch gap-7 2xl:gap-14">
-            <ul class="flex flex-col gap-2">
-                {linksFirstColumn.map((item) => (
-                    <li><a href={item.link}>{item.name}</a></li>
-                ))}
-            </ul>
-            <span class="bg-purple w-2px"></span>
-            <ul class="flex flex-col gap-2">
-                {linksSecondColumn.map((item) => (
-                    <li><a href={item.link}>{item.name}</a></li>
-                ))}
-            </ul>
-        </nav>
     </div>
-    <div class="flex justify-between items-center bg-deep-blue">
-        <div class="flex items-center gap-3">
-            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_1342_348)">
-                <path d="M10.2776 4.97408C7.50879 5.12513 5.38722 7.48282 5.5389 10.2401C5.6906 12.9974 8.05811 15.1102 10.8269 14.9591C12.1184 14.8886 13.3291 14.3101 14.1923 13.3508L14.2601 13.2755C14.5685 12.9327 14.5395 12.4059 14.1953 12.0987C13.8511 11.7916 13.3221 11.8205 13.0137 12.1632L12.946 12.2385C12.3789 12.8686 11.5837 13.2486 10.7353 13.295C8.88946 13.3956 7.31114 11.9871 7.21001 10.149C7.10888 8.31074 8.52326 6.73895 10.3691 6.63824C11.2175 6.59196 12.0496 6.88319 12.6824 7.44788L12.758 7.51534C13.1022 7.82249 13.6312 7.79363 13.9397 7.45088C14.248 7.10812 14.2191 6.58128 13.8749 6.27413L13.7993 6.20666C12.8359 5.34698 11.5692 4.90361 10.2776 4.97408Z" fill="#E1FFF9"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5951 10C20.5951 15.5228 16.0992 20 10.5534 20C5.00752 20 0.511719 15.5228 0.511719 10C0.511719 4.47715 5.00752 0 10.5534 0C16.0992 0 20.5951 4.47715 20.5951 10ZM18.9214 10C18.9214 14.6023 15.1749 18.3333 10.5534 18.3333C5.93183 18.3333 2.18533 14.6023 2.18533 10C2.18533 5.39762 5.93183 1.66667 10.5534 1.66667C15.1749 1.66667 18.9214 5.39762 18.9214 10Z" fill="#E1FFF9"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_1342_348">
-                <rect width="20.0833" height="20" fill="white" transform="translate(0.511719)"/>
-                </clipPath>
-                </defs>
-            </svg>
-            <h3 class="text-sm">Preezeo</h3>
+    <div class="bg-deep-blue">
+        <div class="container flex justify-between items-center">
+            <div class="container flex items-center gap-3">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1342_348)">
+                    <path d="M10.2776 4.97408C7.50879 5.12513 5.38722 7.48282 5.5389 10.2401C5.6906 12.9974 8.05811 15.1102 10.8269 14.9591C12.1184 14.8886 13.3291 14.3101 14.1923 13.3508L14.2601 13.2755C14.5685 12.9327 14.5395 12.4059 14.1953 12.0987C13.8511 11.7916 13.3221 11.8205 13.0137 12.1632L12.946 12.2385C12.3789 12.8686 11.5837 13.2486 10.7353 13.295C8.88946 13.3956 7.31114 11.9871 7.21001 10.149C7.10888 8.31074 8.52326 6.73895 10.3691 6.63824C11.2175 6.59196 12.0496 6.88319 12.6824 7.44788L12.758 7.51534C13.1022 7.82249 13.6312 7.79363 13.9397 7.45088C14.248 7.10812 14.2191 6.58128 13.8749 6.27413L13.7993 6.20666C12.8359 5.34698 11.5692 4.90361 10.2776 4.97408Z" fill="#E1FFF9"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5951 10C20.5951 15.5228 16.0992 20 10.5534 20C5.00752 20 0.511719 15.5228 0.511719 10C0.511719 4.47715 5.00752 0 10.5534 0C16.0992 0 20.5951 4.47715 20.5951 10ZM18.9214 10C18.9214 14.6023 15.1749 18.3333 10.5534 18.3333C5.93183 18.3333 2.18533 14.6023 2.18533 10C2.18533 5.39762 5.93183 1.66667 10.5534 1.66667C15.1749 1.66667 18.9214 5.39762 18.9214 10Z" fill="#E1FFF9"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_1342_348">
+                    <rect width="20.0833" height="20" fill="white" transform="translate(0.511719)"/>
+                    </clipPath>
+                    </defs>
+                </svg>
+                <h3 class="text-sm">Preezeo</h3>
+            </div>
+            <nav class="flex items-center gap-7 2xl:gap-14">
+                <ul class="flex items-center gap-4 whitespace-nowrap 2xl:gap-8">
+                    {subLinks.map((item) => (
+                        <li><a href={item.link}>{item.name}</a></li>
+                    ))}
+                </ul>
+            </nav>
         </div>
-        <nav class="flex items-center gap-7 2xl:gap-14">
-            <ul class="flex items-center gap-4 whitespace-nowrap 2xl:gap-8">
-                {subLinks.map((item) => (
-                    <li><a href={item.link}>{item.name}</a></li>
-                ))}
-            </ul>
-        </nav>
     </div>    
 </footer>
 
