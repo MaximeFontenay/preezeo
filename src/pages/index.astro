@@ -5,7 +5,8 @@ import Button from '../components/atom/Button.astro';
 import Image from '../components/atom/Image.astro';
 import H1 from '../components/H1.astro';
 import Tips from '../components/Tips.astro';
----
+import Card from '../components/Card.astro';
+--- 
 
 <Layout title="Preezeo">
     <section class="flex flex-col gap-14 justify-start w-fit ml-auto mr-[12%]">
@@ -31,13 +32,13 @@ import Tips from '../components/Tips.astro';
             </svg>
         </div>
     </section>
-    <section class="flex align-center justify-center">
+    <section class="flex align-center justify-center pb-10 md:my-10 lg:my-20">
         <Tips>
             <p 
                 slot="text"
                 class="inline gap-1"
             >
-                <span class="inline-block w-[145px]">
+                <span class="inline-block w-[145px] mr-[3px]">
                     <Image 
                         slot="logo"
                         src="/img/logo/text_burgundy.svg" 
@@ -47,7 +48,6 @@ import Tips from '../components/Tips.astro';
                     />
                 </span>
                 <span class="leading-1">vous propose une étude technique pour votre installation et la maintenance de votre borne de recharge électrique.</span>
-            
             </p>
             
             <Button 
@@ -57,6 +57,45 @@ import Tips from '../components/Tips.astro';
             />
         </Tips>
     </section>
+
+    <section class="flex justify-center items-stretch gap-10 my-5 md:my-10 lg:my-20">
+        <Card 
+            color="dark"
+            title="Votre Besoin"
+            number={1}
+            isSmall={true}
+        >  
+            <p slot="content">
+                <span class="text-purple">Indiquez nous votre besoin.</span>
+                <br>
+                Un technicien étudie votre projet d’installation de borne de recharge pour votre véhicule électrique.
+            </p>
+        </Card>
+        <Card 
+            color="dark"
+            title="Votre Solution"
+            number={2}
+            isSmall={true}
+        >  
+            <p slot="content">
+                vous propose une solution adaptée à votre installation électrique et votre véhicule.
+            </p>
+        </Card>
+        <Card 
+            color="dark"
+            title="Notre Installation"
+            number={3}
+            isSmall={true}
+        >  
+            <p slot="content">
+                Nos <span class="text-purple">techniciens spécialisés</span> installent votre borne de recharge et vous accompagne dans son usage. 
+                <br>
+                Bienvenue chez 
+            </p>
+        </Card>
+
+    </section>
+
 </Layout>
 
 <style lang="scss">

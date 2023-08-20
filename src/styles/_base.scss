@@ -120,8 +120,8 @@ button {
     background-color: $t;
     border: none;
 }
-p, h1, h2, h3, h4, h5, h6, input, button, textarea, select {
-    line-height: 142%!important;
+:where(p, h1, h2, h3, h4, h5, h6, input, button, textarea, select) {
+    line-height: 142%;
 }
 :where(details, button) {
     cursor: pointer;
