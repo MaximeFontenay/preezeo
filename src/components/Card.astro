@@ -5,19 +5,21 @@ export interface Props {
 	number?: number;
 	isSmall?: boolean;
 	stepDisplay?: boolean;
+	shadow?: boolean;
 	color: 'dark' | 'light';
 }
 
-const { title, icon, number, color, isSmall, stepDisplay} = Astro.props;
+const {title, icon, number, color, isSmall, shadow, stepDisplay} = Astro.props;
 ---
 
 <article 
 	class:list={[
 	stepDisplay ? 'card-step' : '', 
-	number && !stepDisplay ? 'mt-10' : '', 
+	number && !stepDisplay ? 'mt-10 pb-8' : 'pb-4', 
 	isSmall ? 'max-w-[300px]' : '', 
+	shadow ? 'shadow-cardHomepage' : '', 
 	color === 'dark' ? 'bg-deep-blue' :'bg-blue', 
-	'flex flex-1 gap-3 items-center relative flex-col rounded-lg px-4 pt-4 pb-8'
+	'flex flex-1 gap-3 items-center relative flex-col rounded-lg px-4 pt-4'
 	]}
 >
 	{icon &&
@@ -35,7 +37,7 @@ const { title, icon, number, color, isSmall, stepDisplay} = Astro.props;
 	{title?.length && 
 		<h3 class="font-bold text-yellow">{ title }</h3>
 	}
-	<div class:list={[color === 'dark' ? 'text-blue' : 'text-deep-blue', 'font-semibold text-sm']}>
+	<div class:list={[color === 'dark' ? 'text-blue' : 'text-deep-blue', 'font-semibold text-sm w-full']}>
 		<slot name="content" />
 	</div>
 </article>

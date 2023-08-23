@@ -1,0 +1,45 @@
+---
+import Image from './atom/Image.astro';
+import Button from './atom/Button.astro';
+---
+
+<article class="flex items-stretch gap-5 max-w-[625px]">
+    <div class="flex items-center justify-center">
+        <Image 
+            src="/img/illu/charging-station.png" 
+            alt="bucharging station decorative image" 
+        />
+    </div>
+    <div class="flex flex-col gap-3">
+        <p class="inline">
+            <span class="leading-1">
+                Chaque projet est différent ! <br>
+                Le bureau d’étude 
+            </span>
+            <span class="inline-block w-[100px] mr-[3px]">
+                <Image 
+                    slot="logo"
+                    src="/img/logo/text_burgundy.svg" 
+                    alt="Preezeo colored Logo"
+                    display='inline'
+                    fetchPriority={true}
+                />
+            </span>
+            <span class="leading-1">étudie chaque configuration.</span>
+        </p>
+        <div class="w-1/2">
+            <Button 
+                text="Mon étude"
+                color="blue"
+                fullWidth={true}
+            />
+        </div>
+    </div>
+
+</article>
+
+
+<style lang="scss">
+
+
+</style>

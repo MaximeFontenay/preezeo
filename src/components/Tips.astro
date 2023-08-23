@@ -3,15 +3,16 @@ import Image from './atom/Image.astro';
  
 export interface Props {
 	title?: string;
+    isBig?: boolean;
 }
 const prop = Astro.props 
 ---
 
-<div class="relative max-w-[500px]">
+<div class={`relative ${prop.isBig ? 'max-w-[750px]' : 'max-w-[500px]'}`}>
     <div class="absolute -left-2 -translate-x-full">
         <Image 
             src="/img/illu/bulb.png" 
-            alt="bulb image" 
+            alt="bulb decorative image" 
         />
     </div>
     <div class="pt-10">
