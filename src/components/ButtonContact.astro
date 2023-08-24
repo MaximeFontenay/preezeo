@@ -1,0 +1,20 @@
+---
+import Button from './atom/Button.astro'
+
+export interface Props {
+	c?: string;
+}
+
+const prop = Astro.props;
+---
+
+<a href="/contact" class={`
+    ${prop.c} 
+    p-[2px]
+`}>
+    <Button
+        text="Nous contacter"
+        color="yellow"
+    />
+</a>
+</style>

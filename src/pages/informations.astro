@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
+import H1 from '../components/H1.astro';
+---
+
+<Layout title="Preezeo">
+    <div class="flex flex-col gap-14 justify-start ml-auto mr-auto lg:mr-[15%] w-fit">
+        <Headline />
+    </div>
+
+    <section class="mb-10 md:mb-[250px]">
+        <h1>Informations Utiles</h1>
+    </section>
+
+    <section class="flex align-center justify-center mb-10 md:mb-[250px]">
+       
+    </section>
+</Layout>
+
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.heading-container {
+    position: relative;
+    margin-top: 75px;
+    .bottom {
+        @include flex(center,flex-start);
+        // @include position(calc(20px + 100%), $left:50%);
+        // position: absolute;
+        width: max-content;
+        max-width: unset;
+        translate: 85px 20px;
+    }
+}
+
+</style>

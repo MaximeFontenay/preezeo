@@ -1,16 +1,133 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import ButtonContact from '../components/ButtonContact.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
+
+
+const bigCards = [
+    {title: 'Accessibilité', text: "En installant des bornes de recharge collectives, tous les copropriétaires ayant des véhicules électriques peuvent bénéficier d'un accès facile à la recharge. Cela élimine les contraintes liées à la disponibilité des prises individuelles et permet à chaque résident d'utiliser la borne de recharge selon ses besoins."},
+    {title: 'Economies d’échelle', text: "En optant pour une infrastructure de recharge collective, les coûts d'installation et de maintenance sont répartis entre tous les copropriétaires. Cela permet de réaliser des économies d'échelle par rapport à l'installation de prises individuelles dans chaque appartement, ce qui peut être coûteux et complexe à mettre en place."},
+    {title: 'Gestion centralisée', text: "Avec une infrastructure de recharge collective, la gestion de l'énergie et des coûts peut être centralisée. Il est possible de mettre en place un système de facturation équitable basé sur l'utilisation individuelle de chaque copropriétaire. Cela simplifie la gestion administrative et évite les conflits liés à la répartition des frais."},
+    {title: 'Evolutivité et flexibilité', text:"En installant une infrastructure de recharge collective, il est plus facile d'ajouter de nouvelles bornes de recharge à mesure que le nombre de véhicules électriques augmente au sein de la copropriété. Cette évolutivité permet de répondre aux besoins futurs des résidents sans avoir à modifier l'installation électrique de chaque appartement."},
+    {title: 'Installation professionnelle', text: "L'installation d'une infrastructure de recharge collective nécessite l'intervention de professionnels qualifiés. Cela garantit que les bornes de recharge sont installées conformément aux normes de sécurité et de qualité. De plus, les installateurs peuvent conseiller sur le dimensionnement optimal de l'infrastructure en fonction des besoins spécifiques de la copropriété."},
+]
+
+const cards = [
+    {html: '<span class="text-purple">TVA 5.5 %</span> si logement achevé depuis <span class="text-purple">plus de 2 ans</span>'},
+    {html: 'Pour usage collectif. <br> <br> <a class="link-effect spacing" href="https://www.avere-france.org/recharge-a-domicile-et-en-entreprise/#un-guide-reference-pour-la-recharge-en-copropriete-5">Guide Avere</a>'},
+    {html: 'Installation <span class="text-purple">garantie</span>'},
+    {html: 'Visite technique + Etude + Devis'},
+    {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>'},
+    {html: 'La décision requiert la <span class="text-purple">majorité</span> des participants à l’AG.'},
+    {html: 'Prime de <span class="text-purple">50 % du montant HT</span> du matériel et de l’installation des points de recharge.<br> Plafonné à <span class="text-purple">1 660 € / point de recharge</span>'},
+    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>'},
+    {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>'},
+]
 ---
 
 <Layout title="Preezeo">
-    <div class="flex flex-col gap-14 justify-start ml-auto mr-auto lg:mr-[15%] w-fit">
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
         <Headline />
-    </div>
-    <H1 text="pour infrastructures collectives" />
+    </section>
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="pour infrastructures collectives" />
+        <div class="link-svg">
+            <div class="absolute -top-9 -right-3">
+                <Image 
+                    src="/img/icons/apartement.svg" 
+                    alt="apartement icon"
+                    fetchPriority={true}
+                />
+            </div>
+            <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+            </svg>
+        </div>
+    </Section>
+
+    <Section c="lg:px-6">
+        <div class="flex flex-col gap-10 lg:px-20">
+            <p class="font-medium text-xl">Dans une copropriété, la mise en place d'une <span class="text-purple font-semibold">infrastructure de recharge collective</span>
+            <br> pour les véhicules électriques présente de nombreux avantages.
+            <br><br>
+            Voici les principaux points à considérer :
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mx-auto w-full">
+                {bigCards.map((item) => (
+                    <article class="flex flex-1 gap-3 relative flex-col rounded-lg p-6 border border-purple bg-light-purple">
+                        <h3 class="font-montserrat font-semibold text-[19px] text-purple">{item.title}</h3>
+                        <p class="text-sm text-metal font-medium">{item.text}</p>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </Section>
+
+    <Section smallBottomMargin={true}>
+        <div class="flex flex-col gap-2 mb-10 lg:ml-20 items-center lg:items-start">
+            <h2 class="text-base font-bold">Infrastructure collective</h2>
+            <span class="bg-purple h-[4px] w-[200px] block"></span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[880px] gap-4 lg:max-w-[880px] mx-auto">
+            {cards.map((item) => (
+                <div class="flex items-center justify-center ">
+                    <Card 
+                        color="light"
+                        shadow={true}
+                        border={true}
+                    >  
+                        <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] px-4">
+                            <h3 class="font-montserrat font-bold text-sm text-center" set:html={item.html}></h3>
+                        </div>
+                    </Card>
+                </div>
+            ))}
+        </div>
+    </Section>
+
+    <Section flex={true} smallBottomMargin={true}>
+        <ButtonContact />
+    </Section>
+
+    <Section flex={true} smallBottomMargin={true}>
+        <Tips>
+            <p 
+                slot="text"
+                class="inline gap-1"
+            >
+                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
+                    Le montant maximal d’aide versée est fixé pour les infrastructures collectives (hors travaux de voirie extérieur) à 4000 euros jusqu’à 50 places. Augmenté de 75 euros par place supplémentaire. 
+                    Dans la limité de 15 000 euros au total par copropriété. 
+                    <br><a href="/informations" class="font-semibold link-effect spacing">Téléchargez le guide du gouvernement</a>
+                </span>
+            </p>
+        </Tips>
+    </Section>
 </Layout>
 
-<style>
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
 
 </style>

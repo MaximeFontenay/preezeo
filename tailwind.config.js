@@ -7,6 +7,7 @@ module.exports = {
         'metal': '#313846',
         'blue': '#E1FFF9',
         'deep-blue': '#171C26',
+        'light-purple': '#E5E6FA',
         'burgundy': '#580925',
         'light': '#EEEFF2',
         't': 'transparent',

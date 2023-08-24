@@ -1,16 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import ButtonContact from '../components/ButtonContact.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
+
+
+const cards = [
+    {html: '<span class="text-purple">TVA 5.5 %</span> si le logement a <span class="text-purple">plus de 2 ans</span>',},
+    {html: '<span class="text-purple">TVA 20%</span> si le logement a <span class="text-purple">moins de 2 ans</span>',},
+    {html: 'Installation <span class="text-purple">garantie dans la journée',},
+    {html: 'Visite technique + Etude + Devis',},
+    {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>',},
+    {html: 'Pour locataire et propriétaire',},
+    {html: 'Professionnel exerçant à domicile: <span class="text-purple">TVA 5.5% + Prime ADVENIR plafond de 2000 euros</span>',},
+    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>',},
+    {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>',},
+]
 ---
 
 <Layout title="Preezeo">
-    <div class="flex flex-col gap-14 justify-start ml-auto mr-auto lg:mr-[15%] w-fit">
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
         <Headline />
-    </div>
-    <H1 text="pour particuliers" />
+    </section>
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="pour particuliers" />
+        <div class="link-svg">
+            <div class="absolute -top-9 -right-3">
+                <Image 
+                    src="/img/icons/house.svg" 
+                    alt="House icon"
+                    fetchPriority={true}
+                />
+            </div>
+            <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+            </svg>
+        </div>
+    </Section>
+
+    <Section flex={true}>
+        <Tips
+            title="Le crédit d'impôts"
+        >
+            <p 
+                slot="text"
+                class="inline gap-1"
+            >
+                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
+                    <span class="text-purple">Le crédit d’impôts</span> pour la transition énergétique permet aux propriétaires et locataires d’une <span class="text-purple">résidence principale</span> de déduire jusqu’à <span class="text-purple">300 euros</span> des dépenses liées à l’acquisition d’une borne de recharge pour véhicules électriques installée à domicile.
+                </span>
+            </p>
+        </Tips>
+    </Section>
+
+    <Section smallBottomMargin={true}>
+        <div class="flex flex-col gap-2 mb-10 ml-20">
+            <h2 class="text-base font-bold">Vous habitez une maison individuelle</h2>
+            <span class="bg-purple h-[4px] w-[200px] block"></span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 max-w-[880px] mx-auto">
+            {cards.map((item) => (
+                <div class="flex items-center justify-center ">
+                    <Card 
+                        color="light"
+                        shadow={true}
+                        border={true}
+                    >  
+                        <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] px-4">
+                            <h3 class="font-montserrat font-bold text-sm text-center" set:html={item.html}></h3>
+                        </div>
+                    </Card>
+                </div>
+            ))}
+        </div>
+    </Section>
+
+    <Section flex={true} smallBottomMargin={true}>
+        <ButtonContact />
+    </Section>
+
+    <Section flex={true}>
+        <Tips
+            title="Combien coûte la recharge en maison individuelle ?"
+            isBig={true}
+        >
+            <p 
+                slot="text"
+                class="inline gap-1"
+            >
+                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
+                    En moyenne et sur une base de la tarification réglementée de vente (TRV), le coût d’une recharge en heures creuses pour <span class="text-purple">100 km d’autonomie (consommation de 15kWh/100km) est d’environ 2 euros et 3 euros en heures pleines.</span>
+                    <br>
+                    Plus la puissance est importante, moins long sera le temps de recharge. Cela dépend aussi de votre chargeur embarqué dans votre véhicule électrique. 
+                    Rendez-vous sur la page <a href="/informations" class="link-effect">informations utiles</a> pour en savoir plus.
+                </span>
+            </p>
+        </Tips>
+    </Section>
+
+    <Section flex={true} smallBottomMargin={true}>
+        <ProjectStripe />
+    </Section>
 </Layout>
 
-<style>
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
 
 </style>

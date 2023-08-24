@@ -1,24 +1,28 @@
 ---
 export interface Props {
+	c?: string,
 	title?: string;
 	icon?: boolean;
 	number?: number;
 	isSmall?: boolean;
 	stepDisplay?: boolean;
 	shadow?: boolean;
+	border?: boolean;
 	color: 'dark' | 'light';
 }
 
-const {title, icon, number, color, isSmall, shadow, stepDisplay} = Astro.props;
+const {c, border, title, icon, number, color, isSmall, shadow, stepDisplay} = Astro.props;
 ---
 
 <article 
 	class:list={[
+	c,
 	stepDisplay ? 'card-step' : '', 
 	number && !stepDisplay ? 'mt-10 pb-8' : 'pb-4', 
+	border ? 'border rounded-lg border-purple' : '', 
 	isSmall ? 'max-w-[300px]' : '', 
 	shadow ? 'shadow-cardHomepage' : '', 
-	color === 'dark' ? 'bg-deep-blue' :'bg-blue', 
+	color === 'dark' ? 'bg-deep-blue' :'bg-light-purple', 
 	'flex flex-1 gap-3 items-center relative flex-col rounded-lg px-4 pt-4'
 	]}
 >

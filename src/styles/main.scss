@@ -3,3 +3,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.link-effect {
+    position: relative;
+    color: $purple;
+
+    &.spacing:after {
+        bottom: -10px
+    }
+
+    &:after {
+        @include position($bottom: 0, $left: 50%);
+        translate: -50% 0;
+        background-color: $purple;
+        height: 1.5px;
+        width: 50%;
+        border-radius: 99px;
+        transition: linear .2s;
+    }
+
+    &:hover:after {
+        width: 100%;
+        transition: ease-in-out .4s;
+    }
+}
