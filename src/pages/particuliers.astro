@@ -8,6 +8,7 @@ import Card from '../components/Card.astro';
 import ButtonContact from '../components/ButtonContact.astro';
 import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
+import CardSelect from '../components/cardSelect.astro';
 import H1 from '../components/H1.astro';
 
 
@@ -22,7 +23,27 @@ const cards = [
     {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>',},
     {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>',},
 ]
+
+
+const cardSelect = [
+    {text: 'Une maison', icon: '/img/icons/flat_house.svg'},
+    {text: 'Un appartement', icon: '/img/icons/flat_appartement.svg'},
+]
 ---
+<script>
+    const cardSelect = [...document.querySelectorAll('.card-select')]
+    let activeCardName = 'Une Maison'
+    cardSelect[0]?.classList.add('active')
+    cardSelect.forEach(item => {
+        item.addEventListener('click', (e) => {
+            const target = e.target as Element
+            cardSelect.forEach(item => item.classList.remove('active'))
+            target.classList.add('active')
+            activeCardName = target.textContent
+        })
+    })
+</script>
+
 
 <Layout title="Preezeo">
     <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
@@ -31,22 +52,40 @@ const cards = [
 
     <Section c="relative mt-20 ml-20">
         <H1 text="pour particuliers" />
-        <div class="link-svg">
-            <div class="absolute -top-9 -right-3">
-                <Image 
-                    src="/img/icons/house.svg" 
-                    alt="House icon"
-                    fetchPriority={true}
-                />
+        <div class="flex gap-10 justify-between">
+            <div class="link-svg">
+                <div class="absolute -top-9 -right-3">
+                    <Image 
+                        src="/img/icons/house.svg" 
+                        alt="House icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                    <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                    <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+                </svg>
             </div>
-            <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
-                <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
-                <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
-                <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
-                <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
-            </svg>
+
+            <div class="flex flex-col gap-6 lg:-translate-y-1/2">
+
+                <p class="font-bold">J'habite dans :</p>
+
+                <div class="flex gap-6 items-stretch">
+                    <CardSelect 
+                        client:load 
+                        transition:persist 
+                        items={cardSelect} 
+                    />
+                </div>
+            </div>
+
+
         </div>
+
     </Section>
 
     <Section flex={true}>

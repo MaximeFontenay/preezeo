@@ -15,10 +15,11 @@ const {fullWidth, text, color = 'blue', outlined = false, type = 'button' } = As
     ${color} ${outlined ? 'outlined' : ''} ${fullWidth ? 'w-full' : 'w-fit'}`}
     type={type}
 >
-{text}
+<span>{text}</span>
 </button>
 
 <style lang="scss">
+@use '../../styles/_variables.scss' as *;
     
 button {
     padding: 12.5px 25px;
@@ -29,28 +30,81 @@ button {
     border: solid 1px transparent;
     white-space: nowrap;
     transition: ease-in-out .3s;
+    position: relative;
+    overflow: hidden;
 
-        &.blue {
-            background-color: #515BE0;
-            color: #E1FFF9;
-            box-shadow: 3px 3px 6px 0px rgba(201, 204, 245, 0.25) inset;
-            filter: drop-shadow(0px 3px 10px rgba(81, 91, 224, 0.55));
+    span {
+        position: relative;
+        display: block;
+        z-index: 10;
+    }
 
-            &:hover {
-                background-color: transparent;
-                border-color: #515BE0;
-            }
+    &.blue {
+        background-color: #515BE0;
+        color: #E1FFF9;
+        box-shadow: 3px 3px 6px 0px rgba(201, 204, 245, 0.25) inset;
+        filter: drop-shadow(0px 3px 10px rgba(81, 91, 224, 0.55));
+
+        // &:hover {
+        //     background-color: transparent;
+        //     border-color: #515BE0;
+        // }
+    }
+
+    &.yellow {
+        background-color: #FFB800;
+        color: #171C26;
+        box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+        // &:hover {
+        //     background-color: transparent;
+        //     border-color: #FFB800;
+        // }
+    }
+
+    $btn-color: $yellow;
+    $btn-color-dark: $purple;
+    $btn-width: 165px !default;
+    $btn-height: 80px !default;
+    $btn-full: $btn-height+$btn-width !default;
+    // $btn-half: calc($btn-full / 2) !default;
+    $bg-color: #eeeeee !default;
+    color: tint($btn-color);
+    @include triangle(up-right, 0, $btn-color-dark, true);
+    @include triangle(down-left, 0, $btn-color-dark, true, before);
+
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 0 solid;
+        transform: rotate(360deg);
+        transition: 0.5s ease-in-out;
+        z-index: 5;
+    }
+    
+    &:before {
+        bottom: 0;
+        left: 0;
+        border-color: transparent transparent transparent $btn-color-dark;
+    }
+
+    &:after {
+        top: 0;
+        right: 0;
+        border-color: transparent $btn-color-dark transparent transparent;
+    }
+
+    &:hover {
+        color: tint($btn-color, 75%);
+        
+        &:before,
+        &:after {
+            border-width: $btn-height $btn-width*1.115;
         }
-
-        &.yellow {
-            background-color: #FFB800;
-            color: #171C26;
-            box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
-            &:hover {
-                background-color: transparent;
-                border-color: #FFB800;
-            }
-        }
+    }
     
 }
 </style>

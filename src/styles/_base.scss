@@ -95,8 +95,10 @@ a {
         outline-offset: 5px;
     }
 
-    &:hover {
-        opacity: .7;
+    .opacity {
+        &:hover {
+            opacity: .7;
+        }
     }
 }
 

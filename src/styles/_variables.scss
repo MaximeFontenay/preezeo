@@ -6,8 +6,20 @@ $blue: #E1FFF9;
 $deep-blue: #171C26;
 $burgundy: #580925;
 $light: #EEEFF2;
-$t: transparent;
 $transition: .2s ease-in-out;
+
+:root {
+    --t: transparent;
+    --yellow: #FFB800;
+    --purple: #515BE0;
+    --metal: #313846;
+    --blue: #E1FFF9;
+    --deep-blue: #171C26;
+    --burgundy: #580925;
+    --light: #EEEFF2;
+    --transition: .2s ease-in-out;
+}
+
 
 //! ///////////
 //! // Fonts // 
@@ -172,6 +184,89 @@ $fontFormat: 'woff2';
     &::-webkit-scrollbar-thumb:hover {
         @include color('background', $color, .5);
     }
+}
+
+
+@mixin triangle(
+    $direction,
+    $size,
+    $color,
+    $center: false,
+    $element: 'after') {
+	&:#{$element} {
+		@if not $center {
+			position: absolute;
+		}
+		content:'';
+        width: $size;
+        height: $size;
+		-webkit-transform: rotate(360deg);
+		border-style: solid;
+		@if $direction == up {
+			border-width: 0 $size ($size*1.625) $size;
+			border-color: transparent transparent $color transparent;
+			@if $center {
+				@include position($bottom:100%,$left:50%);
+				transform: translateX(-$size);
+			}
+		}
+		@else if $direction == up-right {
+			border-width: 0 $size $size 0;
+			border-color: transparent $color transparent transparent;
+			@if $center {
+				@include position($top:0,$right:0);
+			}
+		}
+		@else if $direction == right {
+			border-width: $size 0 $size ($size*1.625);
+			border-color: transparent transparent transparent $color;
+			@if $center {
+				@include position($top:50%,$left:100%);
+				transform: translateY(-$size);
+			}
+		}
+		@else if $direction == down-right {
+			border-width: 0 0 $size $size;
+			border-color: transparent transparent $color transparent;
+			@if $center {
+				@include position($right:0,$bottom:0);
+			}
+		}
+		@else if $direction == down {
+			border-width: ($size*1.625) $size 0 $size;
+			border-color: $color transparent transparent transparent;
+			@if $center {
+				@include position($top:100%,$left:50%);
+				transform: translateX(-$size);
+			}
+		}
+		@else if $direction == down-left {
+			border-width: $size 0 0 $size;
+			border-color: transparent transparent transparent $color;
+			@if $center {
+				@include position($bottom:0,$left:0);
+			}
+		}
+		@else if $direction == left {
+			border-width: $size ($size*1.625) $size 0;
+			border-color: transparent $color transparent transparent;
+			@if $center {
+				@include position(50%,$right:100%);
+				transform: translateY(-$size);
+			}
+		}
+		@else if $direction == up-left {
+			border-width: $size $size 0 0;
+			border-color: $color transparent transparent transparent;
+			@if $center {
+				@include position($top:0,$left:0);
+			}
+		}
+		@else {
+			@warn "Available directions: up, up-right, right, down-right, down, down-left, left, up-left.";
+		}
+		@content;
+	}
 }
 
 @mixin is-chrome {

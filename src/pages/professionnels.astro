@@ -1,16 +1,138 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import ButtonContact from '../components/ButtonContact.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
+
+
+const bigCards = [
+    {title: 'Attirer une clientèle électromobile', text: "En installant une borne de recharge, les professionnels peuvent <span class='text-purple font-semibold'>attirer et fidéliser une clientèle sensible aux enjeux environnementaux</span> et qui privilégie les véhicules électriques. Offrir un service de recharge facilement accessible peut devenir un <span class='text-purple font-semibold'>réel avantage concurrentiel</span>, en montrant son engagement en faveur de la mobilité durable."},
+    {title: 'Améliorer l’expérience client', text: "Les bornes de recharge permettent aux clients de recharger leurs véhicules pendant leur visite ou leur séjour, ce qui peut <span class='text-purple font-semibold'>améliorer leur expérience globale</span>. Qu'il s'agisse d'un restaurant, d'un golf ou d'un établissement recevant du public, offrir la possibilité de recharger son véhicule sans contrainte offre <span class='text-purple font-semibold'>un confort supplémentaire à la clientèle.</span>"},
+    {title: 'Prolonger la durée de visite', text: "Les bornes de recharge incitent les <span class='text-purple font-semibold'>propriétaires de véhicules électriques à rester plus longtemps sur place</span>. Par exemple, au sein d'un golf, les joueurs peuvent recharger leur voiture pendant qu'ils profitent d'une partie, ce qui peut les encourager à passer plus de temps sur le parcours. De même, pour les restaurants ou les établissements recevant du public, <span class='text-purple font-semibold'>les clients peuvent prolonger leur séjour sans se soucier de la disponibilité de la recharge.</span>"},
+    {title: 'Promouvoir une image écologique', text: "En installant une borne de recharge, les professionnels envoient <span class='text-purple font-semibold'>un message fort en faveur de l'environnement</span>. Cela démontre leur engagement envers la <span class='text-purple font-semibold'>transition énergétique et leur volonté de réduire leur empreinte carbone</span>. Cette démarche peut être perçue positivement par les clients, renforçant ainsi leur <span class='text-purple font-semibold'>image de marque responsable et durable.</span>"},
+    {title: 'Favoriser les déplacements professionnel', text: "Pour les entreprises privées, disposer de bornes de recharge permet de faciliter les déplacements professionnels en véhicules électriques pour leurs employés. <span class='text-purple font-semibold'>Cela encourage l'adoption de voitures électriques dans la flotte d'entreprise et contribue à réduire les émissions de CO2</span>. De plus, offrir une infrastructure de recharge au sein de l'entreprise peut être perçu comme <span class='text-purple font-semibold'>un avantage attractif pour les employés et les visiteurs.</span>"},
+]
+
+const cards = [
+    {html: '<span class="text-purple">TVA 5.5 %</span> si logement achevé depuis <span class="text-purple">plus de 2 ans</span>'},
+    {html: 'Pour usage collectif. <br> <br> <a class="link-effect spacing" href="https://www.avere-france.org/recharge-a-domicile-et-en-entreprise/#un-guide-reference-pour-la-recharge-en-copropriete-5">Guide Avere</a>'},
+    {html: 'Installation <span class="text-purple">garantie</span>'},
+    {html: 'Visite technique + Etude + Devis'},
+    {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>'},
+    {html: 'La décision requiert la <span class="text-purple">majorité</span> des participants à l’AG.'},
+    {html: 'Prime de <span class="text-purple">50 % du montant HT</span> du matériel et de l’installation des points de recharge.<br> Plafonné à <span class="text-purple">1 660 € / point de recharge</span>'},
+    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>'},
+    {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>'},
+]
 ---
 
 <Layout title="Preezeo">
-    <div class="flex flex-col gap-14 justify-start ml-auto mr-auto lg:mr-[15%] w-fit">
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
         <Headline />
-    </div>
-    <H1 text="pour professionnels" />
+    </section>
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="pour infrastructures professionnels" />
+        <div class="link-svg">
+            <div class="absolute -top-9 -right-5">
+                <Image 
+                    src="/img/icons/building.svg" 
+                    alt="apartement icon"
+                    fetchPriority={true}
+                />
+            </div>
+            <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+            </svg>
+        </div>
+    </Section>
+
+    <Section c="lg:px-6">
+        <div class="flex flex-col gap-10 lg:px-20">
+            <p class="font-medium text-xl">
+                Bienvenue chez <span class="text-purple font-bold">PREEZEO</span>, votre Partenaire de Confiance pour une Mobilité Électrique Performante.
+                <br>
+                <br>
+                Ici, nous comprenons les besoins spécifiques des professionnels qui cherchent à embrasser la mobilité électrique tout en maintenant une efficacité économique optimale. Notre engagement envers les petites entreprises, les gîtes, les golfs, les hôtels, les campings et bien d'autres, réside dans notre détermination à offrir un service de qualité supérieure.
+                <br>
+                <br>
+                En tant que spécialistes des solutions de recharge pour véhicules électriques, nous allions notre expertise à une connaissance approfondie des réglementations gouvernementales en constante évolution. Cela nous permet de vous proposer une configuration sur mesure, parfaitement adaptée à vos besoins et obligations. Que vous cherchiez à offrir des services de recharge à vos clients ou à votre personnel, nous vous accompagnons dans chaque étape pour vous garantir une transition en douceur vers la mobilité électrique.
+                <br>
+                <br>
+                Chez <span class="text-purple font-bold">PREEZEO</span>, notre priorité est de vous offrir bien plus qu'une simple borne de recharge. Nous vous proposons une solution complète, taillée sur mesure pour votre entreprise, tout en prenant en compte vos objectifs financiers. Rejoignez nous dans cette transition vers un avenir plus propre et plus performant, tout en bénéficiant d'une expertise inégalée et d'un service client dévoué. 
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mx-auto w-full">
+                {bigCards.map((item) => (
+                    <article class="flex flex-1 gap-3 relative flex-col rounded-lg p-6 border border-purple bg-light-purple">
+                        <h3 class="font-montserrat font-semibold text-[19px] text-purple">{item.title}</h3>
+                        <p class="text-sm text-metal font-medium" set:html={item.text}></p>
+                    </article>
+                ))}
+            </div>
+        </div>
+    </Section>
+
+    <Section smallBottomMargin={true}>
+        <div class="flex flex-col gap-2 mb-10 lg:ml-20 items-center lg:items-start">
+            <h2 class="text-base font-bold">Infrastructure collective</h2>
+            <span class="bg-purple h-[4px] w-[200px] block"></span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[880px] gap-4 lg:max-w-[880px] mx-auto">
+            {cards.map((item) => (
+                <div class="flex items-center justify-center ">
+                    <Card 
+                        color="light"
+                        shadow={true}
+                        border={true}
+                    >  
+                        <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] px-4">
+                            <h3 class="font-montserrat font-bold text-sm text-center" set:html={item.html}></h3>
+                        </div>
+                    </Card>
+                </div>
+            ))}
+        </div>
+    </Section>
+
+    <Section flex={true} smallBottomMargin={true}>
+        <ButtonContact />
+    </Section>
+
+    <Section flex={true} smallBottomMargin={true}>
+        <Tips btn={true}>
+            <p 
+                slot="text"
+                class="inline gap-1"
+            >
+                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
+                    L'installation de bornes de recharge au sein des entités professionnelles présente de nombreux avantages, allant de <span class='text-purple font-semibold'>l'attraction d'une clientèle électromobile à l'amélioration de l'expérience client en passant par la promotion d'une image écologique</span>. De plus, cela favorise la transition vers une mobilité plus durable et peut contribuer à renforcer l'engagement en faveur de l'environnement.
+                </span>
+            </p>
+        </Tips>
+    </Section>
 </Layout>
 
-<style>
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
 
 </style>
