@@ -2,6 +2,7 @@
 import Button from "../components/atom/Button.astro";
 import Image from "../components/atom/Image.astro";
 import Navigation from "../components/Navigation.vue";
+import ButtonContact from "../components/ButtonContact.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
@@ -17,10 +18,9 @@ const currentPath = pathname.slice(1);
         alt="Logo de Preezeo - la Borne qu’il vous faut!" 
         fetchPriority={true}
     />
-    <Button 
+
+    <ButtonContact
         slot="button"
-        text="Nous contacter" 
-        color="yellow" 
     />
 </Navigation>
 

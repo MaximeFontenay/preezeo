@@ -1,0 +1,58 @@
+---
+export interface Props {
+    type?: 'error' | 'success' | 'warning' | 'info',
+    text: string,
+}
+
+const {text, type = 'info' } = Astro.props;
+---
+
+<div class:list={`alert flex items-center justify-center ${type}`}>
+    <slot name="icon"></slot>
+    <span set:html={text}></span>
+</div>
+
+<style lang="scss">
+@use '../../styles/_variables.scss' as *;
+    
+.alert {
+    @include flex(center, center, $gap: 10px);
+    padding: 5px 20px;
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    translate: -50% 0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 100000;
+    pointer-events: none;
+
+    :global(svg) {
+        width: 30px;
+    }
+
+    &.error {
+        color: var(--error);
+        background-color: rgba(224, 91, 81, 0.2);
+        backdrop-filter: blur(2px);
+        box-shadow: 0 0 5px 0 rgba(81, 224, 124, 0.4) ;
+
+        :global(path) {
+            fill: var(--error);
+        }
+    }
+    &.success {
+        color: var(--valid);
+        background-color: rgba(81, 224, 124, 0.2);
+        backdrop-filter: blur(2px);
+        box-shadow: 0 0 5px 0 rgba(81, 224, 124, 0.4) ;
+
+        :global(path) {
+            fill: var(--valid);
+        }
+    }
+
+}
+
+</style>

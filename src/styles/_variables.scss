@@ -1,22 +1,30 @@
 $t: transparent;
 $yellow: #FFB800;
 $purple: #515BE0;
+$light-purple: #E5E6FA;
+$error: #e05b51;
+$valid: #51e07c;
 $metal: #313846;
 $blue: #E1FFF9;
 $deep-blue: #171C26;
 $burgundy: #580925;
 $light: #EEEFF2;
+$light2:#E5E6FA;
 $transition: .2s ease-in-out;
 
 :root {
     --t: transparent;
     --yellow: #FFB800;
     --purple: #515BE0;
+    --light-purple: #E5E6FA;
     --metal: #313846;
     --blue: #E1FFF9;
     --deep-blue: #171C26;
     --burgundy: #580925;
+    --error: rgb(224, 91, 81);
+    --valid: rgb(81, 224, 124);
     --light: #EEEFF2;
+    --light2: #E5E6FA;
     --transition: .2s ease-in-out;
 }
 
