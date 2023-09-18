@@ -9,9 +9,9 @@ const prop = Astro.props;
 ---
 
 <section class={`
-    ${prop.c} 
     ${prop.flex ? 'flex justify-center items-stretch' : ''} 
     ${prop.smallBottomMargin ? 'mb-20 md:mb-[7vh] lg:mb-[135px]': 'mb-20 md:mb-[15vh] lg:mb-[275px]'}
+    ${prop.c} 
 `}>
     <slot />
 </section>

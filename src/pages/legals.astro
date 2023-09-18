@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Alert from '../components/atom/Alert.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
+import H1 from '../components/H1.astro';
+
+---
+
+
+<Layout title="Preezeo">
+
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
+        <Headline />
+    </section>
+
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="Mentions légales" />
+        <div class="flex gap-10 justify-between">
+            <div class="link-svg ">
+                <div class="absolute -top-11 -right-[17px]">
+                    <Image 
+                        src="/img/logo/head.svg" 
+                        alt="Head icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                    <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                    <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+                </svg>
+            </div>
+        </div>
+    </Section>
+
+
+    <Section>
+        <div class="max-w-4xl ml-15">
+           
+            <h2>Mentions légales</h2>
+
+            <h2>ÉDITEUR DU SITE</h2>
+            <p>
+                PREEZO.fr est édité par <b>PREEZEO</b>, SASU au capital de 7500 €.
+                <br>Numéro de RCS : 000 000 000 - Numéro de TVA : FR0000000000
+                <br>Siège social : 57 avenue du Marechal Juin, 64200 Biarritz
+                <br>Directeur de publication : PREEZEO SASU
+                <br>Contact : contact@preezeo.fr
+                <br>preezeo.fr est hébergé par OVH.
+            <p>
+
+            <h2>DONNÉES PERSONNELLES & CONFIDENTIALITÉ</h2>
+            <p>Le site ne recueille aucunes informations personnelles, et n’est pas assujetti à déclaration à la CNIL.</p>
+            
+
+            <h2>INFORMATIONS</h2>
+            <p>
+                Les informations et documents du site sont présentés à titre indicatif, sans caractère exhaustif, 
+                et ne peuvent engager la responsabilité du propriétaire du site.
+                <br>Le propriétaire du site ne peut être tenu responsable des dommages directs et indirects 
+                consécutifs à l’accès au site.
+            </p>
+            
+
+            <h2>PROPRIETE INTELLECTUELLE</h2>
+            <p>
+                Sauf mention contraire, tous les éléments accessibles sur le site 
+                (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) 
+                restent la propriété exclusive de leurs auteurs, en ce qui concerne les droits 
+                de propriété intellectuelle ou les droits d’usage. 
+                <br>Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments 
+                du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable 
+                de l’auteur.
+                <br>Toute exploitation non autorisée du site ou de l’un quelconque des éléments qu’il contient est considérée comme constitutive d’une contrefaçon et passible de poursuites.
+                <br>Les marques et logos reproduits sur le site sont déposés par les sociétés qui en sont propriétaires.
+            </p>
+        
+            <h2>CRÉDITS</h2>
+            <p>Design & Développement: <a href="https://touch-of-pixels.com" class="link-effect">Touch of Pixels</a></p>
+            
+        </div>
+    </Section>
+</Layout>
+
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
+
+
+h2 {
+    margin: 40px 0 10px;
+    font-weight: 600;
+}
+
+a {
+
+}
+</style>

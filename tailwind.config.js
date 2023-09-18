@@ -89,7 +89,8 @@ module.exports = {
       },
 
       boxShadow: {
-        'cardHomepage': '3px 5px 10px 0px rgba(255, 255, 255, 0.25) inset, 0px 4px 15px 0px rgba(0, 0, 0, 0.15);'
+        'cardHomepage': '3px 5px 10px 0px rgba(255, 255, 255, 0.25) inset, 0px 4px 15px 0px rgba(0, 0, 0, 0.15);',
+        'subLinks': '0px 1px 20px 0px rgba(0, 0, 0, 0.10)',
       },
       
       screens: {

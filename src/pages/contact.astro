@@ -1,27 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Headline from '../components/Headline.astro';
-import Tips from '../components/Tips.astro';
-import ProjectStripe from '../components/ProjectStripe.astro';
 import Section from '../components/Section.astro';
-import Card from '../components/Card.astro';
 import Alert from '../components/atom/Alert.astro';
 import Image from '../components/atom/Image.astro';
-import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
-
-
-const cards = [
-    {html: '<span class="text-purple">TVA 5.5 %</span> si le logement a <span class="text-purple">plus de 2 ans</span>',},
-    {html: '<span class="text-purple">TVA 20%</span> si le logement a <span class="text-purple">moins de 2 ans</span>',},
-    {html: 'Installation <span class="text-purple">garantie dans la journée',},
-    {html: 'Visite technique + Etude + Devis',},
-    {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>',},
-    {html: 'Pour locataire et propriétaire',},
-    {html: 'Professionnel exerçant à domicile: <span class="text-purple">TVA 5.5% + Prime ADVENIR plafond de 2000 euros</span>',},
-    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>',},
-    {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>',},
-]
 ---
 
 <script>

@@ -9,8 +9,22 @@ const links = [
     {name: 'Particulier', link: '/particuliers'},
     {name: 'Infrastructure collective', link: '/infrastructures'},
     {name: 'Professionnel', link: '/professionnels'},
-    {name: 'Services', link: '/services'},
-    {name: 'A savoir', link: '/more'},
+    {
+        name: 'Services',
+        sublinks: [
+            {name: 'Installation & Maintenance', link: '/installation'},
+            {name: 'Produits', link: '/products'},
+            {name: 'Tarifs', link: '/prices'},
+        ]
+    },
+    {
+        name: 'A savoir', 
+        sublinks: [
+            {name: 'Financement', link: '/funding'},
+            {name: 'Informations utiles', link: '/informations'},
+            {name: 'Qui sommes nous ?', link: '/about'},
+        ]
+    }
 ]
 
 const toggleMenu = ref<boolean>(false)
@@ -21,19 +35,31 @@ const openMenu = (action: boolean) => {
 </script>
 
 <template>
-    <header class="container">
+    <header class="wrapper">
         <div class="flex items-center justify-between w-100">
             <a href="/" class="flex justify-center items-center w-[135px]">
                 <slot name="logo"/> 
             </a>
             <nav class="hidden lg:flex items-center gap-7 text-sm 2xl:gap-14" role="navigation" aria-label="Menu principal">
-                <ul class="flex items-center gap-4 font-semibold whitespace-nowrap 2xl:gap-8">
+                <ul class="flex items-center gap-2 font-semibold whitespace-nowrap 2xl:gap-6">
                     <li 
                         v-for="(link, linkIndex) in links" :key="linkIndex" 
-                        class="nav-link"
-                        :class="currentPath === link.link.split('/')[1] ? 'active' : ''"
+                        class="nav-link group"
+                        :class="[
+                            currentPath === link?.link?.split('/')[1] ? 'active' : '',
+                            link.sublinks ? 'relative' : ''
+                        ]"
                     >
-                        <a :href="link.link">{{ link.name }}</a>
+                        <a v-if="!link.sublinks" :href="link.link" class="p-2">{{ link.name }}</a>
+                        <p v-else class="p-2">{{ link.name }}</p>
+
+                        <div class="absolute pt-4 min-w-[120px] duration-300 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 group-hover:pointer-events-auto">
+                            <ul v-if="link.sublinks" class="z-50 min-w-fit p-3 pr-5 absolute top-full backdrop-blur-[7.5px] duration-[backdrop-blur] shadow-subLinks rounded-sm left-2 flex flex-col justify-start items-start gap-4 font-semibold whitespace-nowrap bg-[#DFE1F0] w-fit">
+                                <li v-for="(sublink, sublinkIndex) in link.sublinks" :key="sublinkIndex">
+                                    <a class="flex hover:text-purple" :href="sublink.link">{{ sublink.name }}</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
                 <slot name="button"/> 
@@ -67,7 +93,7 @@ const openMenu = (action: boolean) => {
                 >
                     <li 
                         v-for="(link, linkIndex) in links" :key="linkIndex" 
-                        :class="currentPath === link.link.split('/')[1] ? 'active' : ''"
+                        :class="currentPath === link?.link?.split('/')[1] ? 'active' : ''"
                     >
                         <a href="link.link">{{ link.name }}</a>
                     </li>
@@ -81,6 +107,20 @@ const openMenu = (action: boolean) => {
 @use '../styles/_variables.scss' as *;
 
 .nav-link {
+    position: relative;
+
+    &:after {
+        @include position(calc(90%), 10px);
+        background-color: $purple;
+        height: 2px;
+        width: 0;
+        transition: .1s linear;
+    }
+
+    &:hover:after {
+        transition: .3s ease-in-out;
+        width: 40px;
+    }
 
     &.active {
         color: $purple

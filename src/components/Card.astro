@@ -20,10 +20,10 @@ const {c, border, title, icon, number, color, isSmall, shadow, stepDisplay} = As
 	stepDisplay ? 'card-step' : '', 
 	number && !stepDisplay ? 'mt-10 pb-8' : 'pb-4', 
 	border ? 'border rounded-lg border-purple' : '', 
-	isSmall ? 'max-w-[300px]' : '', 
+	isSmall ? 'max-w-[350px] lg:max-w-[300px]' : '', 
 	shadow ? 'shadow-cardHomepage' : '', 
 	color === 'dark' ? 'bg-deep-blue' :'bg-light-purple', 
-	'flex flex-1 gap-3 items-center relative flex-col rounded-lg px-4 pt-4'
+	'flex flex-1 gap-3 items-center relative flex-col rounded-lg px-8 pt-4 lg:px-4 lg:pt-4'
 	]}
 >
 	{icon &&

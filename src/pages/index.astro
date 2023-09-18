@@ -8,6 +8,7 @@ import Tips from '../components/Tips.astro';
 import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 import ProjectStripe from '../components/ProjectStripe.astro';
+import ButtonContact from '../components/ButtonContact.astro';
 
 
 const defaultCards = [
@@ -122,7 +123,7 @@ const defaultCards = [
         </Tips>
     </Section>
 
-    <Section flex={true} c="gap-10">
+    <Section c="gap-10 flex justify-center items-center flex-col lg:flex-row lg:items-stretch">
         <Card 
             color="dark"
             title="Votre Besoin"
@@ -159,8 +160,12 @@ const defaultCards = [
         </Card>
     </Section>
     
-    <Section flex={true}>
+    <Section flex={true} c="hidden md:flex">
         <ProjectStripe />
+    </Section>
+
+    <Section flex={true} c="block md:hidden">
+        <ButtonContact />
     </Section>
 
     <section class="flex justify-center items-stretch flex-wrap gap-10 max-w-[1000px] mx-auto mb-10 md:mb-[250px]">
@@ -178,7 +183,7 @@ const defaultCards = [
         ))}
     </section>
 
-    <section class="flex align-center justify-center mb-10 md:mb-[250px]">
+    <section class="flex align-center justify-center mb-10 md:mb-[250px] max-w-[75vw] md:max-w-fit mx-auto">
         <Tips
             title="Offre de parrainage"
             isBig={true}
@@ -206,6 +211,47 @@ const defaultCards = [
             </p>
         </Tips>
     </section>
+
+    <Section flex={true} c="mb-0">
+        <div class="grid place-items-center grid-cols-2 gap-5 md:grid-cols-5 md:gap-10">
+            <div class="max-w-[100px] sm:max-w-[175px] md:max-w-100">    
+                <Image 
+                    src="/img/illu/avere.png" 
+                    alt="avere Logo"
+                    fetchPriority={true}
+                />
+            </div>
+            <div class="max-w-[100px] sm:max-w-[175px] md:max-w-100">
+                <Image 
+                    src="/img/illu/advenir.png" 
+                    alt="advenir Logo"
+                    fetchPriority={true}
+                />
+            </div>
+            <div class="max-w-[100px] sm:max-w-[175px] md:max-w-100">
+                <Image 
+                    src="/img/illu/qualifelec.png" 
+                    alt="qualifelec Logo"
+                    fetchPriority={true}
+                />
+            </div>
+            <div class="max-w-[100px] sm:max-w-[175px] md:max-w-100">
+                <Image 
+                    src="/img/illu/evready.png" 
+                    alt="evready Logo"
+                    fetchPriority={true}
+                />
+            </div>
+            <div class="max-w-[100px] sm:max-w-[175px] md:max-w-100">
+                <Image 
+                    src="/img/illu/irve.png" 
+                    alt="irve Logo"
+                    fetchPriority={true}
+                />
+            </div>
+        </div>
+
+    </Section>
 
 </Layout>
 
