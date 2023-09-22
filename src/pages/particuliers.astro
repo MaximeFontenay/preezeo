@@ -8,7 +8,6 @@ import Card from '../components/Card.astro';
 import ButtonContact from '../components/ButtonContact.astro';
 import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
-import CardSelect from '../components/cardSelect.astro';
 import H1 from '../components/H1.astro';
 
 
@@ -75,11 +74,7 @@ const cardSelect = [
                 <p class="font-bold">J'habite dans :</p>
 
                 <div class="flex gap-6 items-stretch">
-                    <CardSelect 
-                        client:load 
-                        transition:persist 
-                        items={cardSelect} 
-                    />
+                  
                 </div>
             </div>
         </div>

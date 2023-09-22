@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Alert from '../components/atom/Alert.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
+import H1 from '../components/H1.astro';
+
+const steps = [
+    {
+        icon: 'message', 
+        text: `Vous prenez <a href="/contact" class="text-purple">contact</a> avec nous par mail ou par téléphone en nous exposant votre projet de recharge pour votre véhicule électrique.`, 
+    },
+    {
+        icon: 'phone', 
+        text: `Un de nos électricien agrée IRVE vous propose une <a href="/contact" class="text-purple">visite technique</a> afin d’étudier votre installation électrique.`, 
+    },
+    {
+        icon: 'list', 
+        text: `Notre bureau d’étude établi le bilan de puissance électrique de votre installation et vous propose une solution adaptée à votre installation et votre véhicule.`, 
+    },
+    {
+        icon: 'drill', 
+        text: `Après acceptation du devis et prise de rendez vous, votre technicien IRVE vient installer et sécuriser votre station de recharge et vous accompagne dans son utilisation. `, 
+    },
+    {
+        icon: 'list', 
+        text: `Vous êtes maintenant autonome en recharge électrique et très content de votre installation.<br> Votre technicien IRVE reste disponible pour toute question.`, 
+    },
+]
+---
+
+
+<Layout title="Preezeo">
+
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
+        <Headline />
+    </section>
+
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="Installation et Maintenance" />
+        <div class="flex gap-10 justify-between">
+            <div class="link-svg ">
+                <div class="absolute -top-12 -right-[28px]">
+                    <Image 
+                        src="/img/logo/head.svg" 
+                        alt="Head icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                    <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                    <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+                </svg>
+            </div>
+        </div>
+    </Section>
+
+
+    <Section>
+        <div class="font-medium leading-[142%] text-sm">
+            <h2 class="flex flex-col font-bold mb-8">
+                <span>Nos marques partenaires</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+            <div class="grid place-content-center w-full grid-cols-2 lg:mt-30 md:grid-cols-3 gap-4 lg:gap-10">
+                {steps.map((item, index) => (
+                    <div class="relative flex flex-col gap-4 bg-light-purple rounded-lg border border-purple pb-1 px-8">
+                        <div class="absolute right-8 -top-1 -translate-y-full max-h-[75px] max-w-[75px]">
+                            <Image 
+                                src={`/img/icons/${item.icon}.svg`}
+                                alt=""
+                            />
+                        </div>
+                        <p class="relative text-purple font-medium text-[30px] w-fit">
+                            étape
+                            <span class="absolute -right-1 bottom-5 text-[70px] translate-x-full">{index + 1}</span>
+                        </p>
+
+                        <p set:html={item.text}></p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+
+
+    <Section>
+        <div class="font-medium leading-[142%] text-sm">
+            <h2 class="flex flex-col font-bold mb-8">
+                <span>Les accessoires</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+            <p>
+                Preezeo a choisi les marques les plus réputées et fiables dans le domaine des accessoires de sécurité, de comptage, de distribution et de raccordement électrique. 
+                <br>
+                Parmi ces marques figurent Schneider, Siemens, Legrand, Hager et Michaud.
+            </p>
+        </div>
+    </Section>
+
+</Layout>
+
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
+
+
+h2 {
+    font-weight: 600;
+}
+
+a {
+
+}
+</style>

@@ -55,7 +55,11 @@ const openMenu = (action: boolean) => {
 
                         <div class="absolute pt-4 min-w-[120px] duration-300 opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 group-hover:pointer-events-auto">
                             <ul v-if="link.sublinks" class="z-50 min-w-fit p-3 pr-5 absolute top-full backdrop-blur-[7.5px] duration-[backdrop-blur] shadow-subLinks rounded-sm left-2 flex flex-col justify-start items-start gap-4 font-semibold whitespace-nowrap bg-[#DFE1F0] w-fit">
-                                <li v-for="(sublink, sublinkIndex) in link.sublinks" :key="sublinkIndex">
+                                <li v-for="(sublink, sublinkIndex) in link.sublinks" :key="sublinkIndex"
+                                    :class="[
+                                        currentPath === sublink.link?.split('/')[1] ? 'active' : '',
+                                    ]"
+                                >
                                     <a class="flex hover:text-purple" :href="sublink.link">{{ sublink.name }}</a>
                                 </li>
                             </ul>
@@ -84,7 +88,7 @@ const openMenu = (action: boolean) => {
             </button>
             <nav 
                 :class="toggleMenu ? 'open' : 'close'" 
-                class="burger-nav flex lg:hidden relative items-center gap-7 text-sm 2xl:gap-14" 
+                class="burger-nav flex lg:hidden items-center gap-7 text-sm 2xl:gap-14" 
                 role="navigation"
                 aria-label="Menu principal"
             >
@@ -121,10 +125,11 @@ const openMenu = (action: boolean) => {
         transition: .3s ease-in-out;
         width: 40px;
     }
+}
 
-    &.active {
-        color: $purple
-    }
+li.active {
+    color: $purple;
+    pointer-events: none;
 }
 
 .burger-button {

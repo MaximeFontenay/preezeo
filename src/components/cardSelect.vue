@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref } from 'vue';
 
 interface Item {
@@ -73,4 +73,4 @@ article {
 	}
 }
 
-</style>
+</style> -->

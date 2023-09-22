@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Alert from '../components/atom/Alert.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
+import H1 from '../components/H1.astro';
+
+const products = [
+    {
+        name: 'Alfen', 
+        link: 'https://alfen.com/fr',
+        modeles: 'Toute la gamme EVE',
+        linkModeles: 'https://alfen.com/fr/equipements-recharge-pour-ve',
+        linkText: 'Équipements de Recharge pour VE | Alfen N.V.'
+    },
+    {
+        name: 'Alpitronic', 
+        link: 'https://www.alpitronic.it/en/home/',
+        modeles: 'Supercharger',
+        linkModeles: 'https://www.hypercharger.it/',
+        linkText: 'Home - hypercharger'
+    },
+    {
+        name: 'Kempower', 
+        link: 'https://kempower.com/fr/',
+        modeles: 'Toute la gamme',
+        linkModeles: 'Français - Kempower',
+        linkText: 'Français - Kempower'
+    },
+    {
+        name: 'Schneider', 
+        link: 'https://www.se.com/fr/fr/',
+        modeles: 'Toute la gamme EV Link.',
+        linkModeles: 'https://www.se.com/fr/fr/product-category/1800-solutions-de-recharge-pour-voitures-%C3%A9lectriques-ve',
+        linkText: '(Solutions de recharge pour voitures électriques (VE)- Professionnels | Schneider Electric France (se.com)'
+    },
+    {
+        name: 'Hager', 
+        link: 'https://hager.com/fr',
+        modeles: 'Toute la gamme WITTY',
+        linkModeles: 'https://hager.com/fr/witty',
+        linkText: 'witty, bornes de recharge pour véhicules électriques | Hager'
+    },
+    {
+        name: 'Lafon', 
+        link: 'https://www.lafon.fr/',
+        modeles: 'Toute la gamme PULSE',
+        linkModeles: 'https://pulse.lafon.fr/content/borne-de-charge-rapide-pulse-22',
+        linkText: 'Borne de charge accélérée : PULSE 22 GL | Pulse by Lafon - Une solution complète pour la recharge des véhicules électriques.'
+    },
+    
+]
+
+---
+
+
+<Layout title="Preezeo">
+
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
+        <Headline />
+    </section>
+
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="le coût de mon installation" />
+        <div class="flex gap-10 justify-between">
+            <div class="link-svg ">
+                <div class="absolute -top-12 -right-[28px]">
+                    <Image 
+                        src="/img/icons/stacks.svg" 
+                        alt="Head icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                    <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                    <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+                </svg>
+            </div>
+        </div>
+    </Section>
+
+
+    <Section>
+        <div class="flex flex-col justify-start gap-6 text-metal">
+            <p class="">votre partenaire privilégié pour l'électrification de votre mobilité. 
+            Nous sommes fiers de vous présenter une gamme complète de bornes de recharge pour véhicules électriques,
+            ainsi que des accessoires de qualité pour répondre à tous vos besoins en matière de recharge
+            </p>
+            <p class="">
+                Pour répondre à vos besoins spécifiques, nous proposons des prises renforcées de type “Greenup”, 
+                ainsi que des bornes de recharge en mode 3 et mode 4 avec supervision et communication intégrées.
+            </p>
+            <p class="">
+                Vous pouvez compter sur notre sélection de marques partenaires de renom telles que ALFEN, SCHNEIDER, 
+                LAFON, MICHAUD, et d'autres sur demande.
+            </p>
+            <p class="">
+                Toutes les bornes proposées répondent aux standards les plus hauts et aux normes applicables. Les produits proposés par PREEZEO sont “retrofit”.
+                Nous nous engageons à vous offrir des solutions évolutives et à la pointe de la technologie. 
+                Nos bornes "retrofit" vous permettent de suivre facilement l'évolution des normes sans avoir à remplacer votre borne, vous assurant ainsi une durabilité à long terme.
+                <br>
+                Toutes nos bornes sont conçues pour être évolutives et communicantes, vous offrant une expérience de recharge optimale.
+            </p>
+        </div>
+    </Section>
+
+
+    <Section>
+        <div class="font-medium leading-[142%] text-sm">
+            <h2 class="flex flex-col font-bold mb-8">
+                <span>Nos marques partenaires</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+            <div class="grid place-content-center w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-10">
+                {products.map((item) => (
+                    <a href={item.link} target="_blank" class="duration-300 mx-auto max-w-[180px] max-h-[120px] hover:opacity-70">
+                        <Image 
+                            src={`/img/partners/${item.name.toLowerCase()}.png`}
+                            alt={`${item.name}'s logo`}
+                        />
+                    </a>
+                ))}
+            </div>
+        </div>
+    </Section>
+
+    <Section>
+        <div class="font-medium leading-[142%] text-sm">
+            <h2 class="flex flex-col font-bold mb-8">
+                <span>Les bornes de recharges</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+            <div class="w-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                {products.map((item) => (
+                    <div class="flex flex-col gap-4 p-4 border-2 border-dotted border-purple lg:p-8 lg:max-w-[450px]">
+                        <a href={item.link} target="_blank" class="duration-300 max-w-[80px] max-h-[80px] hover:opacity-70">
+                            <Image 
+                                src={`/img/partners/${item.name.toLowerCase()}.png`}
+                                alt={`${item.name}'s logo`}
+                            />
+                        </a>
+
+                        <p>Marque: {item.name}</p>
+                        <p>Modèles: {item.modeles}</p>
+                        <a href={item.linkModeles}class="text-purple duration-300 hover:opacity-70">
+                            {item.linkText}
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+
+    <Section>
+        <div class="font-medium leading-[142%] text-sm">
+            <h2 class="flex flex-col font-bold mb-8">
+                <span>Les accessoires</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+            <p>
+                Preezeo a choisi les marques les plus réputées et fiables dans le domaine des accessoires de sécurité, de comptage, de distribution et de raccordement électrique. 
+                <br>
+                Parmi ces marques figurent Schneider, Siemens, Legrand, Hager et Michaud.
+            </p>
+        </div>
+    </Section>
+
+</Layout>
+
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
+
+
+h2 {
+    font-weight: 600;
+}
+
+a {
+
+}
+</style>

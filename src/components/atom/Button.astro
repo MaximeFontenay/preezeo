@@ -15,16 +15,17 @@ const {fullWidth, text, color = 'blue', outlined = false, type = 'button' } = As
     ${color} ${outlined ? 'outlined' : ''} ${fullWidth ? 'w-full' : 'w-fit'}`}
     type={type}
 >
-<span>{text}</span>
+<div>
+    <span>{text}</span>
+    <span>{text}</span>
+</div>
 </button>
 
 <style lang="scss">
 @use '../../styles/_variables.scss' as *;
     
 button {
-    padding: 12.5px 25px;
     font-weight: bold;
-    font-size: 14px;
     border-radius: 6px;
     cursor: pointer;
     border: solid 1px transparent;
@@ -32,7 +33,7 @@ button {
     transition: ease-in-out .3s;
     position: relative;
     overflow: hidden;
-
+    
     span {
         position: relative;
         display: block;
@@ -40,71 +41,98 @@ button {
     }
 
     &.blue {
-        background-color: #515BE0;
-        color: #E1FFF9;
-        box-shadow: 3px 3px 6px 0px rgba(201, 204, 245, 0.25) inset;
+        background-color: var(--purple);
+        color: var(--blue);
         filter: drop-shadow(0px 3px 10px rgba(81, 91, 224, 0.55));
-
-        // &:hover {
-        //     background-color: transparent;
-        //     border-color: #515BE0;
-        // }
+        border-color: var(--purple);
+        &:after {
+            background: var(--purple);
+        }
+        span:last-child {
+		    color: var(--purple);
+		}
     }
 
     &.yellow {
-        background-color: #FFB800;
         color: #171C26;
         box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
-        // &:hover {
-        //     background-color: transparent;
-        //     border-color: #FFB800;
-        // }
-    }
-
-    $btn-color: $yellow;
-    $btn-color-dark: $purple;
-    $btn-width: 165px !default;
-    $btn-height: 80px !default;
-    $btn-full: $btn-height+$btn-width !default;
-    // $btn-half: calc($btn-full / 2) !default;
-    $bg-color: #eeeeee !default;
-    color: tint($btn-color);
-    @include triangle(up-right, 0, $btn-color-dark, true);
-    @include triangle(down-left, 0, $btn-color-dark, true, before);
-
-
-    &:before,
-    &:after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border: 0 solid;
-        transform: rotate(360deg);
-        transition: 0.5s ease-in-out;
-        z-index: 5;
-    }
-    
-    &:before {
-        bottom: 0;
-        left: 0;
-        border-color: transparent transparent transparent $btn-color-dark;
-    }
-
-    &:after {
-        top: 0;
-        right: 0;
-        border-color: transparent $btn-color-dark transparent transparent;
-    }
-
-    &:hover {
-        color: tint($btn-color, 75%);
-        
-        &:before,
+        border-color: var(--yellow);
         &:after {
-            border-width: $btn-height $btn-width*1.115;
+            background: var(--yellow);
         }
+        span:last-child {
+		    color: var(--yellow);
+		}
     }
+
+	&:before {
+		@include position(0,0);
+		width: 100%;
+		height: 100%;
+		background: var(--light);
+		border-radius: 50% 50% 0 0;
+		transform: translateY(100%) scaleY(0.5);
+		transition: .6s ease;
+	}
+	&:after {
+		@include position(0,0);
+		width: 100%;
+		height: 100%;
+		background: var(--yellow);
+		border-radius: 0;
+		transform: translateY(0) scaleY(1);
+		transition: .6s ease;
+	}
+	div {
+		position: relative;
+		width: 100%;
+		height: 42px;
+        padding: 0 25px;
+		text-transform: uppercase;
+		overflow: hidden;
+	}
+	span {
+		z-index: 1;
+		top: 0;
+        font-size: 14px;
+        font-weight: bold;
+		width: 100%;
+		text-align: center;
+		transition: .6s ease;
+		&:first-child {
+            color: var(--dark);
+            top: 50%;
+            translate: 0 -50%
+		}
+		&:last-child {
+		    color: var(--yellow);
+            top: 100%;
+            translate: 0 -50%
+		}
+	}
+	&:hover {
+		background: var(--white);
+		transition:.6s ease;
+		transition-delay: 0.6s;
+		&:after {
+			border-radius: 0 0 50% 50%;
+			transform: translateY(-100%) scaleY(0.5);
+			transition-delay: 0;
+		}
+		&:before {
+			border-radius: 0;
+			transform: translateY(0) scaleY(1);
+			transition-delay: 0;
+		}
+		span {
+			&:first-child {
+				top: -50%;
+			}
+			&:last-child {
+				top: 0;
+			}
+		}
+	}
     
 }
 </style>

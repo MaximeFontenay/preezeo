@@ -2,39 +2,122 @@
 import Layout from '../layouts/Layout.astro';
 import Headline from '../components/Headline.astro';
 import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Alert from '../components/atom/Alert.astro';
 import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
+
 ---
 
+
 <Layout title="Preezeo">
-    <div class="flex flex-col gap-14 justify-start ml-auto mr-auto lg:mr-[15%] w-fit">
+
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
         <Headline />
-    </div>
-
-    <section class="mb-10 md:mb-[250px]">
-        <h1>Informations Utiles</h1>
     </section>
 
-    <section class="flex align-center justify-center mb-10 md:mb-[250px]">
-       
-    </section>
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="Mentions légales" />
+        <div class="flex gap-10 justify-between">
+            <div class="link-svg ">
+                <div class="absolute -top-10 -right-[14px]">
+                    <Image 
+                        src="/img/icons/bulb.svg" 
+                        alt="Head icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                    <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                    <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+                </svg>
+            </div>
+        </div>
+    </Section>
+
+
+    <Section>
+        <div class="lg:max-w-4xl lg:ml-15 font-medium leading-[142%] text-sm">
+
+            <h2 class="flex flex-col font-bold mx-auto w-fit mb-5">
+                <span>Les chargeurs</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+            <p>
+                <span class="text-purple">Les chargeurs en courant continu</span>, quant à eux, peuvent atteindre une puissance maximum de 650 kW, 
+                ce qui permet une recharge ultra-rapide en environ 20 minutes. Les modèles 24 kW permettent déjà une 
+                recharge rapide en 1 à 2 heures. Autrement dit, les bornes en courant continu, d’une puissance généralement 
+                supérieure à leurs homologues en courant alternatif, répondent aux besoins des professionnels qui 
+                veulent recharger rapidement la batterie de leur véhicule dans le cadre d’un long voyage ou d’une tournée 
+                logistique, par exemple.
+            <p>
+
+            <h2 class="flex flex-col font-bold mx-auto w-fit mb-5 mt-10">
+                <span>Le kilowatt/heure</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+
+            <h3 class="text-purple mb-0">Qu'est-ce qu'un kilowatt/heure ?</h3>
+            <p>
+                <br>
+                Pour comprendre le calcul de l'autonomie d'une voiture électrique, il est essentiel de comprendre ce qu'est un kilowatt-heure (kWh). Voici sa définition : le kilowatt-heure représente l'énergie fournie par la batterie au moteur, c'est-à-dire la quantité de kilowatts (kW) que la batterie peut fournir pendant une heure d'utilisation.
+                La capacité de la batterie, exprimée en kWh va déterminer en quelque sorte, la “taille de votre réservoir”. Plus elle est grande, plus l’autonomie de votre voiture sera élevée.
+                Ainsi, dans la fiche technique d'une voiture électrique, l'un des éléments les plus importants est la capacité de la batterie, exprimée en kilowatt-heures (kWh). Pour simplifier, prenons l'exemple d'une voiture électrique avec un moteur de 50 kW (indiquant la puissance) et une batterie de 50 kWh (indiquant l'énergie). En théorie, dans des conditions idéales, nous pourrions utiliser le moteur à pleine puissance pendant une heure. 
+                Cependant, en pratique, la batterie est également sollicitée pour d'autres fonctions en plus de la propulsion de la voiture, et son efficacité diminue en raison de facteurs tels que le froid. Ainsi, cela peut varier. Néanmoins, le rendement d'une voiture électrique, c'est-à-dire la puissance utilisée pour la déplacer, 
+                est bien supérieur à celui d'une voiture thermique. On estime le rendement d'une voiture thermique à 40 % (ce qui signifie que 60 % de l'énergie est perdue, notamment dans le processus de combustion), tandis que celui d'une voiture électrique se situe entre 75 % et 90 %.
+                <br>
+                Le kilowatt (kW) est l'unité de mesure de la puissance, c'est-à-dire la "force" maximale qu'un moteur peut exercer. Elle ne s'applique pas seulement à l'électricité : la puissance est toujours exprimée en kW sur les cartes grises de toutes les voitures - et de tous les véhicules en général.
+            <p>
+
+            <h3 class="text-purple mb-0">Capacités et consommation d’un VE</h3>
+            <p>
+                Introduction
+                Lorsque vous consultez la fiche technique de votre voiture électrique, l'un des éléments clés est la capacité de sa batterie, exprimée en kilowattheures (kWh). Actuellement, les capacités des batteries varient généralement entre 20 kWh et 100 kWh. Pour mieux comprendre, prenons deux exemples opposés : la Dacia Spring et la Porsche Taycan Turbo S.
+            <p>
+
+            <h2 class="flex flex-col font-bold mx-auto w-fit mb-5 mt-10">
+                <span>Cycle WLTP</span>
+                <span class="bg-purple w-10 h-[3px]"></span>
+            </h2>
+
+            <h3 class="text-purple mb-0">Qu’est-ce que le cycle WLTP ?</h3>
+            <p>
+                En Europe, le recours au cycle d’homologation WLTP (Worldwide Harmonized Light-Duty Vehicles Test Procedure)1 a été rendu obligatoire au 1er janvier 2019.
+                <br>
+                Il remplace progressivement l’ancien cycle d’homologation NEDC (New European Driving Cycle).
+                <br>
+                Il permet de mesurer les niveaux de consommation et de pollution au dioxyde de carbone ainsi que l’autonomie des batteries. Pour ce faire, tests en laboratoire et essais en proches des conditions réelles sont effectués.
+            <p>
+            
+        </div>
+    </Section>
 </Layout>
 
 <style lang="scss">
 @use '../styles/_variables.scss' as *;
 
-.heading-container {
-    position: relative;
-    margin-top: 75px;
-    .bottom {
-        @include flex(center,flex-start);
-        // @include position(calc(20px + 100%), $left:50%);
-        // position: absolute;
-        width: max-content;
-        max-width: unset;
-        translate: 85px 20px;
-    }
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
 }
 
+
+h2 {
+    font-weight: 600;
+}
+
+a {
+
+}
 </style>
