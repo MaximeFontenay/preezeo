@@ -37,5 +37,5 @@ Branche `staging` is linked with preview on [Vercel](https://preezeo.vercel.app/
 
 After `pnpm run build`, copy everything inside **dist/** folder to the server
 
-Open production website on : [Preezeo](https://preezeo.fr/){:target="_blank"}
+Open production website on : <a href="https://preezeo.fr/" target="_blank">Preezeo</a>
 
