@@ -4,8 +4,8 @@ export interface Props {
 }
 const prop = Astro.props 
 ---
-<h1 class="inline-block text-2xl font-bold w-[280px] tracking-3">
-    Ma solution d'installation de 
+<h1 class="inline-block xs:text-sm sm:text-base md:text-lg lg:text-2xl font-bold w-[280px] tracking-3">
+    Ma solution <br> d'installation de <br>
     <span class="text-yellow">borne de recharge</span> 
     {prop.text?.length > 0 && 
         <br> <span class="text-purple">{prop.text}</span>

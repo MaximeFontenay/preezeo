@@ -132,7 +132,7 @@ const { title } = Astro.props;
 		width: 90vw;
 		max-width: 1400px;
 		@media screen and (max-width: 550px) {
-			width: 85vw;
+			width: 90vw;
 		}
 	}
 
@@ -148,7 +148,10 @@ const { title } = Astro.props;
 
 		img {
 			&:nth-child(1) {
-				width: 80%;
+				width: 100%;
+				@media screen and (min-width: 760px) {
+					width: 80%;
+				}
 			}
 			&:nth-child(2) {
 				width: 100%;
@@ -156,6 +159,13 @@ const { title } = Astro.props;
 			&:nth-child(3) {
 				width: 100%;
 			}
+		}
+	}
+
+	.scrollbar-hide {
+		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			display: none;
 		}
 	}
 

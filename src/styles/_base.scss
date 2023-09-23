@@ -82,6 +82,11 @@ svg {
 
     path, circle, text, rect {
         transition: $transition;
+        transform-box: fill-box;
+    }
+
+    path, circle {
+        transform-origin: center;
     }
 }
 

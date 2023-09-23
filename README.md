@@ -1,9 +1,8 @@
 # Preezeo
 
-## 🚀 La borne qu'il vous faut ! 
+## ⚡ La borne qu'il vous faut ! ⚡
 
-
-### 🧞 Structure
+### ⚡ Structure
 ```
 /
 ├── public/
@@ -18,7 +17,7 @@
 └── package.json
 ```
 
-### 🧞 Commands
+### ⚡ Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -29,11 +28,11 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run build`          | Build your production site to `./dist/`         |
 
 
-### 🧞 CI / CD
+### ⚡ CI / CD
 
-Branche `staging` is linked with preview on [Vercel](https://preezeo.vercel.app/){:target="_blank"}
+Branche `staging` is linked with preview on <a href="https://preezeo.vercel.app/" target="_blank">Vercel</a>
 
-### 🧞 Deployment
+### ⚡ Deployment
 
 After `pnpm run build`, copy everything inside **dist/** folder to the server
 
