@@ -74,7 +74,7 @@ const bigCards = [
 <script>
     const cardSelect = [...document.querySelectorAll('.card-select')]
     const viewsWrapper = document.querySelector('.views-wrapper')
-    let activeCard = 'appartement'
+    let activeCard = 'house'
     cardSelect[0]?.classList.add('active')
     cardSelect.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -135,7 +135,7 @@ const bigCards = [
     </Section>
 
 
-    <div class="views-wrapper xl:ml-20" data-active="appartement" transition:persist>
+    <div class="views-wrapper xl:ml-20" data-active="house" transition:persist>
         <div class="house-view">
             <Section flex={true}>
                 <Tips
