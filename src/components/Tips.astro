@@ -10,20 +10,32 @@ export interface Props {
 const prop = Astro.props 
 ---
 
-<div class={`relative ${prop.isBig ? 'max-w-[750px]' : 'max-w-[500px]'}`}>
-    <div class="absolute -left-4 -translate-x-full">
+<div class={`relative mx-auto ${prop.isBig ? 'max-w-[750px]' : 'max-w-[500px]'}`}>
+    <div class="hidden lg:block absolute -left-4 -translate-x-full">
         <Image 
             src="/img/illu/bulb.png" 
             alt="bulb decorative image" 
         />
     </div>
     <div class="pt-10">
-        {prop.title?.length > 0 && 
-            <h3 class="text-purple font-bold mb-2">{prop.title}</h3>
-        }
-        <slot name="text" />
+        <div class="flex items-center gap-3">
+            {prop.title?.length > 0 && 
+                <h3 class="text-purple font-bold mb-2">{prop.title}</h3>
+                <div class="w-[35px] scale-x-[-1] -translate-y-1/2 lg:hidden">
+                    <Image 
+                        src="/img/illu/bulb.png" 
+                        alt="bulb decorative image" 
+                    />
+                </div>
+            }
+        </div>
+
+        <div class="">
+            <slot name="text" />
+        </div>
+
         {prop.btn && 
-            <div class="mt-4">
+            <div class="flex justify-center mt-4 lg:block">
                 <ButtonContact />
             </div>
         }

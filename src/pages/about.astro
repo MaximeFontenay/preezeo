@@ -21,7 +21,7 @@ import H1 from '../components/H1.astro';
 
 
     <Section c="relative mt-20 ml-20">
-        <H1 text="Mentions légales" />
+        <H1 text="Qui sommes nous ?" />
         <div class="flex gap-10 justify-between">
             <div class="link-svg ">
                 <div class="absolute -top-11 -right-[17px]">
@@ -42,11 +42,10 @@ import H1 from '../components/H1.astro';
         </div>
     </Section>
 
-
-    <Section>
+    <Section smallBottomMargin={true}>
         <div class="lg:max-w-4xl lg:ml-15">
             <h2 class="text-purple font-bold">Qui sommes nous ?</h2>
-            <p>
+            <p class="font-medium">
                 Chez PREEZEO, notre passion pour l'électromobilité et l'électricité a donné naissance à une entreprise unique. Fondée par deux ingénieurs et soutenue par quatre techniciens électriciens chevronnés, PREEZEO incarne l'alliance parfaite entre expertise technique et dévouement pour un avenir plus durable.
                 <br>
                 <br>
@@ -58,9 +57,12 @@ import H1 from '../components/H1.astro';
                 <br>
                 Chez PREEZEO, nous comprenons que chaque pas vers la mobilité électrique est un pas vers un environnement plus propre. C'est pourquoi nous mettons notre passion et notre savoir-faire au service de votre transition vers des solutions de recharge électrique professionnelles et efficaces. 
             <p>
-
+        </div>
+    </Section>
+    <Section smallBottomMargin={true}>
+        <div class="lg:max-w-4xl lg:ml-15">
             <h2 class="text-purple font-bold">Pourquoi choisir Preezeo ?</h2>
-            <p>
+            <p class="font-medium">
                 Pour les bornes de recharge à votre domicile et pour les collectivités, PREEZEO vous propose des solutions complètes comprenant des modules électroniques de gestion de l'énergie et de délestage, ainsi que des compteurs de mesure de consommation et une gestion de la facturation efficace. 
                 <br>
                 <br>
@@ -84,9 +86,12 @@ import H1 from '../components/H1.astro';
                 <br>
                 Ensemble, avançons vers une mobilité plus verte et responsable.
             </p>
-
+        </div>
+    </Section>
+    <Section smallBottomMargin={true}>
+        <div class="lg:max-w-4xl lg:ml-15">
             <h2 class="text-purple font-bold">Notre vision</h2>
-            <p>
+            <p class="font-medium">
                 Chez Preezeo nous sommes passionnés par la mobilité électrique et nous nous engageons à faciliter la transition vers un avenir plus durable. 
                 En tant que leader dans le domaine de l'installation et la maintenance de bornes de recharge électrique en France, nous offrons des solutions complètes et innovantes pour répondre aux besoins croissants des propriétaires de véhicules électriques et hybrides.
                 <br>
@@ -111,7 +116,8 @@ import H1 from '../components/H1.astro';
                 <br>
                 Ensemble, nous pouvons faire progresser la mobilité électrique et contribuer à un avenir plus durable.
             </p>
-            <div class="max-w-[150px] ml-auto mr-[100px] mt-10">
+            <div class="flex gap-2 max-w-[150px] ml-auto mr-[100px] mt-10">
+                <p class="text-metal font-extrabold mt-[3px]">CEO</p>
                 <Image 
                     cover={false}
                     src="/img/logo/text_burgundy.svg" 

@@ -14,8 +14,8 @@ module.exports = {
       't': 'transparent',
     },
     fontFamily: {
-      'montserrat': ['Montserrat', 'system-ui', 'sans-serif'],
-      'alien': ['Alien Robot', 'system-ui', 'sans-serif'],
+      montserrat: ['Montserrat', 'system-ui', 'sans-serif'],
+      alien: ['Alien Robot', 'system-ui', 'sans-serif'],
     },
     extend: {
       width: {
@@ -86,6 +86,20 @@ module.exports = {
         '3': '0.72px',
         '4': '0.96px',
         '5': '1.20px',
+      },
+
+      fontWeight: {
+        thin: '100',
+        hairline: '100',
+        extralight: '200',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '800',
+        'extra-bold': '800',
+        black: '900',
       },
 
       boxShadow: {

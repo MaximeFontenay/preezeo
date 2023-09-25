@@ -71,14 +71,16 @@ const steps = [
                 <span>Nos marques partenaires</span>
                 <span class="bg-purple w-10 h-[3px]"></span>
             </h2>
-            <div class="grid place-content-center w-full grid-cols-2 lg:mt-30 md:grid-cols-3 gap-4 lg:gap-10">
+            <div class="mt-20 lg:mt-0 grid place-content-center w-full grid-cols-2 lg:mt-30 md:grid-cols-3 gap-8 lg:gap-10">
                 {steps.map((item, index) => (
-                    <div class="relative flex flex-col gap-4 bg-light-purple rounded-lg border border-purple pb-1 px-8">
-                        <div class="absolute right-8 -top-1 -translate-y-full max-h-[75px] max-w-[75px]">
-                            <Image 
-                                src={`/img/icons/${item.icon}.svg`}
-                                alt=""
-                            />
+                    <div class="relative flex flex-col gap-4 bg-light-purple rounded-lg border border-purple pb-1 px-2 lg:px-8">
+                        <div class="absolute right-15 lg:right-8 -top-1 -translate-y-full max-h-[30px] max-w-[30px] lg:max-h-[75px] lg:max-w-[75px]">
+                            {item?.icon?.length > 0 &&
+                                <Image 
+                                    src={`/img/icons/${item.icon}.svg`}
+                                    alt=""
+                                />
+                            }
                         </div>
                         <p class="relative text-purple font-medium text-[30px] w-fit">
                             étape

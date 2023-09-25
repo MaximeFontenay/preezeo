@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Headline from '../components/Headline.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Alert from '../components/atom/Alert.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
+import H1 from '../components/H1.astro';
+
+---
+
+
+<Layout title="Preezeo">
+
+    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
+        <Headline />
+    </section>
+
+
+    <Section c="relative mt-20 ml-20">
+        <H1 text="le financement" />
+        <div class="flex gap-10 justify-between">
+            <div class="link-svg ">
+                <div class="absolute -top-9 -right-5">
+                    <Image 
+                        src="/img/icons/money.svg" 
+                        alt="Head icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
+                    <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
+                    <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+                    <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
+                </svg>
+            </div>
+        </div>
+    </Section>
+
+
+    <Section smallBottomMargin={true}>
+        <div class="flex flex-col gap-6">
+            <p class="font-medium">
+                Alors que de plus en plus de Français choisissent d'acheter un véhicule électrique, la recharge électrique reste un obstacle pour de nombreux autres. 
+                <br>
+                Afin de favoriser la transition vers une mobilité plus verte, le gouvernement a mis en place plusieurs subventions pour l'installation de bornes de recharge en 2023. 
+                <br>
+                Faisons le point sur le programme ADVENIR et les dispositifs d'aide disponibles.
+            </p>
+            <p class="font-medium">Quelques liens informatifs:</p>
+            <a class="text-purple font-semibold w-fit after:w-0 relative hover:after:w-[100px] after:duration-300 after:h-[2px] after:bg-purple after:absolute after:-bottom-1 after:left-0" href="https://www.ecologie.gouv.fr/bornes-electriques-developpement-des-infrastructures-recharge" target="_blank">Bornes électriques, les aides à l’installation | Ministères Écologie Énergie Territoires | ecologie.gouv.fr</a>
+            <a class="text-purple font-semibold w-fit after:w-0 relative hover:after:w-[100px] after:duration-300 after:h-[2px] after:bg-purple after:absolute after:-bottom-1 after:left-0" href="https://www.service-public.fr/particuliers/vosdroits/F35578" target="_blank">Impôt sur le revenu - Installation de bornes de charge pour véhicule électrique (crédit d'impôt) | service-public.fr</a>
+        </div>
+    </Section>
+
+    <Section smallBottomMargin={true}>
+        <div class="flex flex-col gap-2 mb-10 items-center lg:items-start">
+            <h2 class="text-base font-bold">Différents taux d'aide et des plafonds selon la situation</h2>
+            <span class="bg-purple h-[4px] w-[200px] block"></span>
+        </div>
+
+        <div class="flex flex-col gap-16 p-8 text-[19px] bg-light-purple border-2 border-purple shadow-cardHomepage rounded-lg w-full">
+            <div>
+                <h3 class="text-purple text-[19px] mb-8 font-semibold">Pour les entreprises et les Etablissements</h3>
+                <div class="flex flex-col gap-8 text-[14px] font-medium">
+                    <ol class="grid grid-cols-2">
+                        <li>Parking privé ouvert au public</li>
+                        <li class="list-disc">50 % du montant hors taxe avec un plafond de 1 000 à 2 700 €.</li>
+                    </ol>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-purple text-[19px] mb-8 font-semibold">Pour les immeubles collectifs</h3>
+                <div class="flex flex-col gap-8 text-[14px] font-medium">
+                    <ol class="grid grid-cols-2">
+                        <li>Solution individuelle</li>
+                        <li class="list-disc">50 % du montant hors taxe avec un plafond de 960 €.</li>
+                    </ol>
+                    <ol class="grid grid-cols-2">
+                        <li>Solution partagée</li>
+                        <li class="list-disc">50 % du montant hors taxe avec un plafond de 1 660 €. 
+                            <br>Pour les entreprises des services de l'automobile
+                        </li>
+                    </ol>
+                    <ol class="grid grid-cols-2">
+                        <li>Flottes et salariés</li>
+                        <li class="list-disc">25 % du montant hors taxe avec un plafond de 750 €.</li>
+                    </ol>
+                    <ol class="grid grid-cols-2">
+                        <li>Parking privé ouvert au public</li>
+                        <li class="list-disc">50 % du montant hors taxe avec un plafond de 1 700 à 15 000 €.</li>
+                    </ol>
+                </div>
+                
+            </div>
+        </div>
+
+
+    </Section>
+
+    <Section flex={true} c="hidden md:flex">
+        <ProjectStripe />
+    </Section>
+    
+</Layout>
+
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
+
+
+h2 {
+    font-weight: 600;
+}
+
+a {
+
+}
+</style>

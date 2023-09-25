@@ -5,13 +5,10 @@ export interface Props {
 	c?: string;
 }
 
-const prop = Astro.props;
+const { c = ''} = Astro.props;
 ---
 
-<a href="/contact" class={`
-    ${prop.c} 
-    p-[2px]
-`}>
+<a href="/contact" class={`p-[2px] ${c}`}>
     <Button
         text="Nous contacter"
         color="yellow"

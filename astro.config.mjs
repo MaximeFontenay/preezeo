@@ -1,14 +1,15 @@
 import { defineConfig } from 'astro/config';
+import sitemap from "@astrojs/sitemap";
 import vue from '@astrojs/vue';
 import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [vue(), tailwind()],
-    site: 'https://www.preezeo.fr',
-    build: {
-      format: 'directory',
-      trailingSlash: 'always',
-      inlineStylesheets: `never`,
-    }
+  integrations: [vue(), tailwind(), sitemap()],
+  site: 'https://www.preezeo.fr',
+  build: {
+    format: 'directory',
+    trailingSlash: 'always',
+    inlineStylesheets: `never`
+  }
 });

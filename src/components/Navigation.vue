@@ -6,11 +6,12 @@ defineProps<{
 }>()
 
 const links = [
-    {name: 'Particulier', link: '/particuliers'},
-    {name: 'Infrastructure collective', link: '/infrastructures'},
-    {name: 'Professionnel', link: '/professionnels'},
+    {name: 'Particulier', link: '/particuliers', icon: 'house-blue'},
+    {name: 'Infrastructure collective', link: '/infrastructures', icon: 'apartement-blue'},
+    {name: 'Professionnel', link: '/professionnels', icon: 'building-blue'},
     {
         name: 'Services',
+        icon: 'cards',
         sublinks: [
             {name: 'Installation & Maintenance', link: '/installation'},
             {name: 'Produits', link: '/products'},
@@ -19,6 +20,7 @@ const links = [
     },
     {
         name: 'A savoir', 
+        icon: 'bulb-menu',
         sublinks: [
             {name: 'Financement', link: '/funding'},
             {name: 'Informations utiles', link: '/informations'},
@@ -28,16 +30,29 @@ const links = [
 ]
 
 const toggleMenu = ref<boolean>(false)
+const toggleSubMenu = ref<string>('')
+
+const openSubMenu = (value: string) => {
+    toggleSubMenu.value = value;
+}
 
 const openMenu = (action: boolean) => {
     toggleMenu.value = action;
+    if (action) {
+        window.scrollTo(0, 0);
+        document.querySelector('html').style.overflow = 'hidden';
+        document.querySelector('body').style.overflow = 'hidden';
+    } else {
+        document.querySelector('html').style.overflow = 'auto';
+        document.querySelector('body').style.overflow = 'auto';
+    }
 }
 </script>
 
 <template>
     <header class="wrapper">
         <div class="flex items-center justify-between w-100">
-            <a href="/" class="flex justify-center items-center w-[135px]">
+            <a href="/" class="flex justify-center items-center max-w-[80px] lg:w-[135px]">
                 <slot name="logo"/> 
             </a>
             <nav class="hidden lg:flex items-center gap-7 text-sm 2xl:gap-14" role="navigation" aria-label="Menu principal">
@@ -93,13 +108,49 @@ const openMenu = (action: boolean) => {
                 aria-label="Menu principal"
             >
                 <ul 
-                    class="flex flex-col justify-start items-center gap-4 font-semibold whitespace-nowrap"
+                    class="main-nav"
                 >
                     <li 
                         v-for="(link, linkIndex) in links" :key="linkIndex" 
                         :class="currentPath === link?.link?.split('/')[1] ? 'active' : ''"
                     >
-                        <a href="link.link">{{ link.name }}</a>
+                        <template v-if="!link.sublinks">
+                            <a :href="link.link">
+                                <img 
+                                    :src="`/img/icons/${link.icon}.svg`"
+                                    :alt="`Icon ${link.icon}`"
+                                >
+                                <p>{{ link.name }}</p>
+                            </a>
+                        </template>
+
+                        <template v-else>
+                            <div 
+                                class="overlay" 
+                                :class="toggleSubMenu === link.name ? 'active' : ''" 
+                                @click="openSubMenu(link.name)"
+                            >
+                                <div>
+                                    <img 
+                                        :src="`/img/icons/${link.icon}.svg`"
+                                        :alt="`Icon ${link.icon}`"
+                                    >
+                                    <p>{{ link.name }}</p>
+                                </div>
+
+                                <ul class="sub-nav">
+                                    <li 
+                                        v-for="(subLink, subLinkIndex) in link.sublinks" :key="subLinkIndex" 
+                                        :class="currentPath === subLink?.link?.split('/')[1] ? 'active' : ''"
+                                    >
+                                        <a :href="subLink.link">{{ subLink.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            
+                        </template>
+                       
                     </li>
                 </ul>
             </nav>
@@ -130,6 +181,10 @@ const openMenu = (action: boolean) => {
 li.active {
     color: $purple;
     pointer-events: none;
+
+    * {
+        color: $purple;
+    }
 }
 
 .burger-button {
@@ -150,18 +205,112 @@ li.active {
     width: 100%;
     height: 100%;
     z-index: 999;
-    background-color: white;
+    background-color: $deep-blue;
     transition: .3s;
 
     &.open {
         pointer-events: all;
-        translate: 10%;
+        translate: 0;
     }
 
     &.close {
         pointer-events: none;
         translate: 100%;
     }
+    
+    ul.main-nav {
+        @include flex(center, stretch, row, wrap, $gap: 10px);
+        max-width: 320px;
+        text-align: center;
+        font-weight: 600;
+
+        @media screen and (min-width: 500px) {
+            max-width: 400px;
+        }
+
+        @media screen and (min-width: 600px) {
+            max-width: 500px;
+        }
+
+        & > li {
+            aspect-ratio: 60/58;
+            flex: calc(50% - 10px);
+            max-width: calc(50% - 10px);
+            border-radius: 5px;
+            border: solid 1px var(--purple);
+            color: var(--blue);
+
+            & > a {
+                @include flex(center, center, column, $gap: 10px);
+                padding: 20px;
+                height: 100%;
+                width: 100%;
+                font-size: 12px;
+                &:hover {
+                    color: var(--yellow);
+                }
+            }
+
+            svg path {
+                stroke: var(--purple);
+            }
+        }
+
+    }
+
+    .overlay {
+        position: relative;
+        height: 100%;
+
+        & > div {
+            @include flex(center, center, column, $gap: 10px);
+            padding: 20px;
+            height: 100%;
+            width: 100%;
+            font-size: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        &.active {
+            .sub-nav {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+
+        .sub-nav {
+            @include flex(center, flex-start, column);
+            @include position(0,0);
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            font-size: 12px;
+            opacity: 0;
+            text-align: left;
+            border-radius: 5px;
+            background-color: var(--deep-blue);
+            pointer-events: none;
+            transition: .2s ease-in-out;
+            z-index: 3;
+
+            li {
+                width: 100%;
+
+                a {
+                    width: 100%;
+                    padding: 10px 0;
+                    transition: .3s;
+
+                    &:hover {
+                        color: var(--yellow);
+                    }
+                }
+            }
+        }
+    }
+
+
 }
 
 </style>

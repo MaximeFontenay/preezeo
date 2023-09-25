@@ -38,7 +38,7 @@ onMounted(() => {
 		</svg>
 	</div>
 	<div class="slot w-full bg-white rounded-lg duration-300 h-full"
-		:style="{maxHeight: activeDropdown ? `calc(20px + ${slotHeight}px)`  : '0px'}"
+		:style="{maxHeight: activeDropdown ? `calc(20px + ${slotHeight}px)` : '0px'}"
 	>
 		<span class="block mt-4 text-sm tracking-[0.03em] leading-[130%] font-medium pr-4">
 			<slot></slot>

@@ -12,17 +12,17 @@ import ButtonContact from '../components/ButtonContact.astro';
 
 
 const defaultCards = [
-    {content: 'Installation et Maintenance',},
-    {content: 'Tout savoir sur les aides et les subventions',},
-    {content: 'Pourquoi choisir PREEZEO',},
-    {content: 'Nos Tarifs',},
-    {content: 'Informations utiles',},
+    {content: 'Installation et Maintenance', link: '/installation',},
+    {content: 'Tout savoir sur les aides et les subventions', link: '/funding',},
+    {content: 'Pourquoi choisir PREEZEO', link: '/about',},
+    {content: 'Nos Tarifs', link: '/prices',},
+    {content: 'Informations utiles', link: '/informations',},
 ]
 
 --- 
 
 <Layout title="Preezeo">
-    <section class="flex flex-col gap-14 justify-start w-fit ml-auto mr-[12%]">
+    <section class="flex flex-col gap-14 justify-start w-fit ml-auto mr-auto mt-8 lg:mt-0 lg:mr-[12%]">
         <Headline />
         <p class="font-medium tracking-3 text-sm md:max-w-[650px]">
             <span class="font-semibold text-yellow">PREEZEO</span> intervient dans toute la France métropolitaine afin d’installer vos bornes de recharge pour véhicules électriques. 
@@ -33,7 +33,7 @@ const defaultCards = [
         </p>
     </section>
 
-    <Section c="relative mt-15">
+    <Section c="hidden lg:block relative mt-15">
         <div class="link-svg top">
             <svg width="68" height="114" viewBox="0 0 68 114" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33.9753 113.5V2.25439M0 2.25439H67.9507" stroke="#FFB800" stroke-width="4.50693"/>
@@ -44,7 +44,7 @@ const defaultCards = [
             <svg width="988" height="343" viewBox="0 0 988 343" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M985.747 342.597V310.5M985.747 310.5V279.5M985.747 310.5L5.81867 309.214L5.39599 156.444L30.0683 79.4992M41.7098 94.0542L3 94.0546V0" stroke="#FFB800" stroke-width="4.50693"/>
             </svg>
-            <div class="flex gap-20 text-center items-end justify-end absolute bottom-[32px] right-8">
+            <div class="flex gap-20 text-center items-end justify-end absolute bottom-[32px] xl:right-8">
                 <a href="/particuliers" class="flex flex-col gap-2 items-center justify-center">
                     <div>
                         <Image 
@@ -109,7 +109,43 @@ const defaultCards = [
         </div>
     </Section>
 
-    <Section flex={true}>
+    <Section c="lg:hidden mt-8" flex={true}>
+        <div class="flex flex-wrap gap-2 items-stretch justify-center">
+            <a href="/particulier" class="border border-purple text-center rounded-md p-4 flex flex-[calc(50%-5px)] w-[calc(50%-5px)] max-w-[calc(50%-5px)] flex-col items-center justify-center gap-2">
+                <div class="w-[25px] h-[25px]">
+                    <Image 
+                        src="/img/icons/house.svg" 
+                        alt="House icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <h3 class="flex font-semibold tracking-3 line-clamp-2 text-sm font-montserrat">Particulier</h3>
+            </a>
+            <a href="/professionnel" class="border border-purple text-center rounded-md p-4 flex flex-[calc(50%-5px)] w-[calc(50%-5px)] max-w-[calc(50%-5px)] flex-col items-center justify-center gap-2">
+                <div class="w-[25px] h-[25px]">
+                    <Image 
+                        src="/img/icons/building.svg" 
+                        alt="building icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <h3 class="flex font-semibold tracking-3 line-clamp-2 text-sm font-montserrat">Professionnel</h3>
+            </a>
+            <a href="/infrastructures" class="border border-purple text-center rounded-md p-2 flex flex-[calc(50%-5px)] w-[calc(50%-5px)] max-w-[calc(50%-5px)] flex-col items-center justify-center gap-2">
+                <div class="w-[25px] h-[25px]">
+                    <Image 
+                        src="/img/icons/apartement.svg" 
+                        alt="apartement icon"
+                        fetchPriority={true}
+                    />
+                </div>
+                <h3 class="flex font-semibold tracking-3 line-clamp-2 text-sm font-montserrat">Infrastructures <br> collective</h3>
+            </a>
+        </div>
+       
+    </Section>
+
+    <Section c="hidden lg:block" flex={true}>
         <Tips btn={true}>
             <p 
                 slot="text"
@@ -129,7 +165,7 @@ const defaultCards = [
         </Tips>
     </Section>
 
-    <Section c="gap-10 flex justify-center items-center flex-col lg:flex-row lg:items-stretch">
+    <Section c="max-w-[280px] lg:max-w-full mx-auto gap-10 flex justify-center items-center flex-col lg:flex-row lg:items-stretch">
         <Card 
             color="dark"
             title="Votre Besoin"
@@ -181,10 +217,10 @@ const defaultCards = [
                 isSmall={true}
                 shadow={true}
             >  
-                <div slot="content" class="w-[250px] flex flex-col align-center justify-center gap-2 h-25">
+                <a slot="content" href={item.link} class="mx-auto w-[250px] flex flex-col align-center justify-center gap-2 h-25">
                     <h3 class="font-montserrat font-bold text-sm text-center">{item.content}</h3>
                     <span class="bg-purple w-1/3 h-[1.5px] block mx-auto"></span>
-                </div>
+                </a>
             </Card>
         ))}
     </section>
@@ -199,10 +235,10 @@ const defaultCards = [
                 slot="text"
                 class="inline gap-1"
             >
-                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
+                <span class="font-medium text-[12px] lg:text-[19px] tracking-3 leading-[142%]">
                     Profitez de notre offre de parrainage exclusive chez
                 </span>
-                    <span class="inline-block w-[145px] mr-[3px]">
+                    <span class="inline-block w-[100px] lg:w-[145px] mr-[3px]">
                         <Image 
                             slot="logo"
                             src="/img/logo/text_burgundy.svg" 
@@ -211,7 +247,7 @@ const defaultCards = [
                             fetchPriority={true}
                         />
                     </span> 
-                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
+                <span class="font-medium text-[12px] lg:text-[19px] tracking-3 leading-[142%]">
                     ! Parrainez un ami ou un proche pour l'installation d'une borne de recharge électrique, et bénéficiez chacun d'une remise de 40 euros sur nos services. Partagez les avantages de la mobilité électrique tout en économisant sur votre installation.                                            Rejoignez-nous dès aujourd'hui pour promouvoir une mobilité plus verte et obtenir des réductions pour vous et vos proches. 
                 </span>
             </p>

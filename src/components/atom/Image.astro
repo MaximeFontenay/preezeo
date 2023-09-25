@@ -1,5 +1,6 @@
 ---
 export interface Props {
+    c?: string,
 	src: string;
 	alt: string;
 	display?: 'block' | 'inline';
@@ -9,11 +10,11 @@ export interface Props {
 	fetchPriority?: boolean;
 }
 
-const { contentVisibility, src, alt, display = 'block', cover = false, lazyLoading = true, fetchPriority = false } = Astro.props;
+const { contentVisibility, src, alt, display = 'block', cover = false, lazyLoading = true, fetchPriority = false, c = '' } = Astro.props;
 ---
 
 <img 
-    class:list={[cover ? 'object-cover' : 'object-contain', display, contentVisibility ? 'visibility' :  '']}
+    class:list={[cover ? 'object-cover' : 'object-contain',c, display, contentVisibility ? 'visibility' :  '']}
     src={src} 
     alt={alt}
     loading={lazyLoading ? 'lazy' : 'eager'}
