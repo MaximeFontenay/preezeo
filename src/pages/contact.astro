@@ -123,9 +123,9 @@ import H1 from '../components/H1.astro';
 
 
     <Section>
-        <div class="relative flex gap-16 justify-between items-stretch mx-auto bg-light2 p-10 border border-purple rounded-2xl">
+        <div class="relative flex-col lg:flex-row flex gap-16 justify-between items-stretch mx-auto bg-light2 p-4 lg:p-10 border border-purple rounded-2xl">
             <div class="flex flex-col gap-16 ">
-                <div class="absolute top-10 left-10 h-[25px]">
+                <div class="lg:absolute lg:top-10 lg:left-10 h-[25px]">
                     <Image 
                         src="/img/logo/text_burgundy.svg" 
                         alt="Preezeo logo"
@@ -186,15 +186,15 @@ import H1 from '../components/H1.astro';
                         <label for="category_infrastructure">Infrastructure collective</label>
                     </div>
 
-                    <div class="form_group flex w-2/3 gap-2 border-b-2 border-purple">
+                    <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
                         <input type="text" id="form_name" name="name" placeholder="Nom*" required/>
                     </div>
 
-                    <div class="form_group flex w-2/3 gap-2 border-b-2 border-purple">
+                    <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
                         <input type="email" id="form_email" name="email" placeholder="Mail*" required />
                     </div>
 
-                    <div class="form_group flex w-2/3 gap-2 border-b-2 border-purple">
+                    <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
                         <input type="tel" id="form_phone" name="phone" placeholder="Téléphone*" required/>
                     </div>
 
