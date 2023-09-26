@@ -17,12 +17,22 @@ const { title } = Astro.props;
 	<head>
 		<ViewTransitions />
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta property="og:image" content="/img/logo/full_burgundy.svg" />
+		<meta name="twitter:title" content="Preezeo la borne qu'il vous faut !" />
+		<meta name="description" content="
+			Preezeo, la borne qu'il vous faut ! 
+			PREEZEO labélisé Qualifelec, intervient dans toute la France métropolitaine afin d’installer  et de maintenir vos bornes de recharge pour véhicules électriques. 
+			Nous vous assurons un service de qualité effectué par des électriciens professionnels agréés IRVE. 
+			PREEZEO forme de manière régulière ses techniciens. 
+			Nous favorisons des produits fabriqués en France qui peuvent être évolutifs.
+			Spécialiste de l’installation des bornes de recharge pour véhicules électriques.
+		">
 		<meta name="robots" content="follow"/>
 		<meta name="author" content="Preezeo"/>
 		<meta name="copyright" content="Preezeo"/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.svg" />
 		<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet"> -->
@@ -39,7 +49,7 @@ const { title } = Astro.props;
 	</head>
 	<body class="flex flex-col bg-light font-montserrat text-base leading-[140%]">
 		<Header />	
-		<main class="wrapper"  transition:animate="fade">
+		<main class="wrapper">
 			<slot />
 		</main>
 		<div class="bg-container">

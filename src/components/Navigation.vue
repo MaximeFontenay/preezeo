@@ -261,6 +261,8 @@ li.active {
     .overlay {
         position: relative;
         height: 100%;
+        cursor: pointer;
+
 
         & > div {
             @include flex(center, center, column, $gap: 10px);
@@ -270,6 +272,11 @@ li.active {
             font-size: 12px;
             position: relative;
             z-index: 2;
+            transition: .3s;
+
+            &:hover {
+                color: var(--yellow);
+            }
         }
 
         &.active {

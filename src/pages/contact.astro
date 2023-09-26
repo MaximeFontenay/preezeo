@@ -12,10 +12,10 @@ import H1 from '../components/H1.astro';
     const alertValidContainer = document.querySelector('.alert-valid') as Element
     const alertErrorContainer = document.querySelector('.alert-error') as Element
     function validateForm() {
-        const name = document.getElementById("form_name")?.value as tring;
-        const email = document.getElementById("form_email")?.value as tring;
-        const phone = document.getElementById("form_phone")?.value as tring;
-        const message = document.getElementById("form_message")?.value as tring;
+        const name = (document.getElementById("form_name") as HTMLInputElement)?.value as string;
+        const email = (document.getElementById("form_email") as HTMLInputElement)?.value as string;
+        const phone = (document.getElementById("form_phone") as HTMLInputElement)?.value as string;
+        const message = (document.getElementById("form_message") as HTMLInputElement)?.value as string;
 
         // Regular expression for a valid email address
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -64,7 +64,7 @@ import H1 from '../components/H1.astro';
 
 </script>
 
-<Layout title="Preezeo">
+<Layout title="Preezeo - Nous contacter">
 
     <div class="alert alert-error">
         <Alert 
