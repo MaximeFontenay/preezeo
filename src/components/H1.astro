@@ -1,14 +1,17 @@
 ---
 export interface Props {
 	text?: string;
+    back?: boolean;
 }
-const prop = Astro.props 
+const {text, back = true} = Astro.props 
 ---
 <h1 class="inline-block text-2xl font-bold w-[280px] tracking-3">
     Ma solution d'installation de 
     <span class="text-yellow">borne de recharge</span> 
-    {prop.text?.length > 0 && 
-        <br> <span class="text-purple">{prop.text}</span>
+    {text?.length > 0 && back ? 
+        <br> <span class="text-purple">{text}</span>
+        :
+        <span class="text-purple">{text}</span>
     }
 </h1>
 
