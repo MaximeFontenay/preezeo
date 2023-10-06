@@ -3,15 +3,19 @@ import Button from './atom/Button.astro'
 
 export interface Props {
 	c?: string;
+    color?: 'yellow' | 'blue';
+    text?: string;
+    fullWidth?: boolean;
 }
 
-const { c = ''} = Astro.props;
+const { c = '', color = 'yellow', text = 'Nous contacter', fullWidth = false} = Astro.props;
 ---
 
-<a href="/contact" class={`p-[2px] ${c}`}>
+<a href="/contacts" class={`p-[2px] ${c} ${fullWidth ? 'w-full' :''}`}>
     <Button
-        text="Nous contacter"
-        color="yellow"
+        text={text}
+        color={color}
+        fullWidth={fullWidth}
     />
 </a>
 </style>

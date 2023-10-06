@@ -41,7 +41,7 @@ const {c, border, title, icon, number, color, isSmall, shadow, stepDisplay} = As
 	{title?.length && 
 		<h3 class="font-bold text-yellow">{ title }</h3>
 	}
-	<div class:list={[color === 'dark' ? 'text-blue' : 'text-deep-blue', 'font-semibold text-sm w-full']}>
+	<div class:list={[color === 'dark' ? 'text-blue' : 'text-deep-blue', 'text-sm w-full']}>
 		<slot name="content" />
 	</div>
 </article>

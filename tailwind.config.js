@@ -71,6 +71,7 @@ module.exports = {
         'md': '6px',
         'lg': '9px',
         'xl': '12px',
+        'xxl': '20px',
         'full': '9999px',
       },
 
@@ -100,6 +101,16 @@ module.exports = {
         extrabold: '800',
         'extra-bold': '800',
         black: '900',
+      },
+
+      fontSize: {
+        // sm: '0.8rem',
+        base: ['14px', '19.88px'],
+        // xl: '1.25rem',
+        // '2xl': '1.563rem',
+        // '3xl': '1.953rem',
+        // '4xl': '2.441rem',
+        // '5xl': '3.052rem',
       },
 
       boxShadow: {

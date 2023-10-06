@@ -14,17 +14,17 @@ const links = [
         icon: 'cards',
         sublinks: [
             {name: 'Installation & Maintenance', link: '/installation'},
-            {name: 'Produits', link: '/products'},
-            {name: 'Tarifs', link: '/prices'},
+            {name: 'Produits', link: '/produits'},
+            {name: 'Tarifs', link: '/tarifs'},
         ]
     },
     {
         name: 'A savoir', 
         icon: 'bulb-menu',
         sublinks: [
-            {name: 'Financement', link: '/funding'},
+            {name: 'Subventions', link: '/subventions'},
             {name: 'Informations utiles', link: '/informations'},
-            {name: 'Qui sommes nous ?', link: '/about'},
+            {name: 'Qui sommes nous ?', link: '/a-propos'},
         ]
     }
 ]
@@ -52,7 +52,7 @@ const openMenu = (action: boolean) => {
 <template>
     <header class="wrapper">
         <div class="flex items-center justify-between w-100">
-            <a href="/" class="flex justify-center items-center max-w-[80px] lg:w-[135px]">
+            <a href="/" class="flex justify-center items-center max-w-[80px] lg:max-w-[135px] lg:w-[135px]">
                 <slot name="logo"/> 
             </a>
             <nav class="hidden lg:flex items-center gap-7 text-sm 2xl:gap-14" role="navigation" aria-label="Menu principal">

@@ -13,9 +13,9 @@ import ButtonContact from '../components/ButtonContact.astro';
 
 const defaultCards = [
     {content: 'Installation et Maintenance', link: '/installation',},
-    {content: 'Tout savoir sur les aides et les subventions', link: '/funding',},
-    {content: 'Pourquoi choisir PREEZEO', link: '/about',},
-    {content: 'Nos Tarifs', link: '/prices',},
+    {content: 'Tout savoir sur les aides et les subventions', link: '/subventions',},
+    {content: 'Pourquoi choisir PREEZEO', link: '/a-propos',},
+    {content: 'Nos Tarifs', link: '/tarifs',},
     {content: 'Informations utiles', link: '/informations',},
 ]
 
@@ -184,8 +184,19 @@ const defaultCards = [
             number={2}
             isSmall={true}
         >  
-            <p slot="content">
-                vous propose une solution adaptée à votre installation électrique et votre véhicule.
+            <p slot="content" class="inline gap-1">
+                <span class="inline-block w-[94px] mr-[3px] mb-[-2px]">
+                    <Image 
+                        slot="logo"
+                        src="/img/logo/text_purple.svg" 
+                        alt="Preezeo colored Logo"
+                        display='inline'
+                        fetchPriority={true}
+                    />
+                </span>
+                <span class="text-base tracking-3">
+                    vous propose une solution adaptée à votre installation électrique et votre véhicule.
+                </span>
             </p>
         </Card>
         <Card 
@@ -194,10 +205,22 @@ const defaultCards = [
             number={3}
             isSmall={true}
         >  
-            <p slot="content">
-                Nos <span class="text-purple">techniciens spécialisés</span> installent votre borne de recharge et vous accompagne dans son usage. 
-                <br>
-                Bienvenue chez 
+            <p slot="content" class="inline gap-1">
+                <span class="text-base tracking-3">
+                    Nos <span class="text-purple">techniciens spécialisés</span> installent votre borne de recharge et vous accompagne dans son usage. 
+                    <br>
+                    Bienvenue chez 
+                </span>
+
+                <span class="inline-block w-[94px] ml-[2px] mb-[-2px]">
+                    <Image 
+                        slot="logo"
+                        src="/img/logo/text_purple.svg" 
+                        alt="Preezeo colored Logo"
+                        display='inline'
+                        fetchPriority={true}
+                    />
+                </span>
             </p>
         </Card>
     </Section>

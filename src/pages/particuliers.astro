@@ -13,8 +13,8 @@ import Dropdown from '../components/dropdown.vue';
 
 
 const houseCards = [
-    {html: '<span class="text-purple">TVA 5.5 %</span> si le logement a <span class="text-purple">plus de 2 ans</span>',},
-    {html: '<span class="text-purple">TVA 20%</span> si le logement a <span class="text-purple">moins de 2 ans</span>',},
+    {html: '<span class="text-purple">TVA 5.5%</span> si le logement a <span class="text-purple">plus de 2 ans</span>',},
+    {html: '<span class="text-purple">TVA 5.5%</span> si le logement a <span class="text-purple">moins de 2 ans</span>',},
     {html: 'Installation <span class="text-purple">garantie dans la journée',},
     {html: 'Visite technique + Etude + Devis',},
     {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>',},
@@ -93,7 +93,7 @@ const bigCards = [
         <Headline />
     </section>
 
-    <Section c="relative mt-20 xl:ml-20">
+    <Section c="relative mt-20 xl:ml-20 lg:mb-[50px]">
         <H1 text="pour particuliers" />
         <div class="flex flex-col lg:flex-row gap-10 justify-between">
             <div class="link-svg">
@@ -115,13 +115,11 @@ const bigCards = [
                     </svg>
                 </div>
                 <div class="hidden sm:block">
-                    <svg width="377" height="99" viewBox="0 0 377 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="345.023" y="43" width="22.698" height="4.91639" rx="2.45819" fill="#FFB800"/>
-                        <rect x="335" y="55.8477" width="41.5086" height="4.941" rx="2.4705" fill="#FFB800"/>
-                        <path d="M356 96.0117V53.9998" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
-                        <line x1="355.507" y1="96.0035" x2="2.50349" y2="96.4965" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
-                        <path d="M5 3C5 1.61929 3.88071 0.5 2.5 0.5C1.11929 0.5 0 1.61929 0 3H5ZM5 96L5 3H0L0 96H5Z" fill="#FFB800"/>
-                    </svg>
+                    <Image 
+                        src="/img/svg/link-bottom.svg" 
+                        alt=""
+                        fetchPriority={true}
+                    />
                 </div>
             </div>
 
@@ -133,7 +131,6 @@ const bigCards = [
             </div>
         </div>
     </Section>
-
 
     <div class="views-wrapper xl:ml-20" data-active="house" transition:persist>
         <div class="house-view">
@@ -174,7 +171,7 @@ const bigCards = [
                                 border={true}
                             >  
                                 <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] min-w-[160px]">
-                                    <h3 class="font-montserrat font-bold text-sm text-center" set:html={item.html}></h3>
+                                    <h3 class="font-montserrat font-normal text-sm text-center" set:html={item.html}></h3>
                                 </div>
                             </Card>
                         </div>
@@ -208,7 +205,7 @@ const bigCards = [
 
         <div class="appartement-view">
             <Section smallBottomMargin={true}>
-                <p class="relative text-[15px] tracking-[0.03em] leading-[142%] max-w-[600px] font-montserrat font-medium">
+                <p class="relative text-[15px] tracking-[0.03em] leading-[142%] max-w-[600px] font-montserrat font-medium mx-auto">
                     Lorsqu'il s'agit de la recharge des véhicules électriques dans <span class="text-yellow font-semibold">un appartement au sein d'une copropriété</span>, deux options sont généralement envisagées :
                     <span class="text-purple font-semibold">La borne partagée et la borne individuelle.</span>
                     <br>
@@ -239,7 +236,7 @@ const bigCards = [
                                 border={true}
                             >  
                                 <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] min-w-[160px]">
-                                    <h3 class="font-montserrat font-bold text-sm text-center" set:html={item.html}></h3>
+                                    <h3 class="font-montserrat font-normal text-sm text-center" set:html={item.html}></h3>
                                 </div>
                             </Card>
                         </div>
@@ -263,7 +260,7 @@ const bigCards = [
                                 border={true}
                             >  
                                 <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] min-w-[160px]">
-                                    <h3 class="font-montserrat font-bold text-sm text-center" set:html={item.html}></h3>
+                                    <h3 class="font-montserrat font-normal text-sm text-center" set:html={item.html}></h3>
                                 </div>
                             </Card>
                         </div>
@@ -286,7 +283,6 @@ const bigCards = [
                             Il est recommandé d'engager des discussions au sein de la copropriété et de consulter 
                             des professionnels de l'énergie et de l'électricité pour prendre la décision la plus 
                             adaptée à la situation.
-
                         </span>
                     </p>
                 </Tips>
