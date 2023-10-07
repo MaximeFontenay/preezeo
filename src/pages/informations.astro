@@ -9,7 +9,7 @@ import Alert from '../components/atom/Alert.astro';
 import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
-
+import PageHero from '../components/PageHero.astro';
 ---
 
 
@@ -20,23 +20,10 @@ import H1 from '../components/H1.astro';
     </section>
 
 
-    <Section c="relative mt-20 ml-20">
+    <Section c="relative mt-20 xl:ml-20">
         <H1 text="Informations utiles" />
         <div class="flex gap-10 justify-between">
-            <div class="link-svg ">
-                <div class="absolute -top-10 -right-[14px]">
-                    <Image 
-                        src="/img/icons/bulb.svg" 
-                        alt="Head icon"
-                        fetchPriority={true}
-                    />
-                </div>
-                <Image 
-                    src="/img/svg/link-bottom.svg" 
-                    alt=""
-                    fetchPriority={true}
-                />
-            </div>
+            <PageHero icon="bulb"/>
         </div>
     </Section>
 

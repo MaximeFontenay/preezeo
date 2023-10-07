@@ -5,6 +5,7 @@ import Section from '../components/Section.astro';
 import Alert from '../components/atom/Alert.astro';
 import Image from '../components/atom/Image.astro';
 import H1 from '../components/H1.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <script>
@@ -99,23 +100,10 @@ import H1 from '../components/H1.astro';
     </section>
 
 
-    <Section c="relative mt-20 ml-20">
+    <Section c="relative mt-20 xl:ml-20">
         <H1 text="contactez nous" />
         <div class="flex gap-10 justify-between">
-            <div class="link-svg">
-                <div class="absolute -top-9 -right-3">
-                    <Image 
-                        src="/img/icons/message.svg" 
-                        alt="Message icon"
-                        fetchPriority={true}
-                    />
-                </div>
-                <Image 
-                    src="/img/svg/link-bottom.svg" 
-                    alt=""
-                    fetchPriority={true}
-                />
-            </div>
+            <PageHero icon="Message"/>
         </div>
     </Section>
 
