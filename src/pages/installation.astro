@@ -10,6 +10,7 @@ import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
 import ButtonContact from '../components/ButtonContact.astro'
+import PageHero from '../components/PageHero.astro';
 
 
 const steps = [
@@ -44,23 +45,10 @@ const steps = [
     </section>
 
 
-    <Section c="relative mt-20 ml-20">
+    <Section c="relative mt-20 xl:ml-20">
         <H1 text="Installation et Maintenance" />
         <div class="flex gap-10 justify-between">
-            <div class="link-svg ">
-                <div class="absolute -top-12 -right-[14px]">
-                    <Image 
-                        src="/img/logo/head.svg" 
-                        alt="Head icon"
-                        fetchPriority={true}
-                    />
-                </div>
-                <Image 
-                    src="/img/svg/link-bottom.svg" 
-                    alt=""
-                    fetchPriority={true}
-                />
-            </div>
+            <PageHero icon="head"/>
         </div>
     </Section>
 

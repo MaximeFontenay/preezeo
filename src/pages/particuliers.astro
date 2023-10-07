@@ -10,6 +10,7 @@ import Image from '../components/atom/Image.astro';
 import CardSelect from '../components/cardSelect.astro';
 import H1 from '../components/H1.astro';
 import Dropdown from '../components/dropdown.vue';
+import PageHero from '../components/PageHero.astro';
 
 
 const houseCards = [
@@ -26,7 +27,7 @@ const houseCards = [
 
 const appartementCardsOne = [
     {html: '<span class="text-purple">TVA 5.5 %</span>',},
-    {html: 'Installation <span class="text-purple">garantie dans la journée',},
+    {html: 'Installation <span class="text-purple">garantie 1 à 3 jours',},
     {html: `Visite technique <br> Bureau d'étude <br> Devis 48H`},
     {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>',},
     {html: 'Pour locataire et propriétaire',},
@@ -96,33 +97,9 @@ const bigCards = [
     <Section c="relative mt-20 xl:ml-20 lg:mb-[50px]">
         <H1 text="pour particuliers" />
         <div class="flex flex-col lg:flex-row gap-10 justify-between">
-            <div class="link-svg">
-                <div class="absolute sm:-top-9 sm:-right-3 top-15 right-9 lg:-right-3 lg:max-w-[70px]">
-                    <Image 
-                        src="/img/icons/house.svg" 
-                        alt="House icon"
-                        fetchPriority={true}
-                    />
-                </div>
 
-                <div class="block sm:hidden sm:translate-x-0 sm:translate-y-0 translate-x-10 translate-y-2">
-                    <svg width="223" height="66" viewBox="0 0 223 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="208.027" y="35.5059" width="10.1989" height="1.82688" fill="#FFB800"/>
-                        <rect x="203.973" y="40.2793" width="18.6511" height="1.83603" fill="#FFB800"/>
-                        <line x1="213.185" y1="64.1172" x2="213.185" y2="41.8218" stroke="#FFB800" stroke-width="2.24666"/>
-                        <path d="M0 63.8789H214.3" stroke="#FFB800" stroke-width="2.24666"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.50447 15.6418V0.388672H0.257812V15.9441H0.258374V17.8885H9.23587L0.330429 43.5562H0.260046V63.3894H2.5067V44.132L11.6119 17.8885H18.2316V15.6418H12.3914L13.9842 11.0508L11.7997 10.499L10.0154 15.6418H2.50447Z" fill="#FFB800"/>
-                    </svg>
-                </div>
-                <div class="hidden sm:block">
-                    <Image 
-                        src="/img/svg/link-bottom.svg" 
-                        alt=""
-                        fetchPriority={true}
-                    />
-                </div>
-            </div>
-
+            <PageHero icon="house"/>
+            
             <div class="flex flex-col gap-6 lg:-translate-y-1/2">
                 <p class="font-bold">J'habite dans :</p>
                 <div class="grid grid-cols-2 gap-4 md:gap-6 items-stretch">
@@ -172,7 +149,7 @@ const bigCards = [
                                 border={true}
                             >  
                                 <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] min-w-[160px]">
-                                    <h3 class="font-montserrat font-normal text-sm text-center" set:html={item.html}></h3>
+                                    <h3 class="font-montserrat font-semibold text-sm text-center" set:html={item.html}></h3>
                                 </div>
                             </Card>
                         </div>
@@ -230,7 +207,7 @@ const bigCards = [
                     <h2 class="text-base font-bold">Borne de recharge à usage partagé par les copropriétaires</h2>
                     <span class="bg-purple h-[4px] w-[200px] block"></span>
                 </div>
-                <div class=`lg:grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto flex overflow-x-scroll scrollbar-hide w-[100vw] -translate-x-[5vw] snap-x snap-mandatory px-10`>
+                <div class=`lg:grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto flex overflow-x-scroll scrollbar-hide w-[100vw] -translate-x-[5vw] lg:-translate-x-0 snap-x snap-mandatory px-10`>
                     {appartementCardsOne.map((item) => (
                         <div class="flex items-center justify-center snap-center">
                             <Card 
@@ -239,7 +216,7 @@ const bigCards = [
                                 border={true}
                             >  
                                 <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] min-w-[160px]">
-                                    <h3 class="font-montserrat font-normal text-sm text-center" set:html={item.html}></h3>
+                                    <h3 class="font-montserrat font-semibold text-sm text-center" set:html={item.html}></h3>
                                 </div>
                             </Card>
                         </div>
@@ -263,7 +240,7 @@ const bigCards = [
                                 border={true}
                             >  
                                 <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] min-w-[160px]">
-                                    <h3 class="font-montserrat font-normal text-sm text-center" set:html={item.html}></h3>
+                                    <h3 class="font-montserrat font-semibold text-sm text-center" set:html={item.html}></h3>
                                 </div>
                             </Card>
                         </div>
@@ -304,18 +281,6 @@ const bigCards = [
 
 <style lang="scss">
 @use '../styles/_variables.scss' as *;
-
-.link-svg {
-    @include flex(center,flex-start);
-    // @include position(calc(20px + 100%), $left:50%);
-    // position: absolute;
-    width: max-content;
-    max-width: unset;
-    
-    @media screen and (min-width: 480px) {
-        translate: 85px 20px;
-    }
-}
 
 .views-wrapper {
     .house-view, .appartement-view {

@@ -9,6 +9,7 @@ import Alert from '../components/atom/Alert.astro';
 import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
+import PageHero from '../components/PageHero.astro';
 
 const products = [
     {
@@ -66,23 +67,10 @@ const products = [
     </section>
 
 
-    <Section c="relative mt-20 ml-20">
+    <Section c="relative mt-20 xl:ml-20">
         <H1 text="le coût de mon installation" />
         <div class="flex gap-10 justify-between">
-            <div class="link-svg ">
-                <div class="absolute -top-12 -right-[28px]">
-                    <Image 
-                        src="/img/icons/stacks.svg" 
-                        alt="Head icon"
-                        fetchPriority={true}
-                    />
-                </div>
-                <Image 
-                    src="/img/svg/link-bottom.svg" 
-                    alt=""
-                    fetchPriority={true}
-                />
-            </div>
+            <PageHero icon="stacks"/>
         </div>
     </Section>
 
