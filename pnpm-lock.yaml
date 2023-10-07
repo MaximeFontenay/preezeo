@@ -6,7 +6,7 @@ specifiers:
   '@astrojs/vue': ^3.0.1
   astro: ^3.2.3
   babel-cli: ^6.26.0
-  sass: ^1.68.0
+  sass: ^1.69.0
   tailwind: ^4.0.0
   tailwindcss: ^3.3.3
   vite: ^4.4.11
@@ -16,11 +16,11 @@ dependencies:
   '@astrojs/sitemap': 3.0.1
   '@astrojs/tailwind': 5.0.1_z2cjeptsgrdscjuwus5xqzhmp4
   '@astrojs/vue': 3.0.1_equrnbnaz4pavqebefy622gbey
-  astro: 3.2.3_sass@1.68.0
-  sass: 1.68.0
+  astro: 3.2.3_sass@1.69.0
+  sass: 1.69.0
   tailwind: 4.0.0
   tailwindcss: 3.3.3
-  vite: 4.4.11_sass@1.68.0
+  vite: 4.4.11_sass@1.69.0
   vue: 3.3.4
 
 devDependencies:
@@ -55,7 +55,7 @@ packages:
       astro: ^3.2.3
     dependencies:
       '@astrojs/prism': 3.0.0
-      astro: 3.2.3_sass@1.68.0
+      astro: 3.2.3_sass@1.69.0
       github-slugger: 2.0.0
       import-meta-resolve: 3.0.0
       mdast-util-definitions: 6.0.0
@@ -93,7 +93,7 @@ packages:
       astro: ^3.2.3
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 3.2.3_sass@1.68.0
+      astro: 3.2.3_sass@1.69.0
       autoprefixer: 10.4.16_postcss@8.4.31
       postcss: 8.4.31
       postcss-load-config: 4.0.1_postcss@8.4.31
@@ -128,7 +128,7 @@ packages:
       '@vitejs/plugin-vue-jsx': 3.0.2_vite@4.4.11+vue@3.3.4
       '@vue/babel-plugin-jsx': 1.1.5
       '@vue/compiler-sfc': 3.3.4
-      astro: 3.2.3_sass@1.68.0
+      astro: 3.2.3_sass@1.69.0
       vue: 3.3.4
     transitivePeerDependencies:
       - '@babel/core'
@@ -1018,7 +1018,7 @@ packages:
       '@babel/core': 7.23.0
       '@babel/plugin-transform-typescript': 7.22.15_@babel+core@7.23.0
       '@vue/babel-plugin-jsx': 1.1.5_@babel+core@7.23.0
-      vite: 4.4.11_sass@1.68.0
+      vite: 4.4.11_sass@1.69.0
       vue: 3.3.4
     transitivePeerDependencies:
       - supports-color
@@ -1031,7 +1031,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.11_sass@1.68.0
+      vite: 4.4.11_sass@1.69.0
       vue: 3.3.4
     dev: false
 
@@ -1361,7 +1361,7 @@ packages:
     dev: true
     optional: true
 
-  /astro/3.2.3_sass@1.68.0:
+  /astro/3.2.3_sass@1.69.0:
     resolution: {integrity: sha512-1epnxQhTbfzgdmLP1yu51E8zjIOKYxZyA8hMTD4S2E+F5gMp/D81H4hekPbbq89GDxNJiHDRNZDHtS5vrU5E5w==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -1416,7 +1416,7 @@ packages:
       tsconfig-resolver: 3.0.1
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.4.11_sass@1.68.0
+      vite: 4.4.11_sass@1.69.0
       vitefu: 0.2.4_vite@4.4.11
       which-pm: 2.1.1
       yargs-parser: 21.1.1
@@ -1797,7 +1797,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001546
-      electron-to-chromium: 1.4.542
+      electron-to-chromium: 1.4.544
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13_browserslist@4.22.1
     dev: false
@@ -2368,8 +2368,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium/1.4.542:
-    resolution: {integrity: sha512-6+cpa00G09N3sfh2joln4VUXHquWrOFx3FLZqiVQvl45+zS9DskDBTPvob+BhvFRmTBkyDSk0vvLMMRo/qc6mQ==}
+  /electron-to-chromium/1.4.544:
+    resolution: {integrity: sha512-54z7squS1FyFRSUqq/knOFSptjjogLZXbKcYk3B0qkE1KZzvqASwRZnY2KzZQJqIYLVD38XZeoiMRflYSwyO4w==}
     dev: false
 
   /emoji-regex/10.2.1:
@@ -5504,8 +5504,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: false
 
-  /sass/1.68.0:
-    resolution: {integrity: sha512-Lmj9lM/fef0nQswm1J2HJcEsBUba4wgNx2fea6yJHODREoMFnwRpZydBnX/RjyXw2REIwdkbqE4hrTo4qfDBUA==}
+  /sass/1.69.0:
+    resolution: {integrity: sha512-l3bbFpfTOGgQZCLU/gvm1lbsQ5mC/WnLz3djL2v4WCJBDrWm58PO+jgngcGRNnKUh6wSsdm50YaovTqskZ0xDQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -6525,7 +6525,7 @@ packages:
       vfile-message: 3.1.4
     dev: false
 
-  /vite/4.4.11_sass@1.68.0:
+  /vite/4.4.11_sass@1.69.0:
     resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -6556,7 +6556,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.31
       rollup: 3.29.4
-      sass: 1.68.0
+      sass: 1.69.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: false
@@ -6569,7 +6569,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.11_sass@1.68.0
+      vite: 4.4.11_sass@1.69.0
     dev: false
 
   /vscode-oniguruma/1.7.0:
