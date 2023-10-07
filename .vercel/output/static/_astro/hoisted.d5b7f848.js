@@ -1,0 +1,1 @@
+import"./hoisted.bd7fdfe4.js";const e=[...document.querySelectorAll(".card-select")],i=document.querySelector(".views-wrapper");let a="house";e[0]?.classList.add("active");e.forEach(c=>{c.addEventListener("click",r=>{const t=r.target;e.forEach(s=>s.classList.remove("active")),t.classList.add("active"),a=t.getAttribute("data-value"),i.setAttribute("data-active",a)})});

@@ -163,7 +163,7 @@ const bigCards = [
                     <h2 class="text-base font-bold">Vous habitez une maison individuelle</h2>
                     <span class="bg-purple h-[4px] w-[200px] block"></span>
                 </div>
-                <div class=`lg:grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto flex overflow-x-scroll scrollbar-hide w-[100vw] -translate-x-[5vw] snap-x snap-mandatory px-10`>
+                <div class=`lg:grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto flex overflow-x-scroll scrollbar-hide w-[100vw] -translate-x-[5vw] lg:-translate-x-0 snap-x snap-mandatory px-10 pb-5`>
                     {houseCards.map((item) => (
                         <div class="flex items-center justify-center snap-center">
                             <Card 
@@ -180,8 +180,10 @@ const bigCards = [
                 </div>
             </Section>
         
-            <Section flex={true} smallBottomMargin={true}>
-                <ButtonContact />
+            <Section smallBottomMargin={true}>
+                <div class="w-fit mx-auto">
+                    <ButtonContact />
+                </div>
             </Section>
         
             <Section flex={true}>
