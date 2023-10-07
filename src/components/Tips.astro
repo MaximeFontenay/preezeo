@@ -4,13 +4,13 @@ import ButtonContact from './ButtonContact.astro';
  
 export interface Props {
 	title?: string;
-    isBig?: boolean;
+    size?: 'big' | 'small' | 'medium';
     btn?: boolean;
 }
 const prop = Astro.props 
 ---
 
-<div class={`relative mx-auto ${prop.isBig ? 'max-w-[750px]' : 'max-w-[500px]'}`}>
+<div class={`relative mx-auto ${prop.size}`}>
     <div class="hidden lg:block absolute -left-4 -translate-x-full">
         <Image 
             src="/img/illu/bulb.png" 
@@ -45,5 +45,16 @@ const prop = Astro.props
 
 <style lang="scss">
 
+.small {
+    max-width: 500px;
+}
+
+.medium {
+    max-width: 750px;
+}
+
+.big {
+    max-width: 940px;
+}
 
 </style>

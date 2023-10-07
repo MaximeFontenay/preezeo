@@ -8,7 +8,6 @@ export default defineConfig({
   integrations: [vue(), tailwind(), sitemap()],
   site: 'https://www.preezeo.fr',
   build: {
-    format: 'directory',
     trailingSlash: 'always',
     inlineStylesheets: `never`
   }

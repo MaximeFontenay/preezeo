@@ -15,7 +15,7 @@ module.exports = {
     },
     fontFamily: {
       montserrat: ['Montserrat', 'system-ui', 'sans-serif'],
-      alien: ['Alien Robot', 'system-ui', 'sans-serif'],
+      alien: ['Alien', 'system-ui', 'sans-serif'],
     },
     extend: {
       width: {
