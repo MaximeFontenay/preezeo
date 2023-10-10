@@ -162,40 +162,42 @@ import PageHero from '../components/PageHero.astro';
 
                 <form 
                     class="flex flex-col items-stretch gap-5 w-100"
-                    method="POST" 
+                    method="post" 
                     action="https://formspree.io/f/mleyadeq" 
                 >
-                    <div class="form_group flex flex-wrap gap-2">
-                        <input type="radio" id="category_individual" value="individual" name="category" checked required />
+                    <div class="form_group select-category flex flex-wrap gap-2">
+                        <input type="radio" id="category_individual" value="Particulier" name="category" checked required />
                         <label for="category_individual">Particulier</label>
         
-                        <input type="radio" id="category_professional" value="professional" name="category" required />
+                        <input type="radio" id="category_professional" value="Professionnel" name="category" required />
                         <label for="category_professional">Professionnel</label>
         
-                        <input type="radio" id="category_infrastructure" value="infrastructure" name="category" required />
+                        <input type="radio" id="category_infrastructure" value="Infrastructure Collective" name="category" required />
                         <label for="category_infrastructure">Infrastructure collective</label>
                     </div>
 
                     <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
+                        <label for="form_name" class="hidden">Name</label>
                         <input type="text" id="form_name" name="name" placeholder="Nom*" autocomplete="name" required/>
                     </div>
 
                     <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
+                        <label for="form_email" class="hidden">Email</label>
                         <input type="email" id="form_email" name="email" placeholder="Mail*" autocomplete="email" required />
                     </div>
 
                     <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
+                        <label for="form_phone" class="hidden">Phone</label>
                         <input type="tel" id="form_phone" name="phone" placeholder="Téléphone*" autocomplete="tel" required/>
                     </div>
 
                     <div class="form_group flex gap-2 border-b-2 border-purple">
+                        <label for="form_message" class="hidden">Message</label>
                         <textarea id="form_message" name="message" placeholder="Message*" required></textarea>
                     </div>
 
                     <div class="form_group flex gap-2 mt-20">
-                        <button type="submit" class="ml-auto py-2 px-8 border border-purple rounded-xl duration-150 hover:bg-purple">
-                            Envoyer
-                        </button>
+                        <input type="submit" value="Envoyer" class="ml-auto py-2 px-8 border border-purple rounded-xl duration-150 cursor-pointer h-[40px] max-w-[150px] hover:bg-purple"/>
                     </div>
 
                 </form>
@@ -225,7 +227,7 @@ import PageHero from '../components/PageHero.astro';
     }
 }
 
-label {
+.select-category label {
     @include flex(center,center);
     flex-grow: 1;
     cursor: pointer;
