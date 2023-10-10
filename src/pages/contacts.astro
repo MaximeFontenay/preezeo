@@ -163,8 +163,7 @@ import PageHero from '../components/PageHero.astro';
                 <form 
                     class="flex flex-col items-stretch gap-5 w-100"
                     method="POST" 
-                    enctype="text/plain"
-                    action="mailto:exizef@gmail.com" 
+                    action="https://formspree.io/f/mleyadeq" 
                 >
                     <div class="form_group flex flex-wrap gap-2">
                         <input type="radio" id="category_individual" value="individual" name="category" checked required />
@@ -178,15 +177,15 @@ import PageHero from '../components/PageHero.astro';
                     </div>
 
                     <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
-                        <input type="text" id="form_name" name="name" placeholder="Nom*" required/>
+                        <input type="text" id="form_name" name="name" placeholder="Nom*" autocomplete="name" required/>
                     </div>
 
                     <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
-                        <input type="email" id="form_email" name="email" placeholder="Mail*" required />
+                        <input type="email" id="form_email" name="email" placeholder="Mail*" autocomplete="email" required />
                     </div>
 
                     <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
-                        <input type="tel" id="form_phone" name="phone" placeholder="Téléphone*" required/>
+                        <input type="tel" id="form_phone" name="phone" placeholder="Téléphone*" autocomplete="tel" required/>
                     </div>
 
                     <div class="form_group flex gap-2 border-b-2 border-purple">
