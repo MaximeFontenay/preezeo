@@ -30,7 +30,7 @@ import PageHero from '../components/PageHero.astro';
     }
 
     submitButton.addEventListener('click', (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         if(validateForm()) {
             alertValidContainer.classList.add('show');
             setTimeout(() => {
@@ -61,7 +61,6 @@ import PageHero from '../components/PageHero.astro';
             alertCopyContainer.classList.remove('show');
         }, 2500);
     }
-
 
 </script>
 
@@ -197,7 +196,7 @@ import PageHero from '../components/PageHero.astro';
                     </div>
 
                     <div class="form_group flex gap-2 mt-20">
-                        <input type="submit" value="Envoyer" class="ml-auto py-2 px-8 border border-purple rounded-xl duration-150 cursor-pointer h-[40px] max-w-[150px] hover:bg-purple"/>
+                        <button type="submit" class="ml-auto py-2 px-8 border border-purple rounded-xl duration-150 cursor-pointer h-[40px] max-w-[150px] hover:bg-purple">Envoyer</button>
                     </div>
 
                 </form>
