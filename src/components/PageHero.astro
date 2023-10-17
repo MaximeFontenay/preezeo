@@ -1,38 +1,46 @@
 ---
 import Image from './atom/Image.astro';
+import H1 from './H1.astro';
+import Section from './Section.astro';
 
 export interface Props {
-	icon: string;
+    h1: string;
+    icon: string;
 }
 const prop = Astro.props 
 ---
 
-<div class="link-svg">
-    <div class="absolute -translate-y-1/2 translate-x-full -right-[17px] max-w-[45px] sm:right-0 sm:translate-x-0 md:-right-2 md:-top-2 md:max-w-[70px]">
-        <Image 
-            src={`/img/icons/${prop.icon.toLowerCase()}.svg`}
-            alt={`${prop.icon} icon`}
-            fetchPriority={true}
-        />
-    </div>
+<Section c="relative mt-13 md:mt-15 lg:mt-20 xl:ml-20 px-[2vw]">
+    <H1 text={prop.h1} />
+    <div class="flex gap-10 justify-between">
+        <div class="link-svg">
+            <div class="absolute -translate-y-1/2 translate-x-full -right-[17px] max-w-[45px] sm:right-0 sm:translate-x-0 md:-right-2 md:-top-2 md:max-w-[70px]">
+                <Image 
+                    src={`/img/icons/${prop.icon.toLowerCase()}.svg`}
+                    alt={`${prop.icon} icon`}
+                    fetchPriority={true}
+                />
+            </div>
 
-    <div class="block sm:hidden sm:translate-x-0 sm:translate-y-0 translate-x-10 translate-y-2">
-        <svg width="223" height="66" viewBox="0 0 223 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="208.027" y="35.5059" width="10.1989" height="1.82688" fill="#FFB800"/>
-            <rect x="203.973" y="40.2793" width="18.6511" height="1.83603" fill="#FFB800"/>
-            <line x1="213.185" y1="64.1172" x2="213.185" y2="41.8218" stroke="#FFB800" stroke-width="2.24666"/>
-            <path d="M0 63.8789H214.3" stroke="#FFB800" stroke-width="2.24666"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.50447 15.6418V0.388672H0.257812V15.9441H0.258374V17.8885H9.23587L0.330429 43.5562H0.260046V63.3894H2.5067V44.132L11.6119 17.8885H18.2316V15.6418H12.3914L13.9842 11.0508L11.7997 10.499L10.0154 15.6418H2.50447Z" fill="#FFB800"/>
-        </svg>
+            <div class="block sm:hidden sm:translate-x-0 sm:translate-y-0 translate-x-10 translate-y-2">
+                <svg width="223" height="66" viewBox="0 0 223 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="208.027" y="35.5059" width="10.1989" height="1.82688" fill="#FFB800"/>
+                    <rect x="203.973" y="40.2793" width="18.6511" height="1.83603" fill="#FFB800"/>
+                    <line x1="213.185" y1="64.1172" x2="213.185" y2="41.8218" stroke="#FFB800" stroke-width="2.24666"/>
+                    <path d="M0 63.8789H214.3" stroke="#FFB800" stroke-width="2.24666"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.50447 15.6418V0.388672H0.257812V15.9441H0.258374V17.8885H9.23587L0.330429 43.5562H0.260046V63.3894H2.5067V44.132L11.6119 17.8885H18.2316V15.6418H12.3914L13.9842 11.0508L11.7997 10.499L10.0154 15.6418H2.50447Z" fill="#FFB800"/>
+                </svg>
+            </div>
+            <div class="hidden sm:block">
+                <Image 
+                    src="/img/svg/link-bottom.svg" 
+                    alt=""
+                    fetchPriority={true}
+                />
+            </div>
+        </div>
     </div>
-    <div class="hidden sm:block">
-        <Image 
-            src="/img/svg/link-bottom.svg" 
-            alt=""
-            fetchPriority={true}
-        />
-    </div>
-</div>
+</Section>
 
 <style lang="scss">
 @use '../styles/_variables.scss' as *;

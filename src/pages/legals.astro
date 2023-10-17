@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
 import Tips from '../components/Tips.astro';
 import ProjectStripe from '../components/ProjectStripe.astro';
 import Section from '../components/Section.astro';
@@ -16,18 +16,9 @@ import PageHero from '../components/PageHero.astro';
 
 <Layout title="Preezeo - Mentions légales">
 
-    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
-        <Headline />
-    </section>
+    <HeadlineBasic />
 
-
-    <Section c="relative mt-20 xl:ml-20">
-        <H1 text="Mentions légales" />
-        <div class="flex gap-10 justify-between">
-            <PageHero icon="legals"/>
-        </div>
-    </Section>
-
+    <PageHero h1="Mentions légales" icon="legals"/>
 
     <Section>
         <div class="lg:max-w-4xl lg:ml-15">

@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
 import Tips from '../components/Tips.astro';
 import ProjectStripe from '../components/ProjectStripe.astro';
 import Section from '../components/Section.astro';
@@ -86,30 +86,56 @@ const bigCards = [
             viewsWrapper.setAttribute('data-active', activeCard)
         })
     })
+    console.log(activeCard);
+    viewsWrapper.setAttribute('data-active', activeCard)
+    
 </script>
 
 
 <Layout title="Preezeo - Particulier">
-    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
-        <Headline />
-    </section>
+    <HeadlineBasic />
 
-    <Section c="relative mt-20 xl:ml-20 lg:mb-[50px]">
+    <Section c="relative mt-13 md:mt-15 lg:mt-20 xl:ml-20 px-[2vw]" smallBottomMargin={true}>
         <H1 text="pour particuliers" />
         <div class="flex flex-col lg:flex-row gap-10 justify-between">
 
-            <PageHero icon="house"/>
+            <div class="link-svg">
+                <div class="absolute -translate-y-1/2 translate-x-full -right-[17px] max-w-[45px] sm:right-0 sm:translate-x-0 md:-right-2 md:-top-2 md:max-w-[70px]">
+                    <Image 
+                        src={`/img/icons/house.svg`}
+                        alt={`house icon`}
+                        fetchPriority={true}
+                    />
+                </div>
+    
+                <div class="block sm:hidden sm:translate-x-0 sm:translate-y-0 translate-x-10 translate-y-2">
+                    <svg width="223" height="66" viewBox="0 0 223 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="208.027" y="35.5059" width="10.1989" height="1.82688" fill="#FFB800"/>
+                        <rect x="203.973" y="40.2793" width="18.6511" height="1.83603" fill="#FFB800"/>
+                        <line x1="213.185" y1="64.1172" x2="213.185" y2="41.8218" stroke="#FFB800" stroke-width="2.24666"/>
+                        <path d="M0 63.8789H214.3" stroke="#FFB800" stroke-width="2.24666"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.50447 15.6418V0.388672H0.257812V15.9441H0.258374V17.8885H9.23587L0.330429 43.5562H0.260046V63.3894H2.5067V44.132L11.6119 17.8885H18.2316V15.6418H12.3914L13.9842 11.0508L11.7997 10.499L10.0154 15.6418H2.50447Z" fill="#FFB800"/>
+                    </svg>
+                </div>
+                <div class="hidden sm:block">
+                    <Image 
+                        src="/img/svg/link-bottom.svg" 
+                        alt=""
+                        fetchPriority={true}
+                    />
+                </div>
+            </div>
             
             <div class="flex flex-col gap-6 lg:-translate-y-1/2">
                 <p class="font-bold">J'habite dans :</p>
                 <div class="grid grid-cols-2 gap-4 md:gap-6 items-stretch">
-                    <CardSelect items={cardSelect} transition:persist />
+                    <CardSelect items={cardSelect} />
                 </div>
             </div>
         </div>
     </Section>
 
-    <div class="views-wrapper xl:ml-20" data-active="house" transition:persist>
+    <div class="views-wrapper xl:ml-20" data-active='house'>
         <div class="house-view">
             <Section flex={true}>
                 <Tips
@@ -185,20 +211,27 @@ const bigCards = [
 
         <div class="appartement-view">
             <Section smallBottomMargin={true}>
-                <p class="relative text-[15px] tracking-[0.03em] leading-[142%] max-w-[600px] font-montserrat font-medium mx-auto">
-                    Lorsqu'il s'agit de la recharge des véhicules électriques dans <span class="text-yellow font-semibold">un appartement au sein d'une copropriété</span>, deux options sont généralement envisagées :
+                <p class="mobile-text relative text-[15px] tracking-[0.03em] leading-[142%] max-w-[600px] font-montserrat font-medium mx-auto">
+                    Lorsqu'il s'agit de la recharge des véhicules électriques dans <span class="text-purple font-semibold">un appartement au sein d'une copropriété</span>, deux options sont généralement envisagées :
                     <span class="text-purple font-semibold">La borne partagée et la borne individuelle.</span>
                     <br>
                     <br>
                     <br>
                     Voici les caractéristiques et avantages de chaque solution :
                 </p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mx-auto mt-6 w-full lg:ml-6">
+                <div class="hidden lg:grid grid-cols-1 lg:grid-cols-2 gap-4 mx-auto mt-6 w-full lg:ml-6">
                     {bigCards.map((item) => (
                         <article class="flex flex-1 gap-3 relative flex-col rounded-lg p-6 border border-purple bg-light-purple">
                             <h3 class="font-montserrat font-semibold text-[15px] text-purple">{item.title}</h3>
                             <p class="text-sm text-metal font-medium" set:html={item.text}></p>
                         </article>
+                    ))}
+                </div>
+                <div class="lg:hidden mt-8">
+                    {bigCards.map((item) => (
+                        <Dropdown title={item.title} client:load>
+                            <span set:html={item.text}></span>
+                        </Dropdown>
                     ))}
                 </div>
             </Section>
@@ -271,10 +304,7 @@ const bigCards = [
         </div>
     </div>
 
-
-
-
-    <Section flex={true} smallBottomMargin={true}>
+    <Section flex={true} smallBottomMargin={true} c='hidden lg:flex'>
         <ProjectStripe />
     </Section>
 </Layout>
@@ -282,6 +312,20 @@ const bigCards = [
 <style lang="scss">
 @use '../styles/_variables.scss' as *;
 
+.link-svg {
+    @include flex(center,flex-start);
+    width: max-content;
+    max-width: unset;
+    position: relative;
+    
+    @media screen and (min-width: 480px) {
+        translate: 50px 20px;
+    }
+
+    @media screen and (min-width: 760px) {
+        translate: 85px 20px;
+    }
+}
 .views-wrapper {
     .house-view, .appartement-view {
         display: none;

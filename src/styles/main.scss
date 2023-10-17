@@ -8,6 +8,20 @@
 // }
 
 
+
+.mobile-text {
+    @media screen and (max-width: 760px) {
+        @apply text-xs font-medium leading-[130%] tracking-[.85px];
+    }
+} 
+
+.mobile-h2 {
+    @media screen and (max-width: 760px) {
+        @apply text-xl font-bold leading-[142%] tracking-[.85px];
+    }
+} 
+
+
 .link-effect {
     position: relative;
     color: $purple;

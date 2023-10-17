@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
 import Tips from '../components/Tips.astro';
 import ProjectStripe from '../components/ProjectStripe.astro';
 import Section from '../components/Section.astro';
@@ -62,18 +62,9 @@ const products = [
 
 <Layout title="Preezeo - Produits">
 
-    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
-        <Headline />
-    </section>
+    <HeadlineBasic />
 
-
-    <Section c="relative mt-20 xl:ml-20">
-        <H1 text="le coût de mon installation" />
-        <div class="flex gap-10 justify-between">
-            <PageHero icon="stacks"/>
-        </div>
-    </Section>
-
+    <PageHero h1="Les produits" icon="stacks"/>
 
     <Section>
         <div class="flex flex-col justify-start gap-6 text-metal">

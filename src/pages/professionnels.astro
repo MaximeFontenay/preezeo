@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
 import Tips from '../components/Tips.astro';
 import ProjectStripe from '../components/ProjectStripe.astro';
 import Section from '../components/Section.astro';
@@ -10,6 +10,7 @@ import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
 import PageHero from '../components/PageHero.astro';
+import DropdownTroncat from '../components/DropdownTroncat.vue';
 
 
 const bigCards = [
@@ -34,29 +35,59 @@ const cards = [
 ---
 
 <Layout title="Preezeo - Professionnels">
-    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
-        <Headline />
-    </section>
+    <HeadlineBasic />
 
-    <Section c="relative mt-20 xl:ml-20">
-        <H1 text="pour infrastructures professionnels" />
-        <PageHero icon="building"/>
-    </Section>
+    <PageHero h1="pour infrastructures professionnels" icon="building"/>
 
     <Section c="lg:px-6">
         <div class="flex flex-col gap-10 lg:px-20">
-            <p class="font-medium text-[19px]">
-                Bienvenue chez <span class="text-purple font-bold">PREEZEO</span>, votre Partenaire de Confiance pour une Mobilité Électrique Performante.
-                <br>
-                <br>
-                Ici, nous comprenons les besoins spécifiques des professionnels qui cherchent à embrasser la mobilité électrique tout en maintenant une efficacité économique optimale. Notre engagement envers les petites entreprises, les gîtes, les golfs, les hôtels, les campings et bien d'autres, réside dans notre détermination à offrir un service de qualité supérieure.
-                <br>
-                <br>
-                En tant que spécialistes des solutions de recharge pour véhicules électriques, nous allions notre expertise à une connaissance approfondie des réglementations gouvernementales en constante évolution. Cela nous permet de vous proposer une configuration sur mesure, parfaitement adaptée à vos besoins et obligations. Que vous cherchiez à offrir des services de recharge à vos clients ou à votre personnel, nous vous accompagnons dans chaque étape pour vous garantir une transition en douceur vers la mobilité électrique.
-                <br>
-                <br>
-                Chez <span class="text-purple font-bold">PREEZEO</span>, notre priorité est de vous offrir bien plus qu'une simple borne de recharge. Nous vous proposons une solution complète, taillée sur mesure pour votre entreprise, tout en prenant en compte vos objectifs financiers. Rejoignez nous dans cette transition vers un avenir plus propre et plus performant, tout en bénéficiant d'une expertise inégalée et d'un service client dévoué. 
-            </p>
+
+            <div class="hidden lg:block">
+                <p class="font-medium text-[19px] max-h-[300px] lg:max-h-full">
+                    desktop
+                </p>
+            </div>
+	       
+
+            <div class="lg:hidden">
+                <DropdownTroncat client:load>
+                    <span class="leading-1">
+                        Bienvenue chez
+                    </span>
+                    <span class="inline-block w-[100px] mr-[3px]">
+                        <Image 
+                            slot="logo"
+                            src="/img/logo/text_burgundy.svg" 
+                            alt="Preezeo colored Logo"
+                            display='inline'
+                            fetchPriority={true}
+                        />
+                    </span>
+                    <span class="leading-1">, votre Partenaire de Confiance pour une Mobilité Électrique Performante.
+                        <br>
+                        <br>
+                        Ici, nous comprenons les besoins spécifiques des professionnels qui cherchent à embrasser la mobilité électrique tout en maintenant une efficacité économique optimale. Notre engagement envers les petites entreprises, les gîtes, les golfs, les hôtels, les campings et bien d'autres, réside dans notre détermination à offrir un service de qualité supérieure.
+                        <br>
+                        <br>
+                        En tant que spécialistes des solutions de recharge pour véhicules électriques, nous allions notre expertise à une connaissance approfondie des réglementations gouvernementales en constante évolution. Cela nous permet de vous proposer une configuration sur mesure, parfaitement adaptée à vos besoins et obligations. Que vous cherchiez à offrir des services de recharge à vos clients ou à votre personnel, nous vous accompagnons dans chaque étape pour vous garantir une transition en douceur vers la mobilité électrique.
+                        <br>
+                        <br>
+                        Chez 
+                    </span>
+                    <span class="inline-block w-[100px] mr-[3px]">
+                        <Image 
+                            slot="logo"
+                            src="/img/logo/text_burgundy.svg" 
+                            alt="Preezeo colored Logo"
+                            display='inline'
+                            fetchPriority={true}
+                        />
+                    </span>
+                    <span>, notre priorité est de vous offrir bien plus qu'une simple borne de recharge. Nous vous proposons une solution complète, taillée sur mesure pour votre entreprise, tout en prenant en compte vos objectifs financiers. Rejoignez nous dans cette transition vers un avenir plus propre et plus performant, tout en bénéficiant d'une expertise inégalée et d'un service client dévoué.</span>
+                </DropdownTroncat>
+            </div>
+
+       
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mx-auto w-full">
                 {bigCards.map((item) => (

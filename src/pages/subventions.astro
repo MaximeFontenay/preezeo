@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
 import Tips from '../components/Tips.astro';
 import ProjectStripe from '../components/ProjectStripe.astro';
 import Section from '../components/Section.astro';
@@ -16,16 +16,9 @@ import PageHero from '../components/PageHero.astro';
 
 <Layout title="Preezeo - Subventions">
 
-    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
-        <Headline />
-    </section>
+    <HeadlineBasic />
 
-    <Section c="relative mt-20 xl:ml-20">
-        <H1 text="les subventions" />
-        <div class="flex gap-10 justify-between">
-            <PageHero icon="money"/>
-        </div>
-    </Section>
+    <PageHero h1="les subventions" icon="money"/>
 
     <Section smallBottomMargin={true}>
         <div class="flex flex-col gap-6">

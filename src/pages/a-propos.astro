@@ -1,31 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
 import Section from '../components/Section.astro';
 import Image from '../components/atom/Image.astro';
-import H1 from '../components/H1.astro';
+import Dropdown from '../components/dropdown.vue';
 import PageHero from '../components/PageHero.astro';
-
 ---
 
 <Layout title="Preezeo - A propos">
 
-    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
-        <Headline />
-    </section>
+    <HeadlineBasic />
 
-
-    <Section c="relative mt-20 xl:ml-20">
-        <H1 text="Qui sommes nous ?" />
-        <div class="flex gap-10 justify-between">
-            <PageHero icon="head"/>
-        </div>
-    </Section>
+    <PageHero h1="Qui sommes nous ?" icon="head"/>
 
     <Section smallBottomMargin={true}>
         <div class="lg:max-w-4xl lg:ml-15">
             <h2 class="text-purple font-bold">Qui sommes nous ?</h2>
-            <p class="font-medium">
+            <p class="font-medium mobile-text">
                 Chez PREEZEO, notre passion pour l'électromobilité et l'électricité a donné naissance à une entreprise unique. Fondée par deux ingénieurs et soutenue par quatre techniciens électriciens chevronnés, PREEZEO incarne l'alliance parfaite entre expertise technique et dévouement pour un avenir plus durable.
                 <br>
                 <br>
@@ -39,74 +30,121 @@ import PageHero from '../components/PageHero.astro';
             <p>
         </div>
     </Section>
-    <Section smallBottomMargin={true}>
-        <div class="lg:max-w-4xl lg:ml-15">
-            <h2 class="text-purple font-bold">Pourquoi choisir Preezeo ?</h2>
-            <p class="font-medium">
-                Pour les bornes de recharge à votre domicile et pour les collectivités, PREEZEO vous propose des solutions complètes comprenant des modules électroniques de gestion de l'énergie et de délestage, ainsi que des compteurs de mesure de consommation et une gestion de la facturation efficace. 
-                <br>
-                <br>
-                Preezeo collabore avec les marques les plus renommées pour son équipement et ses accessoires, et tous les techniciens de PREEZEO bénéficient de formations régulières pour rester à jour. 
-                <br>
-                <br>
-                Chez PREEZEO, nous mettons un point d'honneur à vous offrir des produits de qualité supérieure et des solutions personnalisées pour répondre à vos besoins spécifiques en matière de recharge électrique. Nos experts analysent votre besoin actuel, votre véhicule, votre réseau électrique et l’évolution de vos besoins afin d’obtenir une borne de recharge adaptée et pour un budget maitrisé. 
-                <br>
-                <br>
-                L'installation d'une borne peut sembler aisée, mais elle implique la prise en considération de multiples éléments. Certains aspects pourraient occasionner des frais supplémentaires en fonction de votre infrastructure électrique. 
-                <br>
-                <br>
-                De plus, il est essentiel d'évaluer le chargeur intégré à votre véhicule pour maximiser l'efficacité de la charge de votre batterie tout en optimisant le temps de recharge. Preezeo se conforme à l'ensemble des exigences légales, juridiques et professionnelles en vigueur. 
-                <br>
-                <br>
-                Faites le choix de la mobilité durable et laissez-nous vous accompagner dans cette transition écologique. 
-                <br>
-                <br>
-                Découvrez dès maintenant notre sélection de produits et n'hésitez pas à nous contacter pour toute demande d'information ou de devis.
-                <br>
-                <br>
-                Ensemble, avançons vers une mobilité plus verte et responsable.
-            </p>
-        </div>
-    </Section>
-    <Section smallBottomMargin={true}>
-        <div class="lg:max-w-4xl lg:ml-15">
-            <h2 class="text-purple font-bold">Notre vision</h2>
-            <p class="font-medium">
-                Chez Preezeo nous sommes passionnés par la mobilité électrique et nous nous engageons à faciliter la transition vers un avenir plus durable. 
-                En tant que leader dans le domaine de l'installation et la maintenance de bornes de recharge électrique en France, nous offrons des solutions complètes et innovantes pour répondre aux besoins croissants des propriétaires de véhicules électriques et hybrides.
-                <br>
-                <br>
-                Notre équipe d'experts qualifiés est composée d'ingénieurs et de techniciens hautement compétents, ayant une vaste expérience dans le domaine de l'électromobilité. 
-                Nous sommes déterminés à fournir des solutions adaptées de recharge fiables, sûres et performantes, tout en offrant un service client exceptionnel à chaque étape de notre collaboration, en respectant votre espace privé. 
-                <br>
-                <br>
-                Ce qui nous distingue chez PREEZEO, c'est notre engagement envers la qualité et l'innovation. Nous travaillons en étroite collaboration avec les principaux fabriquant de bornes de recharge pour vous proposer une gamme complète de produits de haute qualité, répondant aux normes les plus strictes en matière de performance et de sécurité.
-                PREEZEO a acquis son expérience ses onze dernières années dans le domaine de la technologie et de l’ingénierie électrique. 
-                <br>
-                <br>
-                En tant qu'entreprise responsable et qualifiée, nous sommes conscients de l'importance de la durabilité environnementale. C'est pourquoi nous privilégions les solutions de recharge éco-énergétiques et encourageons l'utilisation d'énergies renouvelables pour alimenter nos bornes. Nous croyons fermement que la mobilité électrique est une clé essentielle pour construire un avenir plus propre et plus respectueux de l'environnement.
-                <br>
-                <br>
-                Chez PREEZEO, notre objectif est de rendre la recharge des véhicules électriques facile, accessible et pratique pour tous. Que vous soyez un particulier, une entreprise ou une collectivité, nous sommes là pour vous accompagner dans l'installation et la maintenance de bornes de recharge adaptées à vos besoins spécifiques.
-                <br>
-                <br>
-                Explorez notre site web pour découvrir nos produits et services. 
-                N'hésitez pas à nous contacter pour discuter de vos projets de recharge électrique. 
-                <br>
-                <br>
-                Ensemble, nous pouvons faire progresser la mobilité électrique et contribuer à un avenir plus durable.
-            </p>
-            <div class="flex gap-2 max-w-[150px] ml-auto mr-[100px] mt-10">
-                <p class="text-metal font-extrabold mt-[3px]">CEO</p>
-                <Image 
-                    cover={false}
-                    src="/img/logo/text_burgundy.svg" 
-                    alt="Logo de Preezeo - la Borne qu’il vous faut!" 
-                />
+    <div class="hidden lg:block">
+        <Section smallBottomMargin={true}>
+            <div class="lg:max-w-4xl lg:ml-15">
+                <h2 class="text-purple font-bold">Pourquoi choisir Preezeo ?</h2>
+                <p class="font-medium">
+                    Pour les bornes de recharge à votre domicile et pour les collectivités, PREEZEO vous propose des solutions complètes comprenant des modules électroniques de gestion de l'énergie et de délestage, ainsi que des compteurs de mesure de consommation et une gestion de la facturation efficace. 
+                    <br>
+                    <br>
+                    Preezeo collabore avec les marques les plus renommées pour son équipement et ses accessoires, et tous les techniciens de PREEZEO bénéficient de formations régulières pour rester à jour. 
+                    <br>
+                    <br>
+                    Chez PREEZEO, nous mettons un point d'honneur à vous offrir des produits de qualité supérieure et des solutions personnalisées pour répondre à vos besoins spécifiques en matière de recharge électrique. Nos experts analysent votre besoin actuel, votre véhicule, votre réseau électrique et l’évolution de vos besoins afin d’obtenir une borne de recharge adaptée et pour un budget maitrisé. 
+                    <br>
+                    <br>
+                    L'installation d'une borne peut sembler aisée, mais elle implique la prise en considération de multiples éléments. Certains aspects pourraient occasionner des frais supplémentaires en fonction de votre infrastructure électrique. 
+                    <br>
+                    <br>
+                    De plus, il est essentiel d'évaluer le chargeur intégré à votre véhicule pour maximiser l'efficacité de la charge de votre batterie tout en optimisant le temps de recharge. Preezeo se conforme à l'ensemble des exigences légales, juridiques et professionnelles en vigueur. 
+                    <br>
+                    <br>
+                    Faites le choix de la mobilité durable et laissez-nous vous accompagner dans cette transition écologique. 
+                    <br>
+                    <br>
+                    Découvrez dès maintenant notre sélection de produits et n'hésitez pas à nous contacter pour toute demande d'information ou de devis.
+                    <br>
+                    <br>
+                    Ensemble, avançons vers une mobilité plus verte et responsable.
+                </p>
             </div>
-           
-        </div>
-    </Section>
+        </Section>
+        <Section smallBottomMargin={true}>
+            <div class="lg:max-w-4xl lg:ml-15">
+                <h2 class="text-purple font-bold">Notre vision</h2>
+                <p class="font-medium">
+                    Chez Preezeo nous sommes passionnés par la mobilité électrique et nous nous engageons à faciliter la transition vers un avenir plus durable. 
+                    En tant que leader dans le domaine de l'installation et la maintenance de bornes de recharge électrique en France, nous offrons des solutions complètes et innovantes pour répondre aux besoins croissants des propriétaires de véhicules électriques et hybrides.
+                    <br>
+                    <br>
+                    Notre équipe d'experts qualifiés est composée d'ingénieurs et de techniciens hautement compétents, ayant une vaste expérience dans le domaine de l'électromobilité. 
+                    Nous sommes déterminés à fournir des solutions adaptées de recharge fiables, sûres et performantes, tout en offrant un service client exceptionnel à chaque étape de notre collaboration, en respectant votre espace privé. 
+                    <br>
+                    <br>
+                    Ce qui nous distingue chez PREEZEO, c'est notre engagement envers la qualité et l'innovation. Nous travaillons en étroite collaboration avec les principaux fabriquant de bornes de recharge pour vous proposer une gamme complète de produits de haute qualité, répondant aux normes les plus strictes en matière de performance et de sécurité.
+                    PREEZEO a acquis son expérience ses onze dernières années dans le domaine de la technologie et de l’ingénierie électrique. 
+                    <br>
+                    <br>
+                    En tant qu'entreprise responsable et qualifiée, nous sommes conscients de l'importance de la durabilité environnementale. C'est pourquoi nous privilégions les solutions de recharge éco-énergétiques et encourageons l'utilisation d'énergies renouvelables pour alimenter nos bornes. Nous croyons fermement que la mobilité électrique est une clé essentielle pour construire un avenir plus propre et plus respectueux de l'environnement.
+                    <br>
+                    <br>
+                    Chez PREEZEO, notre objectif est de rendre la recharge des véhicules électriques facile, accessible et pratique pour tous. Que vous soyez un particulier, une entreprise ou une collectivité, nous sommes là pour vous accompagner dans l'installation et la maintenance de bornes de recharge adaptées à vos besoins spécifiques.
+                    <br>
+                    <br>
+                    Explorez notre site web pour découvrir nos produits et services. 
+                    N'hésitez pas à nous contacter pour discuter de vos projets de recharge électrique. 
+                    <br>
+                    <br>
+                    Ensemble, nous pouvons faire progresser la mobilité électrique et contribuer à un avenir plus durable.
+                </p>
+                <div class="flex gap-2 max-w-[150px] ml-auto mr-[100px] mt-10">
+                    <p class="text-metal font-extrabold mt-[3px]">CEO</p>
+                    <Image 
+                        cover={false}
+                        src="/img/logo/text_burgundy.svg" 
+                        alt="Logo de Preezeo - la Borne qu’il vous faut!" 
+                    />
+                </div>
+               
+            </div>
+        </Section>
+    </div>
+
+    <div class="flex flex-col items-stretch lg:hidden">
+        <Dropdown title="Pourquoi choisir Preezeo ?" client:load>
+            Pour les bornes de recharge à votre domicile et pour les collectivités, PREEZEO vous propose des solutions complètes comprenant des modules électroniques de gestion de l'énergie et de délestage, ainsi que des compteurs de mesure de consommation et une gestion de la facturation efficace. 
+            <br><br>
+            Preezeo collabore avec les marques les plus renommées pour son équipement et ses accessoires, et tous les techniciens de PREEZEO bénéficient de formations régulières pour rester à jour. 
+            <br><br>
+            Chez PREEZEO, nous mettons un point d'honneur à vous offrir des produits de qualité supérieure et des solutions personnalisées pour répondre à vos besoins spécifiques en matière de recharge électrique. Nos experts analysent votre besoin actuel, votre véhicule, votre réseau électrique et l’évolution de vos besoins afin d’obtenir une borne de recharge adaptée et pour un budget maitrisé. 
+            <br><br>
+            L'installation d'une borne peut sembler aisée, mais elle implique la prise en considération de multiples éléments. Certains aspects pourraient occasionner des frais supplémentaires en fonction de votre infrastructure électrique. 
+            <br><br>
+            De plus, il est essentiel d'évaluer le chargeur intégré à votre véhicule pour maximiser l'efficacité de la charge de votre batterie tout en optimisant le temps de recharge. Preezeo se conforme à l'ensemble des exigences légales, juridiques et professionnelles en vigueur. 
+            <br><br>
+            Faites le choix de la mobilité durable et laissez-nous vous accompagner dans cette transition écologique. 
+            <br><br>
+            Découvrez dès maintenant notre sélection de produits et n'hésitez pas à nous contacter pour toute demande d'information ou de devis.
+            <br><br>
+            Ensemble, avançons vers une mobilité plus verte et responsable.
+        </Dropdown>
+
+        <Dropdown title="Notre vision" client:load>
+            Chez Preezeo nous sommes passionnés par la mobilité électrique et nous nous engageons à faciliter la transition vers un avenir plus durable. 
+            <br>
+            En tant que leader dans le domaine de l'installation et la maintenance de bornes de recharge électrique en France, nous offrons des solutions complètes et innovantes pour répondre aux besoins croissants des propriétaires de véhicules électriques et hybrides.
+            <br><br>
+            Notre équipe d'experts qualifiés est composée d'ingénieurs et de techniciens hautement compétents, ayant une vaste expérience dans le domaine de l'électromobilité. 
+            <br>
+            Nous sommes déterminés à fournir des solutions adaptées de recharge fiables, sûres et performantes, tout en offrant un service client exceptionnel à chaque étape de notre collaboration, en respectant votre espace privé. 
+            <br><br>
+            Ce qui nous distingue chez PREEZEO, c'est notre engagement envers la qualité et l'innovation. Nous travaillons en étroite collaboration avec les principaux fabriquant de bornes de recharge pour vous proposer une gamme complète de produits de haute qualité, répondant aux normes les plus strictes en matière de performance et de sécurité.
+            <br>
+            PREEZEO a acquis son expérience ses onze dernières années dans le domaine de la technologie et de l’ingénierie électrique. 
+            <br><br>
+            En tant qu'entreprise responsable et qualifiée, nous sommes conscients de l'importance de la durabilité environnementale. C'est pourquoi nous privilégions les solutions de recharge éco-énergétiques et encourageons l'utilisation d'énergies renouvelables pour alimenter nos bornes. Nous croyons fermement que la mobilité électrique est une clé essentielle pour construire un avenir plus propre et plus respectueux de l'environnement.
+            <br><br>
+            Chez PREEZEO, notre objectif est de rendre la recharge des véhicules électriques facile, accessible et pratique pour tous. Que vous soyez un particulier, une entreprise ou une collectivité, nous sommes là pour vous accompagner dans l'installation et la maintenance de bornes de recharge adaptées à vos besoins spécifiques.
+            <br><br>
+            Explorez notre site web pour découvrir nos produits et services. 
+            <br>
+            N'hésitez pas à nous contacter pour discuter de vos projets de recharge électrique. 
+            <br><br>
+            Ensemble, nous pouvons faire progresser la mobilité électrique et contribuer à un avenir plus durable.
+        </Dropdown>
+    </div>
+ 
 </Layout>
 
 <style lang="scss">

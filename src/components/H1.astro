@@ -4,9 +4,9 @@ export interface Props {
 }
 const prop = Astro.props 
 ---
-<h1 class="inline-block text-[12px] max-w-[230px] sm:max-w-none md:text-lg lg:text-2xl font-bold md:w-[280px] tracking-3">
-    Ma solution <br class="hidden md:block"> d'installation de <br>
-    <span class="text-yellow">borne de recharge éléctrique</span> 
+<h1 class="inline-block text-[12px] max-w-[230px] sm:max-w-none md:text-lg lg:text-2xl font-bold md:w-[310px] md:max-w-[310px] tracking-3">
+    Ma solution <br class="hidden md:block"> d'installation de <br class="md:hidden">
+    <span class="text-yellow">borne <br class="hidden lg:block"> de recharge éléctrique</span> 
     {prop.text?.length > 0 && 
         <br> <span class="text-purple">{prop.text}</span>
     }

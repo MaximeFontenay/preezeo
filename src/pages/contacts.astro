@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
 import Section from '../components/Section.astro';
 import Alert from '../components/atom/Alert.astro';
 import Image from '../components/atom/Image.astro';
 import H1 from '../components/H1.astro';
 import PageHero from '../components/PageHero.astro';
+
 ---
 
 <script>
@@ -93,19 +94,9 @@ import PageHero from '../components/PageHero.astro';
         </Alert>
     </div>
 
+    <HeadlineBasic />
 
-    <section class="flex flex-col gap-14 justify-center text-center items-center mt-20">
-        <Headline />
-    </section>
-
-
-    <Section c="relative mt-20 xl:ml-20">
-        <H1 text="contactez nous" />
-        <div class="flex gap-10 justify-between">
-            <PageHero icon="Message"/>
-        </div>
-    </Section>
-
+    <PageHero h1="Contactez nous" icon="message"/>
 
     <Section>
         <div class="relative flex-col lg:flex-row flex gap-16 justify-between items-stretch mx-auto bg-light2 p-4 lg:p-10 border border-purple rounded-2xl">
