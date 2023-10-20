@@ -8,6 +8,47 @@
 // }
 
 
+<<<<<<< HEAD
+=======
+
+.mobile-text {
+    @media screen and (max-width: 760px) {
+        @apply text-xs font-medium leading-[130%] tracking-[.85px];
+    }
+} 
+
+.mobile-h2 {
+    @media screen and (max-width: 760px) {
+        @apply text-xl font-bold leading-[142%] tracking-[.85px];
+    }
+} 
+
+.slider-card-default {
+    @apply min-w-[190px] w-[190px] border-purple bg-light-purple flex-1 flex justify-center items-center relative flex-col gap-2 p-4 rounded-lg text-xs font-medium text-center border
+}
+
+
+.slider-big-card {
+    @apply flex flex-1 min-w-[80vw] sm:min-w-[70vw] md:min-w-[390px] snap-center gap-3 relative flex-col rounded-lg p-6 border border-purple bg-light-purple
+}
+
+.slider-financement {
+    @apply flex-1 min-w-[800px] max-w-[850px] snap-center flex gap-6 h-fit bg-light-purple rounded-lg p-6 border border-purple 
+}
+
+.wrapper {
+    position: relative;
+    z-index: 100;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90vw;
+    max-width: 1400px;
+    @media screen and (max-width: 550px) {
+        width: 90vw;
+    }
+}
+
+>>>>>>> 659e0a4 (Slider, dropdown, responsive, layout, utilities, rename "financement" page)
 .link-effect {
     position: relative;
     color: $purple;
@@ -30,4 +71,25 @@
         width: 100%;
         transition: ease-in-out .4s;
     }
+    @media screen and (max-width: 760px) {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+        &:after {
+            width: 0!important;
+        }
+    }
 }
+
+.linear-border-tl {
+    border-image: linear-gradient(130deg, #FFB800, #515BE0) 1;
+}
+
+.linear-border-tr {
+    border-image: linear-gradient(230deg, #FFB800, #515BE0) 1;
+}
+
+.linear-border-b {
+    border-image: linear-gradient(0deg, #FFB800, #515BE0) 1;
+}
+

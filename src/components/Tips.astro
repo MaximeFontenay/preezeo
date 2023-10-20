@@ -30,7 +30,16 @@ const prop = Astro.props
             }
         </div>
 
-        <div class="">
+        <div class=`mobile-text relative ${!prop.title ? 'max-w-[85%] ml-auto mr-[5%] lg:max-w-[100%] lg:mx-auto' : ''}`>
+            {!prop.title && 
+                <div class="absolute -left-10 -top-10 min-w-[35px] w-[35px] lg:hidden">
+                    <Image 
+                        src="/img/illu/bulb.png" 
+                        alt="bulb decorative image" 
+                    />
+                </div>
+            }
+
             <slot name="text" />
         </div>
 

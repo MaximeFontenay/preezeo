@@ -22,7 +22,7 @@ const links = [
         name: 'A savoir', 
         icon: 'bulb-menu',
         sublinks: [
-            {name: 'Subventions', link: '/subventions'},
+            {name: 'Financement', link: '/financement'},
             {name: 'Informations utiles', link: '/informations'},
             {name: 'Qui sommes nous ?', link: '/a-propos'},
         ]
@@ -301,6 +301,10 @@ li.active {
             transition: .2s ease-in-out;
             z-index: 3;
 
+            @media screen and (max-width:760px) {
+                padding: 15px 20px;
+            }
+
             li {
                 width: 100%;
 
@@ -311,6 +315,10 @@ li.active {
 
                     &:hover {
                         color: var(--yellow);
+                    }
+
+                    @media screen and (max-width:760px) {
+                        padding: 5px 0;
                     }
                 }
             }

@@ -1,0 +1,378 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeadlineBasic from '../components/HeadlineBasic.astro';
+import Tips from '../components/Tips.astro';
+import ProjectStripe from '../components/ProjectStripe.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Alert from '../components/atom/Alert.astro';
+import Image from '../components/atom/Image.astro';
+import Button from '../components/atom/Button.astro';
+import H1 from '../components/H1.astro';
+import PageHero from '../components/PageHero.astro';
+import Slider from '../components/slider.vue';
+import DropdownTroncat from '../components/dropdownTroncat.vue';
+import Dropdown from '../components/dropdown.vue';
+
+const introText = `
+<div class="flex flex-col gap-6">
+    <p class="font-medium">
+        Alors que de plus en plus de Français choisissent d'acheter un véhicule électrique, la recharge électrique reste un obstacle pour de nombreux autres. 
+        <br>
+        Afin de favoriser la transition vers une mobilité plus verte, le gouvernement a mis en place plusieurs subventions pour l'installation de bornes de recharge en 2023. 
+        <br>
+        Faisons le point sur le programme ADVENIR et les dispositifs d'aide disponibles.
+    </p>
+    <p class="font-medium">Quelques liens informatifs:</p>
+    <a class="text-purple font-semibold w-fit after:w-0 relative hover:after:w-[100px] after:duration-300 after:h-[2px] after:bg-purple after:absolute after:-bottom-1 after:left-0" href="https://www.ecologie.gouv.fr/bornes-electriques-developpement-des-infrastructures-recharge" target="_blank">Bornes électriques, les aides à l’installation | Ministères Écologie Énergie Territoires | ecologie.gouv.fr</a>
+    <a class="text-purple font-semibold w-fit after:w-0 relative hover:after:w-[100px] after:duration-300 after:h-[2px] after:bg-purple after:absolute after:-bottom-1 after:left-0" href="https://www.service-public.fr/particuliers/vosdroits/F35578" target="_blank">Impôt sur le revenu - Installation de bornes de charge pour véhicule électrique (crédit d'impôt) | service-public.fr</a>
+</div>
+`
+
+const cards = [
+    {
+        title: `Le crédit d’impôt pour l’installation de borne de recharge à votre domicile`,
+        text: `Un crédit d’impôt est accordé pour les dépenses d’acquisition et de pose de systèmes de charge pour véhicules électriques effectuées entre le 1.1.2021 et le 31.12.2025. Ce crédit d’impôt, égal à 75 % du montant des dépenses dans la limite de 300 euros par système de charge, est ouvert à tous les contribuables personnes physiques domiciliés en France, quel que soit le niveau de leurs revenus. De plus le taux de la TVA est de 5.5 % pour tout logement. Si la pose d’une prise renforcée est prévue, alors la TVA applicable sur ce produit est de 10 %.`,
+        link: `https://www.impots.gouv.fr/particulier/questions/je-viens-dacquerir-une-borne-de-recharge-pour-ma-voiture-electrique-puis-je`,
+        textLink: `Je viens d'acquérir une borne de recharge pour ma voiture électrique, puis-je bénéficier d'un crédit d'impôt ? | impots.gouv.fr`,
+    },
+    {
+        title: `Les bornes de recharge ouvertes au grand public`,
+        text: `Les subventions du programme ADVENIR pour l'installation de points de recharge accessibles à tous concernent les parkings privés et les entreprises spécialisées.`,
+        link: `https://advenir.mobi/`,
+        textLink: `Le programme de financement de bornes de recharge pour véhicule électrique - Advenir`,
+    },
+    {
+        title: `Installation de bornes de recharge sur des parkings privés ouverts au public`,
+        text: `Une prime peut être accordée à une personne publique ou à une entreprise souhaitant installer des bornes de recharge 
+        pour véhicules électriques ou hybrides rechargeables sur un parking privé accessible au grand public (clients, visiteurs, etc.).
+        <br>
+        Depuis le 1er février 2023, la prime est de 30 % du montant de la prestation (hors taxes), que ce soit pour la fourniture 
+        ou l'installation des bornes. 
+        <br><br>
+        Le plafond de l'aide varie comme suit :
+        <br><br>
+        - De 1 000 à 1 300 € HT par borne, selon la puissance de recharge, pour les bornes en courant alternatif (AC).
+        - De 2 700 € à 9 000 € HT par borne, selon la puissance de recharge, pour les bornes en courant continu (DC).
+        <br><br>
+        Une surprime de 300 € peut également être accordée en cas d'installation d'un système de supervision.
+        `,
+        link: ``,
+        textLink: ``,
+    },
+    {
+        title: `Installation de bornes de recharge pour les entreprises spécialisées`,
+        text: `Depuis le 1er janvier 2023, la subvention accordée aux entreprises pour l'installation de bornes destinées aux flottes et aux salariés a été supprimée. 
+        <br>
+        À la place, le programme ADVENIR propose désormais une aide financière limitée à certaines entreprises spécialisées dans les 
+        services automobiles et la location à courte durée. 
+        <br><br>
+        Pour être éligibles à cette aide, ces entreprises doivent :
+        <br><br>
+        - Être spécialisées dans les services automobiles et la location à courte durée.
+        - Installer des bornes de recharge pour leurs flottes et leurs salariés.
+        <br><br>
+        Cette prime sera accordée aux 5 000 premiers points de recharge déployés à partir du 1er janvier 2023, en fonction des fonds alloués 
+        par le programme ADVENIR.
+        `,
+        link: ``,
+        textLink: ``,
+    },
+    {
+        title: `La prolongation des avantages en nature`,
+        text: `Afin d'encourager la mobilité électrique, le dispositif AEN (avantages en nature) permet aux employeurs de mettre à disposition 
+        de leurs salariés une voiture électrique avec une borne de recharge ou de prendre en charge les frais liés à son utilisation.
+        <br><br>
+        Alors que ce dispositif était initialement prévu pour être supprimé le 31 décembre 2022, il a été prolongé jusqu'au 31 décembre 2024`,
+        link: ``,
+        textLink: ``,
+    },
+    {
+        title: `Les bornes de recharge pour véhicule électrique en copropriété`,
+        text: `Pour les particuliers, de nombreuses subventions sont également disponibles pour financer l'installation d'infrastructures de recharge 
+        pour véhicules électriques en copropriété. On distingue l'infrastructure collective, accessible à tous les copropriétaires, de 
+        l'infrastructure individuelle, destinée au seul propriétaire de la place de parking équipée.
+        `,
+        link: ``,
+        textLink: ``,
+    },
+    {
+        title: `La borne de recharge en copropriété partagée`,
+        text: `Le programme ADVENIR propose des aides financières pour l'installation de bornes de recharge électrique partagées dans les 
+        immeubles collectifs. Tous les occupants particuliers de l'immeuble doivent avoir accès à l'installation pour recharger leur voiture électrique.
+        <br><br> 
+        La demande peut être initiée par un bailleur ou un syndic de copropriété, mais le devis des travaux pour
+        l'installation de bornes partagées en résidence collective doit être validé par les copropriétaires lors de l'assemblée générale.
+        <br><br> 
+        La prime accordée est de 50 % du montant hors taxes, que ce soit pour l'installation ou l'équipement, avec un plafond de 1 660 € 
+        par station de recharge en copropriété.
+        `,
+        link: ``,
+        textLink: ``,
+    },
+    {
+        title: `La borne de recharge individuelle en copropriété`,
+        text: `
+        Contrairement à la borne partagée, la borne individuelle en copropriété est installée à l'initiative du propriétaire de la place de parking.
+        <br>
+        Le particulier peut bénéficier d'une aide financière pour installer une borne de recharge sur sa place de stationnement, à usage individuel.
+        <br><br>
+        Cette prime est accordée à tous les particuliers résidant dans des résidences collectives, qu'ils soient locataires, propriétaires ou occupants. 
+        <br>
+        Les bailleurs et promoteurs ne peuvent pas prétendre à cette aide pour installer des systèmes de recharge,
+        mais les particuliers résidant dans un immeuble collectif appartenant à un promoteur ou à un bailleur peuvent en bénéficier.
+        <br><br>
+        Le montant de l'aide s'élève à 50 % du montant hors taxes (fourniture et installation), avec un plafond fixé à 960 € par infrastructure 
+        de recharge pour voiture électrique.
+        <br>
+        Il est bon de savoir que cette prime n'est pas accordée pour les bornes installées dans des maisons individuelles.
+        Cependant, l'installation d'infrastructures de recharge pour véhicules électriques dans des maisons individuelles peut permettre 
+        de bénéficier du crédit d'impôt pour la transition énergétique.
+        <br><br>
+        Les aides financières accordées pour l'installation de points de recharge pour véhicules électriques sont nombreuses. 
+        `,
+        link: ``,
+        textLink: ``,
+    },
+    
+
+]
+---
+
+
+<Layout title="Preezeo - Financement">
+
+    <HeadlineBasic />
+
+    <PageHero h1="le financement" icon="money"/>
+
+    <Section smallBottomMargin={true}>
+        <div class="flex flex-col justify-start gap-6 text-metal">
+            <div class="hidden lg:block" set:html={introText}></div>
+            <div class="lg:hidden">
+                <DropdownTroncat client:only>
+                    <div set:html={introText}></div>
+                </DropdownTroncat> 
+            </div>
+        </div>
+    </Section>
+
+    <Section smallBottomMargin={true} c="hidden lg:block">
+        <div class="flex flex-col gap-2 mb-10 items-center md:items-start">
+            <h2 class="text-base font-bold">Différents taux d'aide et des plafonds selon la situation</h2>
+            <span class="bg-purple h-[4px] w-[200px] block"></span>
+        </div>
+
+        <div class="flex flex-col gap-16 p-8 text-[19px] bg-light-purple border-2 border-purple shadow-cardHomepage rounded-lg w-full">
+            <div>
+                <h3 class="text-purple text-[19px] mb-8 font-medium">Pour les entreprises et les Etablissements</h3>
+                <div class="flex flex-col gap-8 text-[14px] font-medium">
+                    <ol class="grid grid-cols-2">
+                        <li>Parking privé ouvert au public</li>
+                        <li class="list-disc">50&nbsp;% du montant hors taxe avec un plafond de 1&nbsp;000 à 2&nbsp;700&nbsp;€.</li>
+                    </ol>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-purple text-[19px] mb-8 font-medium">Pour les immeubles collectifs</h3>
+                <div class="flex flex-col gap-8 text-[14px]">
+                    <ol class="grid grid-cols-2">
+                        <li>Solution individuelle</li>
+                        <li class="list-disc">50&nbsp;% du montant hors taxe avec un plafond de 960&nbsp;€.</li>
+                    </ol>
+                    <ol class="grid grid-cols-2">
+                        <li>Solution partagée</li>
+                        <li class="list-disc">50&nbsp;% du montant hors taxe avec un plafond de 1&nbsp;660&nbsp;€. 
+                            <br>Pour les entreprises des services de l'automobile.
+                        </li>
+                    </ol>
+                    <ol class="grid grid-cols-2">
+                        <li>Flottes et salariés</li>
+                        <li class="list-disc">25&nbsp;% du montant hors taxe avec un plafond de 750&nbsp;€.</li>
+                    </ol>
+                    <ol class="grid grid-cols-2">
+                        <li>Parking privé ouvert au public</li>
+                        <li class="list-disc">50&nbsp;% du montant hors taxe avec un plafond de 1&nbsp;700 à 15&nbsp;000&nbsp;€.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </Section>
+
+    <div class="hidden lg:block mb-[135px]">
+        <Slider
+            items={cards} 
+            slot={true}
+            showNavBtn={true}
+            client:load
+        >
+            <article slot="slide-0" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[0].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[0].text}></p>
+                    {
+                        cards[0]?.link?.length > 0 && cards[0]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[0].link}>{cards[0].textLink}</a>
+                    }
+                </div>
+            </article>
+
+            <article slot="slide-1" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[1].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[1].text}></p>
+                    {
+                        cards[1]?.link?.length > 0 && cards[1]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[1].link}>{cards[1].textLink}</a>
+                    }
+                </div>
+            </article>
+
+            <article slot="slide-2" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[2].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[2].text}></p>
+                    {
+                        cards[2]?.link?.length > 0 && cards[2]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[2].link}>{cards[2].textLink}</a>
+                    }
+                </div>
+            </article>
+
+            <article slot="slide-3" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[3].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[3].text}></p>
+                    {
+                        cards[3]?.link?.length > 0 && cards[3]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[3].link}>{cards[3].textLink}</a>
+                    }
+                </div>
+            </article>
+
+            <article slot="slide-4" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[4].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[4].text}></p>
+                    {
+                        cards[4]?.link?.length > 0 && cards[4]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[4].link}>{cards[4].textLink}</a>
+                    }
+                </div>
+            </article>
+
+            <article slot="slide-5" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[5].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[5].text}></p>
+                    {
+                        cards[5]?.link?.length > 0 && cards[5]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[5].link}>{cards[5].textLink}</a>
+                    }
+                </div>
+            </article>
+
+            <article slot="slide-6" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[6].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[6].text}></p>
+                    {
+                        cards[6]?.link?.length > 0 && cards[6]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[6].link}>{cards[6].textLink}</a>
+                    }
+                </div>
+            </article>
+
+            <article slot="slide-7" class="slider-financement">
+                <div class="w-[250px] min-w-[250px]">
+                    <h2 class="text-xl font-medium text-purple">{cards[7].title}</h2>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="" set:html={cards[7].text}></p>
+                    {
+                        cards[7]?.link?.length > 0 && cards[7]?.textLink?.length > 0 &&
+                        <a class="text-purple" target="_blank" href={cards[7].link}>{cards[7].textLink}</a>
+                    }
+                </div>
+            </article>
+        </Slider>
+    </div>
+
+    <Section smallBottomMargin={true} c="lg:hidden">
+
+        <Dropdown title="Différents taux d’aides et plafonds selon la situation" client:load>
+            <span class="text-purple">Pour les entreprises et les Etablissements</span>
+    
+            <ul class="pl-3">
+                <li class="list-disc"><span class="font-semibold">Parking privé ouvert au public</span>  50 % du montant hors taxe avec un plafond de 1 000 à 2 700 €.</li>
+            </ul>
+
+            <span class="text-purple">Pour les immeubles collectifs</span>
+
+            <ul class="pl-3">
+                <li class="list-disc"><span class="font-semibold">Solution individuelle</span>  50 % du montant hors taxe avec un plafond de 960 €.</li>
+                <li class="list-disc">
+                    <span class="font-semibold">Solution partagée</span>  50 % du montant hors taxe avec un plafond de 1 660 €. 
+                    <br>Pour les entreprises des services de l'automobile.
+                </li>
+                <li class="list-disc"><span class="font-semibold">Flottes et salariés</span> 25 % du montant hors taxe avec un plafond de 750 €.</li>
+                <li class="list-disc"><span class="font-semibold">Parking privé ouvert au public</span> 50 % du montant hors taxe avec un plafond de 1 700 à 15 000 €.</li>
+            </ul>
+        </Dropdown>
+
+        {cards.map((card) => (
+            <div class="flex items-center justify-center snap-center">
+                <Dropdown title={card.title} client:load>
+                    <p set:html={card.text}></p>
+                    {
+                        card?.link?.length > 0 && card?.textLink?.length > 0 &&
+                        <a class="text-purple mt-2" target="_blank" href={card.link}>{card.textLink}</a>
+                    }
+                </Dropdown>
+            </div>
+        ))}
+    </Section>
+
+
+
+    <Section flex={true} c="hidden md:flex">
+        <ProjectStripe />
+    </Section>
+    
+</Layout>
+
+<style lang="scss">
+@use '../styles/_variables.scss' as *;
+
+.link-svg {
+    @include flex(center,flex-start);
+    // @include position(calc(20px + 100%), $left:50%);
+    // position: absolute;
+    width: max-content;
+    max-width: unset;
+    translate: 85px 20px;
+}
+
+
+h2 {
+    font-weight: 600;
+}
+
+a {
+
+}
+</style>
