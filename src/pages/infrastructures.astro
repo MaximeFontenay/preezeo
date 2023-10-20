@@ -9,6 +9,7 @@ import ButtonContact from '../components/ButtonContact.astro';
 import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import PageHero from '../components/PageHero.astro';
+import Slider from '../components/slider.vue';
 
 
 const bigCards = [
@@ -27,7 +28,7 @@ const cards = [
     {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>'},
     {html: 'La décision requiert la <span class="text-purple">majorité</span> des participants à l’AG.'},
     {html: 'Prime de <span class="text-purple">50 % du montant HT</span> du matériel et de l’installation des points de recharge.<br> Plafonné à <span class="text-purple">1 660 € / point de recharge</span>'},
-    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>'},
+    {html: '<a href="/financement" class="mx-5 link-effect spacing">Tout savoir sur le financement</a>'},
     {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>'},
 ]
 ---
@@ -37,9 +38,9 @@ const cards = [
 
     <PageHero h1="pour infrastructures collectives" icon="apartement"/>
 
-    <Section c="lg:px-6">
+    <Section c="hidden lg:block lg:px-6">
         <div class="flex flex-col gap-10 lg:px-20">
-            <p class="font-medium text-[19px]">Dans une copropriété, la mise en place d'une <span class="text-purple font-semibold">infrastructure de recharge collective</span>
+            <p class="mobile-text font-medium text-[19px]">Dans une copropriété, la mise en place d'une <span class="text-purple font-semibold">infrastructure de recharge collective</span>
             <br> pour les véhicules électriques présente de nombreux avantages.
             <br><br>
             Voici les principaux points à considérer :
@@ -56,7 +57,42 @@ const cards = [
         </div>
     </Section>
 
-    <Section smallBottomMargin={true}>
+    <div class="block lg:hidden mb-10">
+        <p class="mobile-text mb-4 px-[5vw]">Dans une copropriété, la mise en place d'une <span class="text-purple font-semibold">infrastructure de recharge collective</span>
+            <br> pour les véhicules électriques présente de nombreux avantages.
+            <br><br>
+            Voici les principaux points à considérer :
+        </p>
+        <Slider 
+            items={bigCards} 
+            itemClass="slider-card-default"
+            slot={true}
+            client:load
+        >
+            <article slot="slide-0" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[0].title}</h3>
+                <p class="text-sm text-metal font-medium">{bigCards[0].text}</p>
+            </article>
+            <article slot="slide-1" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[1].title}</h3>
+                <p class="text-sm text-metal font-medium">{bigCards[1].text}</p>
+            </article>
+            <article slot="slide-2" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[2].title}</h3>
+                <p class="text-sm text-metal font-medium">{bigCards[2].text}</p>
+            </article>
+            <article slot="slide-3" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[3].title}</h3>
+                <p class="text-sm text-metal font-medium">{bigCards[3].text}</p>
+            </article>
+            <article slot="slide-4" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[4].title}</h3>
+                <p class="text-sm text-metal font-medium">{bigCards[4].text}</p>
+            </article>
+        </Slider>
+    </div>
+
+    <Section smallBottomMargin={true} c="hidden lg:block">
         <div class="flex flex-col gap-2 mb-10 lg:ml-20 items-center lg:items-start">
             <h2 class="text-base font-bold">Infrastructure collective</h2>
             <span class="bg-purple h-[4px] w-[200px] block"></span>
@@ -78,6 +114,18 @@ const cards = [
         </div>
     </Section>
 
+    <div class="block lg:hidden mb-10">
+        <div class="flex flex-col gap-1 lg:gap-2 mb-10 px-[5vw]">
+            <h2 class="text-mobile lg:text-base lg:font-bold">Infrastructure collective</h2>
+            <span class="bg-purple h-[2px] w-[120px] lg:h-[4px] lg:w-[200px] block"></span>
+        </div>
+        <Slider 
+            items={cards} 
+            itemClass="slider-card-default"
+            client:load
+        />
+    </div>
+
     <Section flex={true} smallBottomMargin={true}>
         <ButtonContact />
     </Section>
@@ -88,7 +136,7 @@ const cards = [
                 slot="text"
                 class="inline gap-1"
             >
-                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
+                <span class="mobile-text font-medium text-[19px] tracking-3 leading-[142%]">
                     Le montant maximal d’aide versée est fixé pour les infrastructures collectives (hors travaux de voirie extérieur) à 4000 euros jusqu’à 50 places. Augmenté de 75 euros par place supplémentaire. 
                     Dans la limité de 15 000 euros au total par copropriété. 
                     <br><a href="/doc/guide.pdf" target="_blank" class="font-semibold link-effect spacing">Téléchargez le guide du gouvernement</a>

@@ -75,6 +75,7 @@ svg, path {
 		background: linear-gradient(180deg, rgba(238, 239, 242, 0.00) 50%, rgb(238, 239, 242) 100%);
 		transition: .3s ease-in-out;
 		opacity: 0;
+		z-index: 1000;
 	}
 
 	&:not(.active) {
@@ -92,9 +93,9 @@ svg, path {
 
 svg {
 	transform-origin: initial;
-	path {
+	path, rect {
 		transform-box: initial;
 	}
-}
+}	
 
 </style>

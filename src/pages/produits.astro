@@ -10,6 +10,7 @@ import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
 import PageHero from '../components/PageHero.astro';
+import DropdownTroncat from '../components/dropdownTroncat.vue';
 
 const products = [
     {
@@ -57,6 +58,44 @@ const products = [
     
 ]
 
+
+const introText = `
+<p class="inline">
+    <span class="inline-block w-[100px] mr-[3px] mb-[-2px] lg:mb-0">
+        <Image 
+            slot="logo"
+            src="/img/logo/text_burgundy.svg" 
+            alt="Preezeo colored Logo"
+            display='inline'
+            fetchPriority={true}
+        />
+    </span>
+    <span class="leading-1">
+        votre partenaire privilégié pour l'électrification de votre mobilité. 
+        Nous sommes fiers de vous présenter une gamme complète de bornes de recharge pour véhicules électriques,
+        ainsi que des accessoires de qualité pour répondre à tous vos besoins en matière de recharge
+    </span>
+    <br>
+    <span class="">
+        Pour répondre à vos besoins spécifiques, nous proposons des prises renforcées de type “Greenup”, 
+        ainsi que des bornes de recharge en mode 3 et mode 4 avec supervision et communication intégrées.
+    </span>
+    <br>
+    <span class="">
+        Vous pouvez compter sur notre sélection de marques partenaires de renom telles que ALFEN, SCHNEIDER, 
+        LAFON, MICHAUD, et d'autres sur demande.
+    </span>
+    <br>
+    <span class="">
+        Toutes les bornes proposées répondent aux standards les plus hauts et aux normes applicables. Les produits proposés par PREEZEO sont “retrofit”.
+        Nous nous engageons à vous offrir des solutions évolutives et à la pointe de la technologie. 
+        Nos bornes "retrofit" vous permettent de suivre facilement l'évolution des normes sans avoir à remplacer votre borne, vous assurant ainsi une durabilité à long terme.
+        <br>
+        Toutes nos bornes sont conçues pour être évolutives et communicantes, vous offrant une expérience de recharge optimale.
+    </span>
+</p>
+`
+
 ---
 
 
@@ -68,25 +107,12 @@ const products = [
 
     <Section>
         <div class="flex flex-col justify-start gap-6 text-metal">
-            <p class="">votre partenaire privilégié pour l'électrification de votre mobilité. 
-            Nous sommes fiers de vous présenter une gamme complète de bornes de recharge pour véhicules électriques,
-            ainsi que des accessoires de qualité pour répondre à tous vos besoins en matière de recharge
-            </p>
-            <p class="">
-                Pour répondre à vos besoins spécifiques, nous proposons des prises renforcées de type “Greenup”, 
-                ainsi que des bornes de recharge en mode 3 et mode 4 avec supervision et communication intégrées.
-            </p>
-            <p class="">
-                Vous pouvez compter sur notre sélection de marques partenaires de renom telles que ALFEN, SCHNEIDER, 
-                LAFON, MICHAUD, et d'autres sur demande.
-            </p>
-            <p class="">
-                Toutes les bornes proposées répondent aux standards les plus hauts et aux normes applicables. Les produits proposés par PREEZEO sont “retrofit”.
-                Nous nous engageons à vous offrir des solutions évolutives et à la pointe de la technologie. 
-                Nos bornes "retrofit" vous permettent de suivre facilement l'évolution des normes sans avoir à remplacer votre borne, vous assurant ainsi une durabilité à long terme.
-                <br>
-                Toutes nos bornes sont conçues pour être évolutives et communicantes, vous offrant une expérience de recharge optimale.
-            </p>
+            <div class="hidden lg:block" set:html={introText}></div>
+            <div class="lg:hidden">
+                <DropdownTroncat client:only>
+                    <div set:html={introText}></div>
+                </DropdownTroncat> 
+            </div>
         </div>
     </Section>
 
@@ -118,8 +144,8 @@ const products = [
             </h2>
             <div class="w-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
                 {products.map((item) => (
-                    <div class="flex flex-col gap-4 p-4 border-2 border-dotted border-purple lg:p-8 lg:max-w-[450px]">
-                        <a href={item.link} target="_blank" class="duration-300 w-fit max-w-[120px] max-h-[70px] hover:opacity-70">
+                    <div class="flex flex-col gap-4 p-4 border-2 border-dotted border-purple rounded-lg lg:p-8 lg:max-w-[450px]">
+                        <a href={item.link} target="_blank" class="duration-300 w-fit mx-auto max-w-[120px] max-h-[70px] hover:opacity-70">
                             <Image 
                                 src={`/img/partners/${item.name.toLowerCase()}.png`}
                                 alt={`${item.name}'s logo`}

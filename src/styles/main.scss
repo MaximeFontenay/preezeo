@@ -21,6 +21,30 @@
     }
 } 
 
+.slider-card-default {
+    @apply min-w-[190px] w-[190px] border-purple bg-light-purple flex-1 flex justify-center items-center relative flex-col gap-2 p-4 rounded-lg text-xs font-medium text-center border
+}
+
+
+.slider-big-card {
+    @apply flex flex-1 min-w-[80vw] sm:min-w-[70vw] md:min-w-[390px] snap-center gap-3 relative flex-col rounded-lg p-6 border border-purple bg-light-purple
+}
+
+.slider-financement {
+    @apply flex-1 min-w-[800px] max-w-[850px] snap-center flex gap-6 h-fit bg-light-purple rounded-lg p-6 border border-purple 
+}
+
+.wrapper {
+    position: relative;
+    z-index: 100;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90vw;
+    max-width: 1400px;
+    @media screen and (max-width: 550px) {
+        width: 90vw;
+    }
+}
 
 .link-effect {
     position: relative;
@@ -44,4 +68,25 @@
         width: 100%;
         transition: ease-in-out .4s;
     }
+    @media screen and (max-width: 760px) {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+        &:after {
+            width: 0!important;
+        }
+    }
 }
+
+.linear-border-tl {
+    border-image: linear-gradient(130deg, #FFB800, #515BE0) 1;
+}
+
+.linear-border-tr {
+    border-image: linear-gradient(230deg, #FFB800, #515BE0) 1;
+}
+
+.linear-border-b {
+    border-image: linear-gradient(0deg, #FFB800, #515BE0) 1;
+}
+

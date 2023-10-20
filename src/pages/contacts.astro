@@ -6,6 +6,7 @@ import Alert from '../components/atom/Alert.astro';
 import Image from '../components/atom/Image.astro';
 import H1 from '../components/H1.astro';
 import PageHero from '../components/PageHero.astro';
+import Button from '../components/atom/Button.astro';
 
 ---
 
@@ -99,9 +100,9 @@ import PageHero from '../components/PageHero.astro';
     <PageHero h1="Contactez nous" icon="message"/>
 
     <Section>
-        <div class="relative flex-col lg:flex-row flex gap-16 justify-between items-stretch mx-auto bg-light2 p-4 lg:p-10 border border-purple rounded-2xl">
-            <div class="flex flex-col gap-16 ">
-                <div class="lg:absolute lg:top-10 lg:left-10 h-[25px]">
+        <div class="relative flex-col-reverse lg:flex-row flex gap-4 lg-gap-16 justify-between items-stretch mx-auto lg:bg-light2 px-4 py-6 lg:p-10 lg:border border-purple rounded-2xl">
+            <div class="flex flex-col lg:gap-16">
+                <div class="hidden lg:block lg:absolute lg:top-10 lg:left-10 h-[25px]">
                     <Image 
                         src="/img/logo/text_burgundy.svg" 
                         alt="Preezeo logo"
@@ -109,10 +110,10 @@ import PageHero from '../components/PageHero.astro';
                     />
                 </div>
 
-                <div class="flex flex-col grow-1 gap-4 justify-start items-start my-auto">
+                <div class="flex flex-col grow-1 gap-4 justify-start items-start my-auto border-2 border-dotted border-purple rounded-lg p-4 lg:p-0">
                     <ul class="flex flex-col gap-4 ">
                         <li data-device="mail" class="flex items-center gap-4 py-1 cursor-pointer duration-300 font-medium hover:opacity-50">
-                            <div class="w-[30px]">
+                            <div class="flex items-center justify-center w-[30px] h-[30px]">
                                 <Image 
                                     src="/img/icons/mail.svg" 
                                     alt="Mail icon"
@@ -122,7 +123,7 @@ import PageHero from '../components/PageHero.astro';
                             <p class="text-sm font-semibold tracking-2">contact@preezeo.fr</p>
                         </li>
                         <li data-device="phone" class="flex items-center gap-4 py-1 cursor-pointer duration-300 font-medium hover:opacity-50">
-                            <div class="w-[30px]">
+                            <div class="flex items-center justify-center w-[30px] h-[30px]">
                                 <Image 
                                     src="/img/icons/phone.svg" 
                                     alt="Phone icon"
@@ -133,7 +134,7 @@ import PageHero from '../components/PageHero.astro';
                         </li>
                         <li class="flex items-center gap-4 py-1 cursor-pointer duration-300 font-medium hover:opacity-50">
                             <a class="flex items-center gap-4" href="https://www.google.fr/maps/place/57+Av.+du+Mar%C3%A9chal+Juin,+64200+Biarritz/@43.470901,-1.5429779,17z/data=!3m1!4b1!4m6!3m5!1s0xd51153581b41ef9:0xf7cc06159a644b4!8m2!3d43.4708971!4d-1.540403!16s%2Fg%2F11bw44dfs2?entry=ttu" target="_blank">
-                                <div class="w-[30px]">
+                                <div class="flex items-center justify-center w-[30px] h-[30px]">
                                     <Image 
                                         src="/img/icons/location.svg" 
                                         alt="Location icon"
@@ -147,8 +148,8 @@ import PageHero from '../components/PageHero.astro';
                 </div>
             </div>
 
-            <div class="flex flex-col gap-6 grow-1 bg-metal text-blue px-8 py-10 rounded-xl">
-                <h2 class="text-base tracking-2 font-bold">Je suis ...</h2>
+            <div class="flex flex-col gap-6 grow-1 lg:bg-metal lg:text-blue border-2 lg:border-none border-purple px-4 py-6 lg:px-8 lg:py-10 rounded-lg lg:rounded-xl">
+                <h2 class="hidden lg:block text-base tracking-2 font-bold">Je suis ...</h2>
 
                 <form 
                     class="flex flex-col items-stretch gap-5 w-100"
@@ -186,12 +187,18 @@ import PageHero from '../components/PageHero.astro';
                         <textarea id="form_message" name="message" placeholder="Message*" required></textarea>
                     </div>
 
-                    <div class="form_group flex gap-2 mt-20">
-                        <button type="submit" class="ml-auto py-2 px-8 border border-purple rounded-xl duration-150 cursor-pointer h-[40px] max-w-[150px] hover:bg-purple">Envoyer</button>
+                    <div class="form_group flex gap-2 mt-10 lg:mt-20">
+                        <div class="w-fit ml-auto">
+                            <Button
+                                text="Envoyer"
+                                color="blue"
+                                type="submit"
+                            />
+                        </div>
                     </div>
-
                 </form>
             </div>
+
 
         </div>
     </Section>
@@ -217,6 +224,12 @@ import PageHero from '../components/PageHero.astro';
     }
 }
 
+.select-category input:checked + label {
+    @media screen and (max-width: 768px) {
+        color: var(--light);
+    }
+}
+
 .select-category label {
     @include flex(center,center);
     flex-grow: 1;
@@ -233,6 +246,10 @@ import PageHero from '../components/PageHero.astro';
     border: solid 1px var(--purple);
     transition: .2s linear;
     outline: 1.5px $t solid;
+
+    @media screen and (max-width: 768px) {
+        color: var(--purple);
+    }
 
     &:hover {
         outline-color: var(--purple);
@@ -269,8 +286,6 @@ input, textarea {
             outline-color: $t !important;
         }
     }
-
-    
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover, 

@@ -10,8 +10,45 @@ import Image from '../components/atom/Image.astro';
 import Button from '../components/atom/Button.astro';
 import H1 from '../components/H1.astro';
 import PageHero from '../components/PageHero.astro';
-import DropdownTroncat from '../components/DropdownTroncat.vue';
+import DropdownTroncat from '../components/dropdownTroncat.vue';
+import Slider from '../components/slider.vue';
+import type APropos from './a-propos.astro';
 
+const textIntro = `
+    <span class="leading-1">
+        Bienvenue chez
+    </span>
+    <span class="inline-block w-[100px] mr-[3px] mb-[-2px] lg:mb-0">
+        <Image 
+            slot="logo"
+            src="/img/logo/text_burgundy.svg" 
+            alt="Preezeo colored Logo"
+            display='inline'
+            fetchPriority={true}
+        />
+    </span>
+    <span class="leading-1">, votre Partenaire de Confiance pour une Mobilité Électrique Performante.
+        <br>
+        <br>
+        Ici, nous comprenons les besoins spécifiques des professionnels qui cherchent à embrasser la mobilité électrique tout en maintenant une efficacité économique optimale. Notre engagement envers les petites entreprises, les gîtes, les golfs, les hôtels, les campings et bien d'autres, réside dans notre détermination à offrir un service de qualité supérieure.
+        <br>
+        <br>
+        En tant que spécialistes des solutions de recharge pour véhicules électriques, nous allions notre expertise à une connaissance approfondie des réglementations gouvernementales en constante évolution. Cela nous permet de vous proposer une configuration sur mesure, parfaitement adaptée à vos besoins et obligations. Que vous cherchiez à offrir des services de recharge à vos clients ou à votre personnel, nous vous accompagnons dans chaque étape pour vous garantir une transition en douceur vers la mobilité électrique.
+        <br>
+        <br>
+        Chez 
+    </span>
+    <span class="inline-block w-[100px] mr-[3px] mb-[-2px] lg:mb-0">
+        <Image 
+            slot="logo"
+            src="/img/logo/text_burgundy.svg" 
+            alt="Preezeo colored Logo"
+            display='inline'
+            fetchPriority={true}
+        />
+    </span>
+    <span>, notre priorité est de vous offrir bien plus qu'une simple borne de recharge. Nous vous proposons une solution complète, taillée sur mesure pour votre entreprise, tout en prenant en compte vos objectifs financiers. Rejoignez nous dans cette transition vers un avenir plus propre et plus performant, tout en bénéficiant d'une expertise inégalée et d'un service client dévoué.</span>       
+`
 
 const bigCards = [
     {title: 'Attirer une clientèle électromobile', text: "En installant une borne de recharge, les professionnels peuvent <span class='text-purple font-semibold'>attirer et fidéliser une clientèle sensible aux enjeux environnementaux</span> et qui privilégie les véhicules électriques. Offrir un service de recharge facilement accessible peut devenir un <span class='text-purple font-semibold'>réel avantage concurrentiel</span>, en montrant son engagement en faveur de la mobilité durable."},
@@ -21,17 +58,6 @@ const bigCards = [
     {title: 'Favoriser les déplacements professionnel', text: "Pour les entreprises privées, disposer de bornes de recharge permet de faciliter les déplacements professionnels en véhicules électriques pour leurs employés. <span class='text-purple font-semibold'>Cela encourage l'adoption de voitures électriques dans la flotte d'entreprise et contribue à réduire les émissions de CO2</span>. De plus, offrir une infrastructure de recharge au sein de l'entreprise peut être perçu comme <span class='text-purple font-semibold'>un avantage attractif pour les employés et les visiteurs.</span>"},
 ]
 
-const cards = [
-    {html: '<span class="text-purple">TVA 5.5 %</span> si logement achevé depuis <span class="text-purple">plus de 2 ans</span>'},
-    {html: 'Pour usage collectif. <br> <br> <a class="link-effect spacing" href="https://www.avere-france.org/recharge-a-domicile-et-en-entreprise/#un-guide-reference-pour-la-recharge-en-copropriete-5">Guide Avere</a>'},
-    {html: 'Installation <span class="text-purple">garantie</span>'},
-    {html: 'Visite technique + Etude + Devis'},
-    {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>'},
-    {html: 'La décision requiert la <span class="text-purple">majorité</span> des participants à l’AG.'},
-    {html: 'Prime de <span class="text-purple">50 % du montant HT</span> du matériel et de l’installation des points de recharge.<br> Plafonné à <span class="text-purple">1 660 € / point de recharge</span>'},
-    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>'},
-    {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>'},
-]
 ---
 
 <Layout title="Preezeo - Professionnels">
@@ -39,56 +65,10 @@ const cards = [
 
     <PageHero h1="pour infrastructures professionnels" icon="building"/>
 
-    <Section c="lg:px-6">
+    <Section c="hidden lg:block lg:px-6" smallBottomMargin={true}>
         <div class="flex flex-col gap-10 lg:px-20">
-
-            <div class="hidden lg:block">
-                <p class="font-medium text-[19px] max-h-[300px] lg:max-h-full">
-                    desktop
-                </p>
-            </div>
-	       
-
-            <div class="lg:hidden">
-                <DropdownTroncat client:load>
-                    <span class="leading-1">
-                        Bienvenue chez
-                    </span>
-                    <span class="inline-block w-[100px] mr-[3px]">
-                        <Image 
-                            slot="logo"
-                            src="/img/logo/text_burgundy.svg" 
-                            alt="Preezeo colored Logo"
-                            display='inline'
-                            fetchPriority={true}
-                        />
-                    </span>
-                    <span class="leading-1">, votre Partenaire de Confiance pour une Mobilité Électrique Performante.
-                        <br>
-                        <br>
-                        Ici, nous comprenons les besoins spécifiques des professionnels qui cherchent à embrasser la mobilité électrique tout en maintenant une efficacité économique optimale. Notre engagement envers les petites entreprises, les gîtes, les golfs, les hôtels, les campings et bien d'autres, réside dans notre détermination à offrir un service de qualité supérieure.
-                        <br>
-                        <br>
-                        En tant que spécialistes des solutions de recharge pour véhicules électriques, nous allions notre expertise à une connaissance approfondie des réglementations gouvernementales en constante évolution. Cela nous permet de vous proposer une configuration sur mesure, parfaitement adaptée à vos besoins et obligations. Que vous cherchiez à offrir des services de recharge à vos clients ou à votre personnel, nous vous accompagnons dans chaque étape pour vous garantir une transition en douceur vers la mobilité électrique.
-                        <br>
-                        <br>
-                        Chez 
-                    </span>
-                    <span class="inline-block w-[100px] mr-[3px]">
-                        <Image 
-                            slot="logo"
-                            src="/img/logo/text_burgundy.svg" 
-                            alt="Preezeo colored Logo"
-                            display='inline'
-                            fetchPriority={true}
-                        />
-                    </span>
-                    <span>, notre priorité est de vous offrir bien plus qu'une simple borne de recharge. Nous vous proposons une solution complète, taillée sur mesure pour votre entreprise, tout en prenant en compte vos objectifs financiers. Rejoignez nous dans cette transition vers un avenir plus propre et plus performant, tout en bénéficiant d'une expertise inégalée et d'un service client dévoué.</span>
-                </DropdownTroncat>
-            </div>
-
-       
-
+            <p class="font-medium text-[19px] max-h-[300px] lg:max-h-full" set:html={textIntro}>
+            </p>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mx-auto w-full">
                 {bigCards.map((item) => (
                     <article class="flex flex-1 gap-3 relative flex-col rounded-lg p-6 border border-purple bg-light-purple">
@@ -100,27 +80,40 @@ const cards = [
         </div>
     </Section>
 
-    <Section smallBottomMargin={true}>
-        <div class="flex flex-col gap-2 mb-10 lg:ml-20 items-center lg:items-start">
-            <h2 class="text-base font-bold">Infrastructure collective</h2>
-            <span class="bg-purple h-[4px] w-[200px] block"></span>
+    <div class="block lg:hidden mb-10">
+        <div class="px-[5vw] mb-10">
+            <DropdownTroncat client:only>
+                <p set:html={textIntro}></p>
+            </DropdownTroncat>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[880px] gap-4 lg:max-w-[880px] mx-auto">
-            {cards.map((item) => (
-                <div class="flex items-center justify-center ">
-                    <Card 
-                        color="light"
-                        shadow={true}
-                        border={true}
-                    >  
-                        <div slot="content" class="flex flex-col align-center justify-center gap-2 h-[160px] px-4">
-                            <h3 class="font-montserrat font-bold text-sm text-center" set:html={item.html}></h3>
-                        </div>
-                    </Card>
-                </div>
-            ))}
-        </div>
-    </Section>
+        <Slider 
+            items={bigCards} 
+            itemClass="slider-card-default"
+            slot={true}
+            client:load
+        >
+            <article slot="slide-0" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[0].title}</h3>
+                <p class="text-sm text-metal font-medium" set:html={bigCards[0].text}></p>
+            </article>
+            <article slot="slide-1" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[1].title}</h3>
+                <p class="text-sm text-metal font-medium" set:html={bigCards[1].text}></p>
+            </article>
+            <article slot="slide-2" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[2].title}</h3>
+                <p class="text-sm text-metal font-medium" set:html={bigCards[2].text}></p>
+            </article>
+            <article slot="slide-3" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[3].title}</h3>
+                <p class="text-sm text-metal font-medium" set:html={bigCards[3].text}></p>
+            </article>
+            <article slot="slide-4" class="slider-big-card">
+                <h3 class="font-montserrat font-semibold text-[19px] text-purple">{bigCards[4].title}</h3>
+                <p class="text-sm text-metal font-medium" set:html={bigCards[4].text}></p>
+            </article>
+        </Slider>
+    </div>
 
     <Section flex={true} smallBottomMargin={true}>
         <ButtonContact />
@@ -132,8 +125,10 @@ const cards = [
                 slot="text"
                 class="inline gap-1"
             >
-                <span class="font-medium text-[19px] tracking-3 leading-[142%]">
-                    L'installation de bornes de recharge au sein des entités professionnelles présente de nombreux avantages, allant de <span class='text-purple font-semibold'>l'attraction d'une clientèle électromobile à l'amélioration de l'expérience client en passant par la promotion d'une image écologique</span>. De plus, cela favorise la transition vers une mobilité plus durable et peut contribuer à renforcer l'engagement en faveur de l'environnement.
+                <span class="mobile-text lg:font-medium lg:text-[19px] tracking-3 leading-[142%]">
+                    L'installation de bornes de recharge au sein des entités professionnelles présente de nombreux avantages, allant de 
+                    <span class='text-purple'>l'attraction d'une clientèle électromobile à l'amélioration de l'expérience client en passant par la promotion d'une image écologique</span>. 
+                    De plus, cela favorise la transition vers une mobilité plus durable et peut contribuer à renforcer l'engagement en faveur de l'environnement.
                 </span>
             </p>
         </Tips>
@@ -151,5 +146,7 @@ const cards = [
     max-width: unset;
     translate: 85px 20px;
 }
+
+
 
 </style>

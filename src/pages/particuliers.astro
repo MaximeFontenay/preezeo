@@ -11,6 +11,7 @@ import CardSelect from '../components/cardSelect.astro';
 import H1 from '../components/H1.astro';
 import Dropdown from '../components/dropdown.vue';
 import PageHero from '../components/PageHero.astro';
+import Slider from '../components/slider.vue';
 
 
 const houseCards = [
@@ -21,7 +22,7 @@ const houseCards = [
     {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>',},
     {html: 'Pour locataire et propriétaire',},
     {html: 'Professionnel exerçant à domicile: <span class="text-purple">TVA 5.5% + Prime ADVENIR plafond de 2000 euros</span>',},
-    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>',},
+    {html: '<a href="/financement" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>',},
     {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>',},
 ]
 
@@ -32,7 +33,7 @@ const appartementCardsOne = [
     {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>',},
     {html: 'Pour locataire et propriétaire',},
     {html: 'Professionnel exerçant à domicile: <span class="text-purple">TVA 5.5% + Prime ADVENIR plafond de 2000 euros</span>',},
-    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>',},
+    {html: '<a href="/financement" class="mx-5 link-effect spacing">Tout savoir sur le financement</a>',},
     {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>',},
 ]
 
@@ -43,7 +44,7 @@ const appartementCardsTwo = [
     {html: 'Matériel et installation <span class="text-purple">assurés et garantie par Preezeo</span>',},
     {html: 'Locataire ou propriétaire <br> Pour usage <span class="text-purple">individuel</span>',},
     {html: 'Professionnel exerçant à domicile: <span class="text-purple">TVA 5.5% + Prime ADVENIR plafond de 2000 euros</span>',},
-    {html: '<a href="/subventions" class="mx-5 link-effect spacing">Tout savoir sur les Subventions</a>',},
+    {html: '<a href="/financement" class="mx-5 link-effect spacing">Tout savoir sur le financement</a>',},
     {html: '<a href="/informations" class="link-effect spacing">Informations utiles</a>',},
 ]
 
@@ -86,9 +87,7 @@ const bigCards = [
             viewsWrapper.setAttribute('data-active', activeCard)
         })
     })
-    console.log(activeCard);
     viewsWrapper.setAttribute('data-active', activeCard)
-    
 </script>
 
 
@@ -126,7 +125,7 @@ const bigCards = [
                 </div>
             </div>
             
-            <div class="flex flex-col gap-6 lg:-translate-y-1/2">
+            <div class="flex flex-col gap-6 mt-4 lg:mt-0 lg:-translate-y-1/2">
                 <p class="font-bold">J'habite dans :</p>
                 <div class="grid grid-cols-2 gap-4 md:gap-6 items-stretch">
                     <CardSelect items={cardSelect} />
@@ -146,7 +145,7 @@ const bigCards = [
                         slot="text"
                         class="inline gap-1"
                     >
-                        <span class="font-medium text-[15px] tracking-3 leading-[142%]">
+                        <span class="text-mobile lg:font-medium lg:text-[15px] lg:tracking-3 leading-[142%]">
                             <span class="text-purple">Le crédit d’impôts</span> 
                             pour la transition énergétique permet aux propriétaires et locataires d’une 
                             <span class="text-purple">résidence principale</span> de déduire jusqu’à
@@ -161,12 +160,12 @@ const bigCards = [
                 </Tips>
             </Section>
         
-            <Section smallBottomMargin={true}>
-                <div class="flex flex-col gap-2 mb-10">
-                    <h2 class="text-base font-bold">Vous habitez une maison individuelle</h2>
-                    <span class="bg-purple h-[4px] w-[200px] block"></span>
+            <Section smallBottomMargin={true} c="hidden lg:block">
+                <div class="flex flex-col gap-1 lg:gap-2 mb-10">
+                    <h2 class="text-mobile lg:text-base lg:font-bold">Vous habitez une maison individuelle</h2>
+                    <span class="bg-purple h-[2px] w-[120px] lg:h-[4px] lg:w-[200px] block"></span>
                 </div>
-                <div class=`lg:grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto flex overflow-x-scroll scrollbar-hide w-[100vw] -translate-x-[5vw] lg:-translate-x-0 snap-x snap-mandatory px-10 pb-5`>
+                <div class=`grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto px-10 pb-5`>
                     {houseCards.map((item) => (
                         <div class="flex items-center justify-center snap-center">
                             <Card 
@@ -182,6 +181,18 @@ const bigCards = [
                     ))}
                 </div>
             </Section>
+
+            <div class="block lg:hidden mb-10">
+                <div class="flex flex-col gap-1 lg:gap-2 mb-10 px-[5vw]">
+                    <h2 class="text-mobile lg:text-base lg:font-bold">Vous habitez une maison individuelle</h2>
+                    <span class="bg-purple h-[2px] w-[120px] lg:h-[4px] lg:w-[200px] block"></span>
+                </div>
+                <Slider 
+                    items={houseCards} 
+                    itemClass="slider-card-default"
+                    client:load
+                />
+            </div>
         
             <Section smallBottomMargin={true}>
                 <div class="w-fit mx-auto">
@@ -235,10 +246,10 @@ const bigCards = [
                     ))}
                 </div>
             </Section>
-            <Section smallBottomMargin={true}>
-                <div class="flex flex-col gap-2 mb-10">
-                    <h2 class="text-base font-bold">Borne de recharge à usage partagé par les copropriétaires</h2>
-                    <span class="bg-purple h-[4px] w-[200px] block"></span>
+            <Section smallBottomMargin={true} c="hidden lg:block">
+                <div class="flex flex-col gap-1 lg:gap-2 mb-10">
+                    <h2 class="text-mobile lg:text-base lg:font-bold">Borne de recharge à usage partagé par les copropriétaires</h2>
+                    <span class="bg-purple h-[2px] w-[120px] lg:h-[4px] lg:w-[200px] block"></span>
                 </div>
                 <div class=`lg:grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto flex overflow-x-scroll scrollbar-hide w-[100vw] -translate-x-[5vw] lg:-translate-x-0 snap-x snap-mandatory px-10`>
                     {appartementCardsOne.map((item) => (
@@ -256,13 +267,26 @@ const bigCards = [
                     ))}
                 </div>
             </Section>
+
+            <div class="block lg:hidden mb-10">
+                <div class="flex flex-col gap-1 lg:gap-2 mb-10 px-[5vw]">
+                    <h2 class="text-mobile lg:text-base lg:font-bold">Borne de recharge à usage partagé par les copropriétaires</h2>
+                    <span class="bg-purple h-[2px] w-[120px] lg:h-[4px] lg:w-[200px] block"></span>
+                </div>
+                <Slider 
+                    items={appartementCardsOne} 
+                    itemClass="slider-card-default"
+                    client:load
+                />
+            </div>
+
             <Section flex={true} smallBottomMargin={true}>
                 <ButtonContact />
             </Section>
-            <Section smallBottomMargin={true}>
-                <div class="flex flex-col gap-2 mb-10">
-                    <h2 class="text-base font-bold">Borne de recharge à usage individuel</h2>
-                    <span class="bg-purple h-[4px] w-[200px] block"></span>
+            <Section smallBottomMargin={true} c="hidden lg:block">
+                <div class="flex flex-col gap-1 lg:gap-2 mb-10">
+                    <h2 class="text-mobile lg:text-base lg:font-bold">Borne de recharge à usage individuel</h2>
+                    <span class="bg-purple h-[2px] w-[120px] lg:h-[4px] lg:w-[200px] block"></span>
                 </div>
                 <div class=`lg:grid lg:grid-cols-3 gap-4 max-w-[880px] mx-auto flex overflow-x-scroll scrollbar-hide w-[100vw] -translate-x-[5vw] snap-x snap-mandatory px-10`>
                     {appartementCardsTwo.map((item) => (
@@ -280,6 +304,20 @@ const bigCards = [
                     ))}
                 </div>
             </Section>
+
+            <div class="block lg:hidden mb-10">
+                <div class="flex flex-col gap-1 lg:gap-2 mb-10 px-[5vw]">
+                    <h2 class="text-mobile lg:text-base lg:font-bold">Borne de recharge à usage individuel</h2>
+                    <span class="bg-purple h-[2px] w-[120px] lg:h-[4px] lg:w-[200px] block"></span>
+                </div>
+                <Slider 
+                    items={appartementCardsTwo} 
+                    itemClass="slider-card-default"
+                    client:load
+                />
+            </div>
+
+
             <Section flex={true} smallBottomMargin={true}>
                 <ButtonContact />
             </Section>
@@ -289,7 +327,7 @@ const bigCards = [
                         slot="text"
                         class="inline gap-1"
                     >
-                        <span class="font-medium text-[15px] tracking-3 leading-[142%]">
+                        <span class="mobile-text lg:font-medium lg:text-[15px] lg:tracking-3 leading-[142%]">
                             Il est important de noter que le choix entre <span class="text-yellow">une prise partagée</span> et <span class="text-yellow">une prise individuelle</span>
                             dépend des contraintes spécifiques de la copropriété, du nombre de résidents intéressés 
                             par la recharge des véhicules électriques et des ressources disponibles. 
@@ -328,13 +366,17 @@ const bigCards = [
 }
 .views-wrapper {
     .house-view, .appartement-view {
-        display: none;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
     }
     &[data-active="house"] .house-view {
-        display: block;
+        opacity: 1;
+        max-height: 100%;
     }
     &[data-active="appartement"] .appartement-view {
-        display: block;
+        opacity: 1;
+        max-height: 100%;
     }
 }
 
