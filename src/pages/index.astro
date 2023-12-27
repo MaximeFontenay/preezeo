@@ -1,409 +1,235 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
-import Button from '../components/atom/Button.astro';
-import Image from '../components/atom/Image.astro';
-import H1 from '../components/H1.astro';
-import Tips from '../components/Tips.astro';
-import Section from '../components/Section.astro';
-import Card from '../components/Card.astro';
-import ProjectStripe from '../components/ProjectStripe.astro';
+import Image from "../components/atom/Image.astro";
+import Layout from "../layouts/Layout.astro";
 import ButtonContact from '../components/ButtonContact.astro';
-import Slider from '../components/slider.vue';
-
-
-const defaultCards = [
-    {content: 'Installation et Maintenance', link: '/installation',},
-    {content: 'Tout savoir sur les aides et les subventions', link: '/financement',},
-    {content: 'Pourquoi choisir PREEZEO', link: '/a-propos',},
-    {content: 'Nos Tarifs', link: '/tarifs',},
-    {content: 'Informations utiles', link: '/informations',},
-]
-
 --- 
 
 <Layout title="Preezeo la borne qu'il vous faut !">
-    <section class="px-[5vw] lg:px-0 flex flex-col gap-14 justify-start w-fit ml-auto mr-auto mt-8 lg:mt-0 lg:mr-[12%]">
-        <Headline />
-        <p class="mobile-text font-medium tracking-3 text-sm md:max-w-[650px]">
-            <span class="font-semibold text-yellow">PREEZEO</span> intervient dans toute la France métropolitaine afin d’installer vos bornes de recharge pour véhicules électriques. 
-            <br>
-            Nous vous assurons un service de qualité effectué par des électriciens professionnels et agréés IRVE. 
-            <br><br class="lg:hidden">
-            <span class="font-semibold text-purple">PREEZEO</span> forme de manière régulière ses techniciens. 
-            <br>
-            Nous favorisons des produits fabriqués en France et nous vous garantissons une pose sous 30 jours.
-        </p>
+    <section class="container mt-6 lg:mt-10 max-md:px-[5%]">
+        
+        <div class="flex items-center justify-between md:items-end max-md:flex-col gap-12">
+            <h2 class="paragraphe md:flex-1 md:w-1/2 max-md:w-full">
+                Labélisé Qualifelec, <span class="text-yellow">Preezeo</span> intervient dans toute la France métropolitaine afin d’installer et de maintenir vos <span class="text-yellow">bornes de recharge</span> pour véhicules électriques. 
+                Nous vous assurons un service de qualité effectué par des électriciens <span class="text-yellow">professionnels agréés IRVE</span>.
+            </h2>
+
+            <div class="md:flex-1 md:w-1/2 max-md:w-full">
+                <Image 
+                    c=""
+                    src="/img/illu/hero.svg"
+                    alt=""
+                    fetchPriority={true}
+                />
+            </div>
+        </div>
+
     </section>
 
-    <Section c="hidden lg:block relative mt-15">
-        <div class="link-svg top">
-            <svg width="68" height="114" viewBox="0 0 68 114" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M33.9753 113.5V2.25439M0 2.25439H67.9507" stroke="#FFB800" stroke-width="4.50693"/>
-            </svg> 
-        </div>
-        <H1 />
-        <div class="link-svg bottom">
-            <svg width="988" height="343" viewBox="0 0 988 343" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M985.747 342.597V310.5M985.747 310.5V279.5M985.747 310.5L5.81867 309.214L5.39599 156.444L30.0683 79.4992M41.7098 94.0542L3 94.0546V0" stroke="#FFB800" stroke-width="4.50693"/>
-            </svg>
-            <div class="flex gap-20 text-center items-end justify-end absolute bottom-[32px] xl:right-8">
-                <a href="/particuliers" class="flex flex-col gap-2 items-center justify-center">
-                    <div>
-                        <Image 
-                            src="/img/icons/house.svg" 
-                            alt="House icon"
-                            fetchPriority={true}
-                        />
-                    </div>
-                    <h3 class="font-semibold tracking-3 text-sm font-montserrat">Particulier</h3>
-                    <svg width="54" height="102" viewBox="0 0 54 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="26.8618" y1="101.083" x2="26.8618" y2="46.9998" stroke="#FFB800" stroke-width="4.50693"/>
-                        <g filter="url(#filter0_i_1738_3632)">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M34.9836 17.8545C36.6393 19.5967 37.6444 21.8845 37.6444 24.3884C37.6444 29.8434 32.8749 34.2721 27.0003 34.2721C21.1258 34.2721 16.3563 29.8434 16.3563 24.3884C16.3563 21.8583 17.3825 19.5489 19.0691 17.8C19.7607 17.0828 19.6952 15.9793 18.9228 15.3371C18.1506 14.6949 16.9621 14.7558 16.2705 15.4729C13.9882 17.8396 12.5996 20.9646 12.5996 24.3884C12.5996 31.7687 19.0524 37.7605 27.0003 37.7605C34.9483 37.7605 41.4011 31.7687 41.4011 24.3884C41.4011 21 40.041 17.9041 37.8006 15.5464C37.1146 14.8246 35.9267 14.7557 35.1493 15.3926C34.372 16.0295 34.2978 17.1326 34.9836 17.8545Z" fill="#515BE0"/>
-                        </g>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M27.0012 0C12.142 0 0.078125 11.2021 0.078125 25C0.078125 38.7979 12.142 50 27.0012 50C41.8604 50 53.9243 38.7979 53.9243 25C53.9243 11.2021 41.8604 0 27.0012 0ZM27.0012 3.48837C39.7871 3.48837 50.1676 13.1274 50.1676 25C50.1676 36.8726 39.7871 46.5116 27.0012 46.5116C14.2153 46.5116 3.83483 36.8726 3.83483 25C3.83483 13.1274 14.2153 3.48837 27.0012 3.48837ZM28.8795 27.3256V13.3721C28.8795 12.4095 28.0379 11.6279 27.0012 11.6279C25.9645 11.6279 25.1228 12.4095 25.1228 13.3721V27.3256C25.1228 28.2883 25.9645 29.0698 27.0012 29.0698C28.0379 29.0698 28.8795 28.2883 28.8795 27.3256Z" fill="#FFB800"/>
-                        <defs>
-                        <filter id="filter0_i_1738_3632" x="12.5996" y="14.8926" width="28.8008" height="24.8677" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                        <feOffset dy="2"/>
-                        <feGaussianBlur stdDeviation="4"/>
-                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
-                        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1738_3632"/>
-                        </filter>
-                        </defs>
-                    </svg>
-                </a>
+    <section class="overflow-x-clip max-w-[1400px] lg:mx-auto">
 
-                <a href="/infrastructures" class="flex flex-col gap-2 items-center justify-center">
-                    <div>
-                        <Image 
-                            src="/img/icons/apartement.svg" 
-                            alt="Apartements icon"
-                            fetchPriority={true}
-                        />
-                    </div>
-                    <h3 class="font-semibold tracking-3 text-sm font-montserrat">Infrastructure collective</h3>
-                    <svg width="54" height="195" viewBox="0 0 54 195" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <line y1="-2.25347" x2="146.942" y2="-2.25347" transform="matrix(-6.61363e-05 -1 1 -5.70256e-05 29.1797 194.942)" stroke="#FFB800" stroke-width="4.50693"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M34.9836 18.8545C36.6393 20.5967 37.6444 22.8845 37.6444 25.3884C37.6444 30.8434 32.8749 35.2721 27.0003 35.2721C21.1258 35.2721 16.3563 30.8434 16.3563 25.3884C16.3563 22.8583 17.3825 20.5489 19.0691 18.8C19.7607 18.0828 19.6952 16.9793 18.9228 16.3371C18.1506 15.6949 16.9621 15.7558 16.2705 16.4729C13.9882 18.8396 12.5996 21.9646 12.5996 25.3884C12.5996 32.7687 19.0524 38.7605 27.0003 38.7605C34.9483 38.7605 41.4011 32.7687 41.4011 25.3884C41.4011 22 40.041 18.9041 37.8006 16.5464C37.1146 15.8246 35.9267 15.7557 35.1493 16.3926C34.372 17.0295 34.2978 18.1326 34.9836 18.8545Z" fill="#515BE0"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M27.0012 0C12.142 0 0.078125 11.2021 0.078125 25C0.078125 38.7979 12.142 50 27.0012 50C41.8604 50 53.9243 38.7979 53.9243 25C53.9243 11.2021 41.8604 0 27.0012 0ZM27.0012 3.48837C39.7871 3.48837 50.1676 13.1274 50.1676 25C50.1676 36.8726 39.7871 46.5116 27.0012 46.5116C14.2153 46.5116 3.83483 36.8726 3.83483 25C3.83483 13.1274 14.2153 3.48837 27.0012 3.48837ZM28.8795 27.3256V13.3721C28.8795 12.4095 28.0379 11.6279 27.0012 11.6279C25.9645 11.6279 25.1228 12.4095 25.1228 13.3721V27.3256C25.1228 28.2883 25.9645 29.0698 27.0012 29.0698C28.0379 29.0698 28.8795 28.2883 28.8795 27.3256Z" fill="#FFB800"/>
-                    </svg>
-                </a>
-                <a href="/professionnels" class="flex flex-col gap-2 items-center justify-center">
-                    <div>
-                        <Image 
-                            src="/img/icons/building.svg" 
-                            alt="Building icon"
-                            fetchPriority={true}
-                        />
-                    </div>
-                    <h3 class="font-semibold tracking-3 text-sm font-montserrat">Professionnel</h3>
-                    <svg width="55" height="258" viewBox="0 0 55 258" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="28.2758" y1="257.352" x2="28.2758" y2="49.1312" stroke="#FFB800" stroke-width="4.50693"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M35.4817 18.8535C37.1374 20.5958 38.1424 22.8835 38.1424 25.3874C38.1424 30.8424 33.3729 35.2711 27.4984 35.2711C21.6238 35.2711 16.8544 30.8424 16.8544 25.3874C16.8544 22.8573 17.8806 20.5479 19.5672 18.799C20.2588 18.0819 20.1932 16.9783 19.4209 16.3361C18.6486 15.6939 17.4601 15.7548 16.7685 16.4719C14.4862 18.8386 13.0977 21.9636 13.0977 25.3874C13.0977 32.7677 19.5504 38.7595 27.4984 38.7595C35.4464 38.7595 41.8991 32.7677 41.8991 25.3874C41.8991 21.999 40.5391 18.9032 38.2986 16.5455C37.6127 15.8236 36.4247 15.7547 35.6473 16.3916C34.87 17.0285 34.7958 18.1316 35.4817 18.8535Z" fill="#515BE0"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M27.4992 0.000976562C12.64 0.000976562 0.576172 11.2031 0.576172 25.001C0.576172 38.7989 12.64 50.001 27.4992 50.001C42.3585 50.001 54.4223 38.7989 54.4223 25.001C54.4223 11.2031 42.3585 0.000976562 27.4992 0.000976562ZM27.4992 3.48935C40.2851 3.48935 50.6656 13.1284 50.6656 25.001C50.6656 36.8736 40.2851 46.5126 27.4992 46.5126C14.7134 46.5126 4.33288 36.8736 4.33288 25.001C4.33288 13.1284 14.7134 3.48935 27.4992 3.48935ZM29.3776 27.3266V13.3731C29.3776 12.4104 28.5359 11.6289 27.4992 11.6289C26.4625 11.6289 25.6209 12.4104 25.6209 13.3731V27.3266C25.6209 28.2892 26.4625 29.0707 27.4992 29.0707C28.5359 29.0707 29.3776 28.2892 29.3776 27.3266Z" fill="#FFB800"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </Section>
+        <div class="card-scroller flex justify-start items-stretch gap-8 w-full overflow-x-scroll overflow-y-clip pb-8 snap-x snap-mandatory snap-always px-[5%]">
 
-    <Section c="lg:hidden mt-8" flex={true} smallBottomMargin={true}>
-        <div class="flex flex-wrap gap-2 items-stretch justify-center">
-            <a href="/particuliers" class="linear-border-tl border text-center rounded-md p-4 flex w-[calc(50%-5px)] max-h-[90px] max-w-[135px] flex-col items-center justify-center gap-2">
-                <div class="w-[25px] h-[25px]">
-                    <Image 
-                        src="/img/icons/house.svg" 
-                        alt="House icon"
-                        fetchPriority={true}
-                    />
+            <a href="#" class="card">
+                <div class="absolute z-[-1] h-full w-full left-4">
+                    <Image src="/img/illu/card-illu-1.svg" alt="" />
                 </div>
-                <h3 class="flex font-semibold tracking-3 line-clamp-2 text-xs font-montserrat">Particulier</h3>
+                <div class="card__overlay">
+                    <h2 class="font-montserrat font-black h-[2em] tracking-2 text-2xl mb-4">Guide irve</h2>
+                    <p class="font-medium leading-snug text-lg">Tout savoir sur ces nouveaux installateurs</p>
+                    <svg class="absolute bottom-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
+                    </svg>
+                </div>
             </a>
-            <a href="/professionnels" class="linear-border-tr border text-center rounded-md p-4 flex w-[calc(50%-5px)] max-h-[90px] max-w-[135px] flex-col items-center justify-center gap-2">
-                <div class="w-[25px] h-[25px]">
-                    <Image 
-                        src="/img/icons/building.svg" 
-                        alt="building icon"
-                        fetchPriority={true}
-                    />
+
+            <a href="#" class="card">
+                <div class="absolute z-[-1] h-full w-full left-0 -top-4">
+                    <Image src="/img/illu/card-illu-2.svg" alt="" />
                 </div>
-                <h3 class="flex font-semibold tracking-3 line-clamp-2 text-xs font-montserrat">Professionnel</h3>
+                <div class="card__overlay">
+                    <h2 class="font-montserrat font-black h-[2em] tracking-2 text-2xl mb-4">Aides & subventions</h2>
+                    <p class="font-medium leading-snug text-lg">Des solutions adaptées à votre budget</p>
+                    <svg class="absolute bottom-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
+                    </svg>
+                </div>
             </a>
-            <a href="/infrastructures" class="linear-border-b border text-center rounded-md p-2 flex w-[calc(50%-5px)] max-h-[90px] max-w-[135px] flex-col items-center justify-center gap-2">
-                <div class="w-[25px] h-[25px]">
-                    <Image 
-                        src="/img/icons/apartement.svg" 
-                        alt="apartement icon"
-                        fetchPriority={true}
-                    />
+
+            <a href="#" class="card">
+                <div class="absolute z-[-1] h-full w-full -left-10 top-4">
+                    <Image src="/img/illu/card-illu-3.svg" alt="" />
                 </div>
-                <h3 class="flex font-semibold tracking-3 line-clamp-2 text-xs font-montserrat">Infrastructures <br> collective</h3>
+                <div class="card__overlay">
+                    <h2 class="font-montserrat font-black h-[2em] tracking-2 text-2xl mb-4">Installation & Maintenance</h2>
+                    <p class="font-medium leading-snug text-lg">La pose et l’entretien de votre borne</p>
+                    <svg class="absolute bottom-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
+                    </svg>
+                </div>
+            </a>
+
+            <a href="#" class="card">
+                <div class="absolute z-[-1] h-full w-full -left-15 top-4">
+                    <Image src="/img/illu/card-illu-4.svg" alt="" />
+                </div>
+                <div class="card__overlay">
+                    <h2 class="font-montserrat font-black h-[2em] tracking-2 text-2xl mb-4">Nos produits</h2>
+                    <p class="font-medium leading-snug text-lg">Découvrez notre sélection des meilleurs produits sur le marché</p>
+                    <svg class="absolute bottom-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
+                    </svg>
+                </div>
+            </a>
+
+            <a href="#" class="card">
+                <div class="absolute z-[-1] h-full w-1/2 -left-5 top-4">
+                    <Image src="/img/illu/card-illu-5.svg" alt="" />
+                </div>
+                <div class="card__overlay">
+                    <h2 class="font-montserrat font-black h-[2em] tracking-2 text-2xl mb-4">Technique</h2>
+                    <p class="font-medium leading-snug text-lg">Le saviez vous ?</p>
+                    <svg class="absolute bottom-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
+                    </svg>
+                </div>
+            </a>
+
+            <a href="#" class="card">
+                <div class="absolute z-[-1] h-full w-1/2 inset-x-auto top-4 ">
+                    <Image src="/img/illu/card-illu-6.svg" alt="" />
+                </div>
+                <div class="card__overlay">
+                    <h2 class="font-montserrat font-black h-[2em] tracking-2 text-2xl mb-4">Preezeo</h2>
+                    <p class="font-medium leading-snug text-lg">Qui sommes nous ?</p>
+                    <svg class="absolute bottom-4 right-4" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
+                    </svg>
+                </div>
             </a>
         </div>
-    </Section>
 
-    <Section c="hidden lg:block" flex={true}>
-        <Tips btn={true} size="small">
-            <p 
-                slot="text"
-                class="inline gap-1"
-            >
-                <span class="inline-block w-[145px] mr-[3px]">
-                    <Image 
-                        slot="logo"
-                        src="/img/logo/text_burgundy.svg" 
-                        alt="Preezeo colored Logo"
-                        display='inline'
-                        fetchPriority={true}
-                    />
-                </span>
-                <span class="font-medium text-[19px] tracking-3 leading-[142%]">vous propose une étude technique pour votre installation et la maintenance de votre borne de recharge électrique.</span>
-            </p>
-        </Tips>
-    </Section>
+    </section>
 
-    <Section c="max-w-[280px] lg:max-w-full mx-auto gap-10 flex justify-center items-center flex-col lg:flex-row lg:items-stretch">
-        <Card 
-            color="dark"
-            title="Votre Besoin"
-            number={1}
-            isSmall={true}
-        >  
-            <p slot="content" class="font-semibold">
-                <span class="text-purple">Indiquez nous votre besoin.</span>
-                <br>
-                Un technicien étudie votre projet d’installation de borne de recharge pour votre véhicule électrique.
-            </p>
-        </Card>
-        <Card 
-            color="dark"
-            title="Votre Solution"
-            number={2}
-            isSmall={true}
-        >  
-            <p slot="content" class="font-semibold inline gap-1">
-                <span class="inline-block w-[94px] mr-[3px] mb-[-2px]">
-                    <Image 
-                        slot="logo"
-                        src="/img/logo/text_purple.svg" 
-                        alt="Preezeo colored Logo"
-                        display='inline'
-                        fetchPriority={true}
-                    />
-                </span>
-                <span class="text-base tracking-3">
-                    vous propose une solution adaptée à votre installation électrique et votre véhicule.
-                </span>
-            </p>
-        </Card>
-        <Card 
-            color="dark"
-            title="Notre Installation"
-            number={3}
-            isSmall={true}
-        >  
-            <p slot="content" class="font-semibold inline gap-1">
-                <span class="text-base tracking-3">
-                    Nos <span class="text-purple">techniciens spécialisés</span> installent votre borne de recharge et vous accompagne dans son usage. 
+    <section class="container max-md:px-[5%]">
+        <h2 class="paragraphe max-w-[800px] mx-auto">
+            <span class="text-purple">Preezeo</span> forme de manière régulière ses techniciens. 
+            Nous favorisons des produits <span class="text-purple">fabriqués en France</span> qui peuvent être évolutifs. <br>
+            <span class="text-purple">Spécialiste</span> de l’installation des bornes de recharge pour véhicules électriques.
+        </h2>
+    </section>
+
+
+    <section class="relative my-[10vw]">
+        <div class="absolute z-[-1] w-full -top-[33%]">
+            <Image src="/img/illu/section.svg" alt="" cover={true} c="max-w-unset max-h-unset w-full h-full" />
+        </div>
+
+        <div class="flex flex-col w-full max-w-[800px] mx-auto max-md:px-[5%]">
+            <article class="w-full flex flex-col items-center justify-center gap-5 p-6 lg:p-10 rounded-lg bg-home-cards border border-blue  backdrop-blur-xl">
+                <h2 class="text-yellow font-black text-xl">Offre de parrainage</h2>
+                <p class="paragraphe">
+                    Profitez de notre offre de parrainage exclusive chez <span class="text-purple">Preezeo</span> ! Parrainez un ami ou un proche pour <span class="text-yellow">l'installation d'une borne de recharge électrique</span>, et bénéficiez chacun d'une remise sur nos services. 
                     <br>
-                    Bienvenue chez 
-                </span>
+                    <br>
+                    Partagez les avantages de la <span class="text-yellow">mobilité électrique</span> tout en économisant sur votre installation.
+                    <br>
+                    <br>
+                    <span class="text-yellow">Rejoignez-nous dès aujourd'hui</span> pour promouvoir une mobilité plus verte et obtenir des réductions pour vous et vos proches.  
+                </p>
+            </article>
 
-                <span class="inline-block w-[94px] ml-[2px] mb-[-2px]">
-                    <Image 
-                        slot="logo"
-                        src="/img/logo/text_purple.svg" 
-                        alt="Preezeo colored Logo"
-                        display='inline'
-                        fetchPriority={true}
-                    />
-                </span>
-            </p>
-        </Card>
-    </Section>
-    
-    <Section flex={true} c="hidden md:flex">
-        <ProjectStripe />
-    </Section>
-
-    <Section flex={true} c="block md:hidden">
-        <ButtonContact />
-    </Section>
-
-    <Section flex={true} c="hidden lg:flex justify-center items-stretch flex-wrap gap-10 !max-w-[1000px] mx-auto mb-10 md:mb-[250px]">
-        {defaultCards.map((item) => (
-            <Card 
-                color="dark"
-                isSmall={true}
-                shadow={true}
-            >  
-                <a slot="content" href={item.link} class="mx-auto w-[250px] flex flex-col align-center justify-center gap-2 h-25">
-                    <h3 class="font-montserrat font-bold text-sm text-center">{item.content}</h3>
-                    <span class="bg-purple w-1/3 h-[1.5px] block mx-auto"></span>
-                </a>
-            </Card>
-        ))}
-    </Section>
-
-    <div class="lg:hidden mb-20">
-        <Slider 
-            items={defaultCards} 
-            itemClass="slider-card-default"
-            slot={true}
-            client:load
-        >
-            <Card 
-                color="dark"
-                isSmall={true}
-                shadow={true}
-                slot="slide-0"
-            >  
-                <a slot="content" href={defaultCards[0].link} class="mx-auto w-[250px] flex flex-col align-center justify-center gap-2 h-25">
-                    <h3 class="font-montserrat font-bold text-sm text-center">{defaultCards[0].content}</h3>
-                    <span class="bg-purple w-1/3 h-[1.5px] block mx-auto"></span>
-                </a>
-            </Card>
-            <Card 
-                color="dark"
-                isSmall={true}
-                shadow={true}
-                slot="slide-1"
-            >  
-                <a slot="content" href={defaultCards[1].link} class="mx-auto w-[250px] flex flex-col align-center justify-center gap-2 h-25">
-                    <h3 class="font-montserrat font-bold text-sm text-center">{defaultCards[1].content}</h3>
-                    <span class="bg-purple w-1/3 h-[1.5px] block mx-auto"></span>
-                </a>
-            </Card>
-            <Card 
-                color="dark"
-                isSmall={true}
-                shadow={true}
-                slot="slide-2"
-            >  
-                <a slot="content" href={defaultCards[2].link} class="mx-auto w-[250px] flex flex-col align-center justify-center gap-2 h-25">
-                    <h3 class="font-montserrat font-bold text-sm text-center">{defaultCards[2].content}</h3>
-                    <span class="bg-purple w-1/3 h-[1.5px] block mx-auto"></span>
-                </a>
-            </Card>
-            <Card 
-                color="dark"
-                isSmall={true}
-                shadow={true}
-                slot="slide-3"
-            >  
-                <a slot="content" href={defaultCards[3].link} class="mx-auto w-[250px] flex flex-col align-center justify-center gap-2 h-25">
-                    <h3 class="font-montserrat font-bold text-sm text-center">{defaultCards[3].content}</h3>
-                    <span class="bg-purple w-1/3 h-[1.5px] block mx-auto"></span>
-                </a>
-            </Card>
-            <Card 
-                color="dark"
-                isSmall={true}
-                shadow={true}
-                slot="slide-4"
-            >  
-                <a slot="content" href={defaultCards[4].link} class="mx-auto w-[250px] flex flex-col align-center justify-center gap-2 h-25">
-                    <h3 class="font-montserrat font-bold text-sm text-center">{defaultCards[4].content}</h3>
-                    <span class="bg-purple w-1/3 h-[1.5px] block mx-auto"></span>
-                </a>
-            </Card>
-        </Slider>
-    </div>
-
-    <Section flex={true} c="max-w-[75vw] md:max-w-fit mx-auto">
-        <Tips
-            title="Offre de parrainage"
-            size="medium"
-            btn={true}
-        >
-            <p 
-                slot="text"
-                class="inline gap-1"
-            >
-                <span class="text-[12px] lg:text-[19px] tracking-3 leading-[142%]">
-                    Profitez de notre offre de parrainage exclusive chez
-                </span>
-                    <span class="inline-block w-[100px] lg:w-[145px] mr-[3px] mb-[-3px]">
-                        <Image 
-                            slot="logo"
-                            src="/img/logo/text_burgundy.svg" 
-                            alt="Preezeo colored Logo"
-                            display='inline'
-                            fetchPriority={true}
-                        />
-                    </span> 
-                <span class="text-[12px] lg:text-[19px] tracking-3 leading-[142%]">
-                    ! Parrainez un ami ou un proche pour l'installation d'une borne de recharge électrique, et bénéficiez chacun d'une remise de 40 euros sur nos services. Partagez les avantages de la mobilité électrique tout en économisant sur votre installation.                                            Rejoignez-nous dès aujourd'hui pour promouvoir une mobilité plus verte et obtenir des réductions pour vous et vos proches. 
-                </span>
-            </p>
-        </Tips>
-    </Section>
-
-    <Section flex={true} c="mb-0">
-        <div class="grid place-items-center grid-cols-3 gap-5 md:grid-cols-5 md:gap-10">
-            <div class="h-[100px] w-[100px]">    
-                <Image 
-                    src="/img/illu/avere.png" 
-                    alt="avere Logo"
-                    fetchPriority={true}
-                />
-            </div>
-            <div class="h-[100px] w-[100px]">
-                <Image 
-                    src="/img/illu/advenir.png" 
-                    alt="advenir Logo"
-                    fetchPriority={true}
-                />
-            </div>
-            <div class="h-[100px] w-[100px]">
-                <Image 
-                    src="/img/illu/qualifelec.png" 
-                    alt="qualifelec Logo"
-                    fetchPriority={true}
-                />
-            </div>
-            <div class="h-[100px] w-[100px]">
-                <Image 
-                    src="/img/illu/evready.png" 
-                    alt="evready Logo"
-                    fetchPriority={true}
-                />
-            </div>
-            <div class="h-[100px] w-[100px]">
-                <Image 
-                    src="/img/illu/irve.png" 
-                    alt="irve Logo"
-                    fetchPriority={true}
-                />
-            </div>
+            <ButtonContact c="justify-self-end ml-auto mt-4" />
         </div>
 
-    </Section>
+    </section>
 
+
+    <section class="container max-md:px-[5%]">
+        <div class="lg:grid grid-cols-5 gap-8 scrollbar-hide max-md:flex max-md:overflow-y-clip max-md:overflow-x-scroll">
+            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
+                <Image src="/img/illu/avere.png" alt="" />
+            </div>
+            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
+                <Image src="/img/illu/advenir.png" alt="" />
+            </div>
+            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
+                <Image src="/img/illu/qualifelec.png" alt="" />
+            </div>
+            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
+                <Image src="/img/illu/evready.png" alt="" />
+            </div>
+            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
+                <Image src="/img/illu/irve.png" alt="" />
+            </div>
+            
+        </div>
+    </section>
 </Layout>
 
-<style lang="scss">
+<style lang="scss" is:global>
 @use '../styles/_variables.scss' as *;
 
-.link-svg {
-    &.top {
-        @include flex(center,flex-start);
-        @include position(-20px, 93px);
-        translate: -40px -100%;
+.card-scroller {
+    scroll-padding: 0 5%;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    mask: linear-gradient(90deg, transparent, white 5%, white 90%, transparent);
+
+    &::-webkit-scrollbar {
+        background: transparent;
+        height: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+       background: var(--blue);
     }
 
-    &.bottom {
-        @include flex(center,flex-start);
-        // @include position(calc(20px + 100%), $left:50%);
-        // position: absolute;
-        width: max-content;
-        max-width: unset;
-        translate: 85px 20px;
+    &::-webkit-scrollbar-track {
+        margin-left: 25vw;
+        margin-right: 25vw;
+        background: var(--metal);
     }
 }
+.card {
+    @apply relative overflow-clip min-w-[80%] md:min-w-[400px] bg-home-cards border border-blue rounded-lg snap-start;
+    min-height: 250px;
+    --transition: .75s ease;
+
+    @media screen and (min-width: 768px) {
+        min-height: 340px;
+    }
+    &:hover {
+       img {
+            scale: 1.125;
+            transition: var(--transition);
+       }
+
+       .card__overlay svg {
+            translate: 5px 0;
+            path {
+                fill: var(--yellow);
+            }
+       }
+    }
+
+    .card__overlay svg {
+        transition: var(--transition);
+    }
+
+    img {
+        will-change: scale;
+        transform-origin: center center;
+        transform-box: fill-box;
+        transition: .5s ease;
+    }
+
+    &__overlay {
+        @apply flex flex-col justify-center absolute w-[230px] h-full right-6 top-0 px-4 bg-white/5 backdrop-blur-xl;
+    }
+}
+
+.paragraphe {
+    @apply text-xl font-semibold leading-relaxed 
+}
+
+
 </style>

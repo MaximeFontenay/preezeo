@@ -54,7 +54,7 @@ onMounted(() => {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '../styles/_variables.scss' as *;
 
 svg, path {

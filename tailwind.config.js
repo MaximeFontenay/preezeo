@@ -1,23 +1,26 @@
 module.exports = {
   content: ['./src/**/*.{html,js,astro,vue}'],
   theme: {
-    colors: {
-      'yellow': '#FFB800',
-      'purple': '#515BE0',
-      'metal': '#313846',
-      'blue': '#E1FFF9',
-      'deep-blue': '#171C26',
-      'light-purple': '#E5E6FA',
-      'burgundy': '#580925',
-      'light': '#EEEFF2',
-      'light2': '#E5E6FA',
-      't': 'transparent',
+    container: {
+      center: true,
     },
     fontFamily: {
       montserrat: ['Montserrat', 'system-ui', 'sans-serif'],
       alien: ['Alien', 'system-ui', 'sans-serif'],
     },
     extend: {
+      colors: {
+        'yellow': '#FFB800',
+        'purple': '#515BE0',
+        'metal': '#313846',
+        'blue': '#E1FFF9',
+        'deep-blue': '#171C26',
+        'light-purple': '#E5E6FA',
+        'burgundy': '#580925',
+        'light': '#EEEFF2',
+        'light2': '#E5E6FA',
+        't': 'transparent',
+      },
       width: {
         '1px': '1px',
         '2px': '2px',
@@ -116,6 +119,10 @@ module.exports = {
       boxShadow: {
         'cardHomepage': '3px 5px 10px 0px rgba(255, 255, 255, 0.25) inset, 0px 4px 15px 0px rgba(0, 0, 0, 0.15);',
         'subLinks': '0px 1px 20px 0px rgba(0, 0, 0, 0.10)',
+      },
+
+      backgroundImage: {
+        'home-cards': "linear-gradient(0deg,#515BE0 4.62%,rgba(49,56,70,0.20) 43.93%)",
       },
       
       screens: {

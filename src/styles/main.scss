@@ -2,10 +2,20 @@
 @use 'base' as *; 
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 // html {
 //     font-size: calc(14px + 2 * ((100vw - 320px) / 1000));z
 // }
+@layer utilities {
+    .scrollbar-hide {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
 
 
 
