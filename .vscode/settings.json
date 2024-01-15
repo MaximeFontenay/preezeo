@@ -7,7 +7,10 @@
         "plaintext": "html",
         "plaintext": "astro",
         "javascript":"javascript",
-
+    },
+    "files.associations": {
+        "*.xml": "html",
+        "*.svg": "html",
     },
     "editor.quickSuggestions": {
         "other": true,
