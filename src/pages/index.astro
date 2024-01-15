@@ -2,21 +2,109 @@
 import Image from "../components/atom/Image.astro";
 import Layout from "../layouts/Layout.astro";
 import ButtonContact from '../components/ButtonContact.astro';
+
+
+const contentType : {
+    value: string,
+    text: string,
+    content: string,
+    illustrations: [string, string, string]
+}[] = [
+    {
+        value: "particulier",
+        text: "Particulier",
+        content: `
+        <span class="text-yellow">Le crédit d’impôt</span> pour la transition énergétique permet aux propriétaires et locataires d’une résidence principale de déduire jusqu’à <span class="text-yellow">500 euros</span> des dépenses liées à l’acquisition d’une borne de recharge pour véhicules électriques installée à domicile par un <span class="text-yellow">technicien qualifié IRVE</span>.
+        Depuis le 1er janvier 2023, <span class="text-yellow">la TVA à 5,5% a été entendue</span> et est désormais disponible pour tous les logements. L’attestation de TVA, permettant de confirmer que le bâtiment est achevé depuis plus de 2 ans, n’est donc plus nécessaire. 
+        `,
+        illustrations: [
+            '/img/illu/particulier-1.svg',
+            '/img/illu/particulier-2.svg',
+            '/img/illu/particulier-3.svg',
+        ]
+    },
+    {
+        value: "copropriete",
+        text: "Copropriété",
+        content: `
+        Le montant <span class="text-yellow">maximal d’aide versée</span> est fixé pour les infrastructures collectives (hors travaux de voirie extérieur) à 4000 euros jusqu’à 50 places. <span class="text-yellow">Augmenté de 75 euros par place supplémentaire</span>. 
+        Dans la limité de 15 000 euros au total par copropriété.
+        `,
+        illustrations: [
+            '/img/illu/copropriete-1.svg',
+            '/img/illu/copropriete-2.svg',
+            '/img/illu/copropriete-3.svg',
+        ]
+    },
+    {
+        value: "professionnel",
+        text: "Professionnel",
+        content: `
+        Le montant <span class="text-yellow">maximal d’aide versée</span> est fixé pour les infrastructures collectives (hors travaux de voirie extérieur) à 4000 euros jusqu’à 50 places. <span class="text-yellow">Augmenté de 75 euros par place supplémentaire</span>. 
+        Dans la limité de 15 000 euros au total par copropriété.
+        `,
+        illustrations: [
+            '/img/illu/professionnel-1.svg',
+            '/img/illu/professionnel-2.svg',
+            '/img/illu/professionnel-3.svg',
+        ]
+    },
+]
+
 --- 
+
+<script>
+
+const productTypeButtons = document.querySelectorAll('[data-toggle-product-type]');
+const productTypeArticles = document.querySelectorAll(`[data-product-type-value]`);
+
+productTypeButtons[0].classList.add('active');
+productTypeArticles[0].classList.remove('hidden');
+
+
+productTypeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const productType = button.getAttribute('data-toggle-product-type');
+
+        productTypeButtons.forEach((button) => {
+            button.classList.remove('active');
+        });
+        
+        button.classList.add('active');
+
+        productTypeArticles.forEach((article) => {
+            const articleProductType = article.getAttribute('data-product-type-value');
+
+            if (articleProductType === productType) {
+                article.classList.remove('hidden');
+            } else {
+                article.classList.add('hidden');
+            }
+        });
+    });
+});
+
+</script>
 
 <Layout title="Preezeo la borne qu'il vous faut !">
     <section class="container mt-6 lg:mt-10 max-md:px-[5%]">
         
-        <div class="flex items-center justify-between md:items-end max-md:flex-col gap-12">
-            <h2 class="paragraphe md:flex-1 md:w-1/2 max-md:w-full">
+        <div class="flex items-stretch justify-between max-md:flex-col gap-12">
+            <h2 class="paragraphe max-w-[500px] md:flex-1 md:w-1/2 max-md:w-full">
                 Labélisé Qualifelec, <span class="text-yellow">Preezeo</span> intervient dans toute la France métropolitaine afin d’installer et de maintenir vos <span class="text-yellow">bornes de recharge</span> pour véhicules électriques. 
                 Nous vous assurons un service de qualité effectué par des électriciens <span class="text-yellow">professionnels agréés IRVE</span>.
             </h2>
 
-            <div class="md:flex-1 md:w-1/2 max-md:w-full">
+            <div class="hero-animation-container max-w-[600px] md:flex-1 md:w-1/2 max-md:w-full">
                 <Image 
-                    c=""
+                    c="hero-animation hero-first lg:h-[300px]"
                     src="/img/illu/hero.svg"
+                    alt=""
+                    fetchPriority={true}
+                />
+                <Image 
+                    c="hero-animation hero-second lg:h-[300px]"
+                    src="/img/illu/hero2.svg"
                     alt=""
                     fetchPriority={true}
                 />
@@ -24,8 +112,9 @@ import ButtonContact from '../components/ButtonContact.astro';
         </div>
 
     </section>
+    
 
-    <section class="overflow-x-clip max-w-[1400px] lg:mx-auto">
+    <section class="overflow-x-clip max-w-full lg:mx-auto">
 
         <div class="card-scroller flex justify-start items-stretch gap-8 w-full overflow-x-scroll overflow-y-clip pb-8 snap-x snap-mandatory snap-always px-[5%]">
 
@@ -119,6 +208,48 @@ import ButtonContact from '../components/ButtonContact.astro';
     </section>
 
 
+    <section class="container max-md:px-[5%]">
+        <div class="flex items-stretch gap-10 mx-auto w-fit mb-6 lg:mb-16">
+            {contentType.map((item) => (
+                <button type="button" data-toggle-product-type={item.value} class="secondary-button">{ item.text }</button>
+            ))}
+        </div>
+
+        {contentType.map((item) => (
+            <article 
+                class="flex gap-3 items-center relative flex-col w-full lg:flex-row hidden"
+                data-product-type-value={item.value}
+            >
+                <div class="flex items-stretch justify-between w-full max-md:flex-col gap-12">
+                    <p class="text-lg max-w-[500px] md:flex-1 md:w-1/2 max-md:w-full" set:html={item.content}></p>
+
+                    <div class="hero-animation-container max-w-[600px] md:flex-1 md:w-1/2 max-md:w-full">
+                        <Image 
+                            c="hero-animation hero-first lg:h-[300px]"
+                            src={item.illustrations[0]}                            
+                            alt=""
+                            fetchPriority={true}
+                        />
+                        <Image 
+                            c="hero-animation hero-second lg:h-[300px]"
+                            src={item.illustrations[1]}
+                            alt=""
+                            fetchPriority={true}
+                        />
+                        <Image 
+                            c="hero-animation hero-second lg:h-[300px]"
+                            src={item.illustrations[2]}
+                            alt=""
+                            fetchPriority={true}
+                        />
+                    </div>
+                </div>
+            </article>
+        ))}
+
+    </section>
+
+
     <section class="relative my-[10vw]">
         <div class="absolute z-[-1] w-full -top-[33%]">
             <Image src="/img/illu/section.svg" alt="" cover={true} c="max-w-unset max-h-unset w-full h-full" />
@@ -169,6 +300,78 @@ import ButtonContact from '../components/ButtonContact.astro';
 <style lang="scss" is:global>
 @use '../styles/_variables.scss' as *;
 
+
+.hero-animation-container {
+    position: relative;
+
+    .hero-animation {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        z-index: 1;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+        object-position: center;
+        transform-box: center;
+        transform-origin: center;
+        will-change: opacity;
+
+        @keyframes swapOne {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes swapTwo {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        &.hero-first {
+            animation: swapOne 1s ease-in-out .5s infinite alternate;
+        }    
+        
+        &.hero-second {
+            animation: swapTwo 1s ease-in-out .5s infinite alternate;
+        }
+    
+    }
+}
+
+
+.secondary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: solid 2px var(--purple);
+    background: transparent;
+
+    &:not(.active):hover {
+        color: var(--purple);
+        border: dashed 2px var(--purple);
+    }
+
+    &.active {
+        border: solid 2px var(--purple);
+        background: var(--purple);
+        color: var(--white);
+        pointer-events: none;
+        cursor: default;
+    }
+}
 .card-scroller {
     scroll-padding: 0 5%;
     scroll-behavior: smooth;
@@ -177,16 +380,22 @@ import ButtonContact from '../components/ButtonContact.astro';
 
     &::-webkit-scrollbar {
         background: transparent;
-        height: 4px;
+        height: 10px;
+        border-radius: 99px;
+        cursor: grab;
     }
     &::-webkit-scrollbar-thumb {
        background: var(--blue);
+       border-radius: 99px;
+       cursor: grab;
     }
 
     &::-webkit-scrollbar-track {
         margin-left: 25vw;
         margin-right: 25vw;
         background: var(--metal);
+        border-radius: 99px;
+        cursor: grab;
     }
 }
 .card {
@@ -228,7 +437,7 @@ import ButtonContact from '../components/ButtonContact.astro';
 }
 
 .paragraphe {
-    @apply text-xl font-semibold leading-relaxed 
+    @apply text-xl lg:text-2xl font-semibold leading-relaxed 
 }
 
 
