@@ -47,9 +47,7 @@ const contentType : {
         <span class="text-yellow">Informations complémentaires concernant les aides, bonus et primes:</span>
         <br>
         <a href="https://www.je-roule-en-electrique.fr/je-decouvre-les-aides-disponibles-128" target="_blank" class="underline">Je découvre les aides disponibles | Je-roule-en-electrique.fr Entreprise et personne publique - Advenir</a>
-        
         `,
-        
     },
 ]
 
@@ -126,7 +124,7 @@ const modales : {
             <li class="list-decimal">Après acceptation du devis et prise de rendez vous, votre technicien IRVE vient installer et sécuriser votre station de recharge et vous accompagne dans son utilisation.</li>
         </ol>
 
-        <h4>Obligation d’être qualifié IRVE pour toute installation.</h4>
+        <h4>La Maintenance</h4>
         <p>
             Preezeo assure la maintenance de tout type de bornes même celles installées par une autre société. 
             <br><br>
@@ -134,7 +132,6 @@ const modales : {
             Nous travaillons sur les bornes modes  3 - 4.
             <br><br>
             Il est essentiel de noter que les bornes de recharge sont fabriquées en utilisant un processus électronique qui est à la fois complexe et délicat. 
-            <br>
             <br>
             Par conséquent, même la plus petite défaillance de certains composants peut entraîner des conséquences graves pour le bon fonctionnement de votre borne. Afin de prévenir de tels dysfonctionnements, il est fortement conseillé d'effectuer un entretien préventif. 
         </p>
@@ -308,30 +305,42 @@ const modaleTriggers = document.querySelectorAll('[data-modale-trigger]');
 const modaleCLosers = document.querySelectorAll('[data-modale-close]');
 const modaleContainer = document.querySelector('.modale-container');
 
+
+
+let isScrolling = false;
+
 modaleTriggers.forEach((trigger) => {
-    // Trigger on enter and space keypress
+
     trigger.addEventListener('keypress', (e) => {
         if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
             openModal(trigger.getAttribute('data-modale-trigger'))
         }
     });
-    trigger.addEventListener('click', () => {
-        openModal(trigger.getAttribute('data-modale-trigger'))
-    });
-    // open on touchestart for mobile devices but only if user is not scrolling
-    trigger.addEventListener('touchend', (e) => {
-        if (!isDown) {
-            openModal(trigger.getAttribute('data-modale-trigger'))
-        }
-    });
-    
+
+  // Détecte le clic sur la carte
+  trigger.addEventListener('click', () => {
+    // Si l'utilisateur n'est pas en train de scroller, ouvre la modale
+    if (!isScrolling) {
+      openModal(trigger.getAttribute('data-modale-trigger'));
+    }
+  });
+
+  trigger.addEventListener('touchstart', () => {
+    isScrolling = true;
+  });
+
+  trigger.addEventListener('touchend', () => {
+    isScrolling = false;
+  });
 });
+
+
 
 modaleCLosers.forEach((closer) => {
     closer.addEventListener('click', () => {
         closeModal(closer.getAttribute('data-modale-close'))
     });
-    closer.addEventListener('touchend', () => {
+    closer.addEventListener('touchstart', () => {
         closeModal(closer.getAttribute('data-modale-close'))
     });
 });
