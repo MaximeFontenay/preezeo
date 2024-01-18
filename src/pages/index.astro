@@ -235,7 +235,6 @@ const productTypeArticles = document.querySelectorAll(`[data-product-type-value]
 productTypeButtons[0].classList.add('active');
 productTypeArticles[0].classList.remove('hidden');
 
-
 productTypeButtons.forEach((button) => {
     button.addEventListener('click', () => {
         const productType = button.getAttribute('data-toggle-product-type');
@@ -264,6 +263,7 @@ const cardScroller = document.querySelector('.card-scroller');
 let isDown = false;
 let startX;
 let scrollLeft;
+
 cardScroller.addEventListener('mousedown', (e) => {
     isDown = true;
     cardScroller.classList.add('active');
@@ -278,10 +278,12 @@ cardScroller.addEventListener('mousedown', (e) => {
     });
     (cardScroller as HTMLElement).style.cursor = 'grabbing';
 });
+
 cardScroller.addEventListener('mouseleave', () => {
     isDown = false;
     cardScroller.classList.remove('active');
 });
+
 cardScroller.addEventListener('mouseup', () => {
     isDown = false;
     cardScroller.classList.remove('active');
@@ -291,6 +293,7 @@ cardScroller.addEventListener('mouseup', () => {
     });
     (cardScroller as HTMLElement).style.cursor = 'grab';
 });
+
 cardScroller.addEventListener('mousemove', (e) => {
     if(!isDown) return;
     e.preventDefault();
@@ -316,23 +319,20 @@ modaleTriggers.forEach((trigger) => {
         }
     });
 
-  // Détecte le clic sur la carte
-  trigger.addEventListener('click', () => {
-    // Si l'utilisateur n'est pas en train de scroller, ouvre la modale
-    if (!isScrolling) {
-      openModal(trigger.getAttribute('data-modale-trigger'));
-    }
-  });
+    trigger.addEventListener('click', () => {
+        if (!isScrolling) {
+            openModal(trigger.getAttribute('data-modale-trigger'));
+        }
+    });
 
-  trigger.addEventListener('touchstart', () => {
-    isScrolling = true;
-  });
+    trigger.addEventListener('touchstart', () => {
+        isScrolling = true;
+    });
 
-  trigger.addEventListener('touchend', () => {
-    isScrolling = false;
-  });
+    trigger.addEventListener('touchend', () => {
+        isScrolling = false;
+    });
 });
-
 
 
 modaleCLosers.forEach((closer) => {
@@ -344,7 +344,7 @@ modaleCLosers.forEach((closer) => {
     });
 });
 
-function openModal(id) {
+function openModal(id:number | string) {
     document.querySelector('html').classList.add('overflow-clip');
     const modale = document.querySelector(`[data-modale="${id}"]`) as HTMLElement;
     modaleContainer.classList.add('active');
@@ -358,7 +358,7 @@ function openModal(id) {
     
 }
 
-function closeModal(id) {
+function closeModal(id:number | string) {
     document.querySelector('html').classList.remove('overflow-clip');
     if(id === 'all') {
         modaleContainer.classList.remove('active');
@@ -374,7 +374,6 @@ function closeModal(id) {
     modaleContainer.classList.remove('active');
 }
 
-// If click outside modale when modale-container is active, use closeModal function to close modlae 
 modaleContainer.addEventListener('click', (e) => {
     if ((e.target as HTMLElement).classList.contains('modale-container')) {
         closeModal('all');
@@ -382,7 +381,7 @@ modaleContainer.addEventListener('click', (e) => {
 });
 
 
-// Copy element content
+// Copy element content 
 const copyButtons = document.querySelectorAll('.copy');
 copyButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -395,21 +394,15 @@ copyButtons.forEach((button) => {
 
 <Layout title="Preezeo la borne qu'il vous faut !">
     <section class="lg:container mt-6 lg:mt-10 max-lg:px-[5%]">
-        <div class="flex justify-between gap-12 items-stretch max-lg:items-center max-lg:gap-10 max-lg:flex-col max-xl:px-[5%]">
+        <div class="flex justify-between gap-12 items-stretch lg:items-end max-lg:items-center max-lg:gap-10 max-lg:flex-col max-lg:px-[5%]">
             <h2 class="paragraphe lg:max-w-[500px] md:flex-1 lg:w-1/2 max-lg:w-full">
                 Labélisé Qualifelec, <span class="text-yellow">Preezeo</span> intervient dans toute la France métropolitaine afin d’installer et de maintenir vos <span class="text-yellow">bornes de recharge</span> pour véhicules électriques. 
                 Nous vous assurons un service de qualité effectué par des électriciens <span class="text-yellow">professionnels agréés IRVE</span>.
             </h2>
-            <div class="hero-animation-container max-w-[600px] md:flex-1 lg:w-1/2 max-lg:w-full max-lg:min-h-[250px]">
+            <div class="max-w-[600px] md:flex-1 lg:w-1/2 max-lg:w-full max-lg:min-h-[250px] lg:-mt-6">
                 <Image 
                     c="hero-animation hero-first lg:h-[300px]"
                     src="/img/illu/hero.svg"
-                    alt=""
-                    fetchPriority={true}
-                />
-                <Image 
-                    c="hero-animation hero-second lg:h-[300px]"
-                    src="/img/illu/hero2.svg"
                     alt=""
                     fetchPriority={true}
                 />
@@ -502,7 +495,7 @@ copyButtons.forEach((button) => {
     </section>
 
     <section class="container max-lg:px-[5%]">
-        <h2 class="paragraphe max-w-[800px] mx-auto max-lg:text-center">
+        <h2 class="paragraphe max-w-[800px] mx-auto">
             <span class="text-purple">Preezeo</span> forme de manière régulière ses techniciens. 
             Nous favorisons des produits <span class="text-purple">fabriqués en France</span> qui peuvent être évolutifs. <br>
             <span class="text-purple">Spécialiste</span> de l’installation des bornes de recharge pour véhicules électriques.
@@ -512,7 +505,7 @@ copyButtons.forEach((button) => {
     <section class="container max-lg:px-[5%]">
         <div class="flex items-stretch mx-auto w-fit mb-10 gap-4 max-md:flex-col lg:mb-16 lg:gap-10">
             {contentType.map((item) => (
-                <button type="button" data-toggle-product-type={item.value} class="secondary-button">{ item.text }</button>
+                <button type="button" data-toggle-product-type={item.value} class="secondary-button max-lg:w-full">{ item.text }</button>
             ))}
         </div>
 
@@ -522,7 +515,7 @@ copyButtons.forEach((button) => {
                 data-product-type-value={item.value}
             >
                 <div class="flex lg:flex-row items-center justify-center w-full max-lg:flex-col gap-8 lg:gap-12">
-                    <p class="text-lg max-w-[580px] lg:basis-9/12 text-pretty max-lg:text-center" set:html={item.content}></p>
+                    <p class="text-lg max-w-[580px] lg:basis-9/12" set:html={item.content}></p>
                     <div class="flex lg:flex-col lg:basis-3/12 gap-4">
                         <div data-modale-trigger={index + 7} class="third-button yellow py-[12px] max-lg:px-2 lg:px-5 w-fit" aria-labelledby={'En savoir plus : ' + contentType[index].text} tabindex="0">En savoir plus</div>
                         <a href="#" class="third-button purple py-[12px] max-lg:px-2 lg:px-5 w-fit">Demander une étude</a>
@@ -533,7 +526,7 @@ copyButtons.forEach((button) => {
     </section>
 
     <section class="relative mt-20 lg:my-[10vw]">
-        <div class="absolute z-[-1] w-full -top-10 lg:-top-[33%]">
+        <div class="absolute z-[-1] w-full -top-10 lg:-top-[33%] max-lg:w-auto max-lg:h-full">
             <Image src="/img/illu/section.svg" alt="" cover={true} c="max-w-unset max-h-unset w-full h-full" />
         </div>
 
@@ -553,7 +546,7 @@ copyButtons.forEach((button) => {
 
             <div data-modale-trigger="11" tabindex="0">
                 <Button
-                    c="justify-self-end ml-auto mt-4"
+                    c="justify-self-end ml-auto mt-4 max-lg:w-full"
                     text="Nous contacter"
                     color="yellow"
                 />
@@ -825,7 +818,7 @@ copyButtons.forEach((button) => {
                                         fetchPriority={true}
                                     />
                                 </div>
-                                <p class="select-text text-sm font-semibold tracking-2">07 88 28 10 89</p>
+                                <p class="select-text text-sm font-semibold tracking-2">05 54 54 21 31</p>
                             </li>
                             <li class="flex items-center gap-4 py-1 duration-300 font-medium">
                                 <a class="flex items-center gap-4 hover:opacity-80" href="https://www.google.fr/maps/place/57+Av.+du+Mar%C3%A9chal+Juin,+64200+Biarritz/@43.470901,-1.5429779,17z/data=!3m1!4b1!4m6!3m5!1s0xd51153581b41ef9:0xf7cc06159a644b4!8m2!3d43.4708971!4d-1.540403!16s%2Fg%2F11bw44dfs2?entry=ttu" target="_blank">
@@ -908,7 +901,7 @@ copyButtons.forEach((button) => {
 .copy {
     display: inline-flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 10px;
     cursor: pointer;
     padding: 5px 0;
@@ -1286,6 +1279,7 @@ copyButtons.forEach((button) => {
         }
     }
 }
+
 .card {
     @apply relative overflow-clip min-w-[80%] sm:min-w-[350px] bg-home-cards border border-blue rounded-lg snap-start cursor-pointer;
     min-height: 250px;
@@ -1328,6 +1322,12 @@ copyButtons.forEach((button) => {
     &__overlay {
         @apply flex flex-col justify-center absolute w-[230px] h-full right-6 top-0 px-4 bg-white/5 backdrop-blur-xl;
         z-index: 5;
+
+        @media screen and (max-width: 768px) {
+            width: 80%;
+            left: 50%;
+            translate: -50% 0;
+        }
     }
 }
 

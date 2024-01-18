@@ -46,7 +46,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="flex flex-col bg-deep-blue text-white font-montserrat text-base font-normal leading-[140%]">
-		<header class="mb-4 lg:container lg:mb-8 max-xl:px-[5%]">
+		<header class="mb-4 lg:container lg:mb-8 max-lg:px-[5%]">
 			<nav class="flex justify-between items-center pt-6 lg:py-10">
 				<div class="max-md:max-w-[100px] md:max-w-[150px] flex items-center">
 					<Image src="/img/logo/full_purple.svg" alt="Logo Preezeo" c="max-w-[165px] h-auto" />
@@ -72,7 +72,13 @@ const { title } = Astro.props;
 					<div class="flex items-center">
 						<Image src="/img/logo/full_purple.svg" alt="Logo Preezeo" c="max-w-[165px] h-auto" />
 					</div>
-					<p class="text-lg max-md:text-center">57 avenue du Maréchal Juin 64200 Biarritz</p>
+					<p class="text-lg max-md:text-center">
+						57 avenue du Maréchal Juin 
+						<br>
+						64200 Biarritz
+						<br>
+						<span class="block mt-2">05 54 54 21 31</span>
+					</p>
 				</div>
 
 				<div class="flex flex-col max-md:items-center gap-6">
