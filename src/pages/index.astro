@@ -518,7 +518,7 @@ copyButtons.forEach((button) => {
                     <p class="text-lg max-w-[580px] lg:basis-9/12" set:html={item.content}></p>
                     <div class="flex lg:flex-col lg:basis-3/12 gap-4">
                         <div data-modale-trigger={index + 7} class="third-button yellow py-[12px] max-lg:px-2 lg:px-5 w-fit" aria-labelledby={'En savoir plus : ' + contentType[index].text} tabindex="0">En savoir plus</div>
-                        <a href="#" class="third-button purple py-[12px] max-lg:px-2 lg:px-5 w-fit">Demander une étude</a>
+                        <button data-modale-trigger="11" type="button" class="third-button purple py-[12px] max-lg:px-2 lg:px-5 w-fit">Demander une étude</button>
                     </div>
                 </div>
             </article>
