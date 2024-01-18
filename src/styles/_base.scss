@@ -26,8 +26,8 @@
 }
 
 *::selection {
-    background: rgba(122, 248, 234, 0.15);
-    @include text-stroke(.5px, $t);
+    background: rgba(255, 238, 238, 0.87);
+    color: $purple;
 }
 
 html {

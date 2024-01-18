@@ -1,54 +1,230 @@
 ---
 import Image from "../components/atom/Image.astro";
 import Layout from "../layouts/Layout.astro";
-import ButtonContact from '../components/ButtonContact.astro';
-import Modale from '../components/Modale.vue';
+import Button from "../components/atom/Button.astro";
 
 
 const contentType : {
     value: string,
     text: string,
     content: string,
-    illustrations: [string, string, string]
 }[] = [
     {
         value: "particulier",
         text: "Particulier",
         content: `
         <span class="text-yellow">Le crédit d’impôt</span> pour la transition énergétique permet aux propriétaires et locataires d’une résidence principale de déduire jusqu’à <span class="text-yellow">500 euros</span> des dépenses liées à l’acquisition d’une borne de recharge pour véhicules électriques installée à domicile par un <span class="text-yellow">technicien qualifié IRVE</span>.
-        Depuis le 1er janvier 2023, <span class="text-yellow">la TVA à 5,5% a été entendue</span> et est désormais disponible pour tous les logements. L’attestation de TVA, permettant de confirmer que le bâtiment est achevé depuis plus de 2 ans, n’est donc plus nécessaire. 
+        <br>
+        Depuis le 1er janvier 2023, <span class="text-yellow">la TVA à 5,5% a été entendue</span> et est désormais disponible pour tous les logements. 
         `,
-        illustrations: [
-            '/img/illu/particulier-1.svg',
-            '/img/illu/particulier-2.svg',
-            '/img/illu/particulier-3.svg',
-        ]
     },
     {
         value: "copropriete",
         text: "Copropriété",
         content: `
-        Le montant <span class="text-yellow">maximal d’aide versée</span> est fixé pour les infrastructures collectives (hors travaux de voirie extérieur) à 4000 euros jusqu’à 50 places. <span class="text-yellow">Augmenté de 75 euros par place supplémentaire</span>. 
-        Dans la limité de 15 000 euros au total par copropriété.
+        Dans un immeuble collectif il peu y avoir plusieurs types de bénéficiaires au droit à la prise :  
+        <br>
+        <span class="text-yellow">Une solution individuelle</span> est proposée et permet de bénéficier <span class="text-yellow">de 50% de déduction des charges</span> de l’installation pour un montant total <span class="text-yellow">de 600 euros HT</span>.
+        <br>
+        L’aide est la même pour <span class="text-yellow">une solution de recharge partagée</span> mais le plafond s’élève alors à <span class="text-yellow">1600 euros</span>. 
+        <br>
+        Pour <span class="text-yellow">les infrastructures collectives en copropriété</span>, 50% d’aides totales pour un plafond allant de <span class="text-yellow">8000euros/copropriété</span> et jusqu’à 3000e pour les travaux de voirie exterieur
+        <br><br>
+        <a href="https://advenir.mobi/immeuble-collectif/" target="_blank" class="underline">Immeuble collectif - Advenir</a>
         `,
-        illustrations: [
-            '/img/illu/copropriete-1.svg',
-            '/img/illu/copropriete-2.svg',
-            '/img/illu/copropriete-3.svg',
-        ]
     },
     {
         value: "professionnel",
         text: "Professionnel",
         content: `
-        Le montant <span class="text-yellow">maximal d’aide versée</span> est fixé pour les infrastructures collectives (hors travaux de voirie extérieur) à 4000 euros jusqu’à 50 places. <span class="text-yellow">Augmenté de 75 euros par place supplémentaire</span>. 
-        Dans la limité de 15 000 euros au total par copropriété.
+        Aucune aide ADVENIR pour les professionnels hors services automobiles et location de véhicules courte durée. 
+        <br>
+        Que vous ayez un parking dédié aux flottes d’entreprises, aux salariés et aux visiteurs ou un parking ouvert à tout public.
+        <span class="text-yellow">Pour toute informations concernant les subventions du programme ADVENIR:</span>
+        <br>
+        <a href="https://advenir.mobi/je-definis-mon-projet/" target="_blank" class="underline">Simulateur de projet : découvrez votre prime - Advenir</a>
+        <br>
+        <span class="text-yellow">Informations complémentaires concernant les aides, bonus et primes:</span>
+        <br>
+        <a href="https://www.je-roule-en-electrique.fr/je-decouvre-les-aides-disponibles-128" target="_blank" class="underline">Je découvre les aides disponibles | Je-roule-en-electrique.fr Entreprise et personne publique - Advenir</a>
+        
         `,
-        illustrations: [
-            '/img/illu/professionnel-1.svg',
-            '/img/illu/professionnel-2.svg',
-            '/img/illu/professionnel-3.svg',
-        ]
+        
+    },
+]
+
+const modales : {
+    id: number,
+    title: string,
+    content: string,
+}[] = [
+    {
+        id: 1,
+        title: "Guide IRVE",
+        content: `
+        <span class="text-yellow">IRVE</span>
+        <br>
+        <p>
+            La mention IRVE impose d’être formé IRVE et d’être adhérent à un organisme certifié reconnu par l’état.
+        </p>
+        <h4>Obligation d’être qualifié IRVE pour toute installation.</h4>
+        <p>
+            Les points de charge pour véhicules électriques sont installés
+            par un professionnel habilité titulaire d’une qualification pour
+            l’installation desdites infrastructures de recharge délivrée par
+            un organisme de qualification accrédité. Cette qualification
+            s’appuie sur un module de formation agréé par l’organisme de
+            qualification accrédité (décret nº 2017-26 du 12 janvier 2017).
+        </p>
+        <h4>3 niveaux de formation IRVE</h4>
+
+        <ol>
+            <li>La formation de base - <span class="text-yellow">niveau 1</span></li>
+            <li>La formation expert - <span class="text-yellow">niveau 2</span></li>
+            <li>La formation recharge rapide - <span class="text-yellow">niveau 3</span></li>
+        </ol>
+        `,
+    },
+    {
+        id: 2,
+        title: "Aides et subventions",
+        content: `
+        <h4>Différents taux d'aide et des plafonds selon la situation</h4>
+        <br>
+        <span class="text-yellow">Pour les entreprises et les Etablissements</span>
+        <br>
+        <br>
+        <p>Parking privé ouvert au public  >  50 % du montant hors taxe avec un plafond de 1&#8239;000 à 2&#8239;700&#8239;€</p>
+        <br>
+        <span class="text-yellow">Pour les immeubles collectifs</span>
+        <br>
+        <br>
+        <p>
+            Solution individuelle > 50 % du montant hors taxe avec un plafond de 960&#8239;€
+            <br><br>
+            Solution partagée > 50 % du montant hors taxe avec un plafond de 1&#8239;660&#8239;€.
+            Pour les entreprises des services de l'automobile.
+            <br><br>
+            Flottes et salariés > 25 % du montant hors taxe avec un plafond de 750&#8239;€
+        </p>
+        <br><br>
+        <span class="text-yellow">Le crédit d’impôt pour l’installation de borne de recharge à votre domicile</span>
+        <br>
+        <br>
+        <p>Un crédit d’impôt est accordé pour les dépenses d’acquisition et de pose de systèmes de charge pour véhicules électriques effectuées entre le 1.1.2021 et le 31.12.2025. Ce crédit d’impôt, égal à 75 % du montant des dépenses dans la limite de 500 euros par système de charge communicant, est ouvert à tous les contribuables personnes physiques domiciliés en France, quel que soit le niveau de leurs revenus.</p>
+        `,
+    },
+    {
+        id: 3,
+        title: "Installation & Maintenance",
+        content: `
+        <h4>Etapes de l’installation</h4>
+        <ol class="pl-3">
+            <li class="list-decimal">Vous prenez contact avec nous par mail ou par téléphone en nous exposant votre projet de recharge pour votre véhicule électrique.</span></li>
+            <li class="list-decimal">Un de nos électricien agrée IRVE vous propose une visite technique afin d’étudier votre installation électrique.</li>
+            <li class="list-decimal">Notre bureau d’étude établi le bilan de puissance électrique de votre installation et vous propose une solution adaptée à votre installation et votre véhicule.</li>
+            <li class="list-decimal">Après acceptation du devis et prise de rendez vous, votre technicien IRVE vient installer et sécuriser votre station de recharge et vous accompagne dans son utilisation.</li>
+        </ol>
+
+        <h4>Obligation d’être qualifié IRVE pour toute installation.</h4>
+        <p>
+            Preezeo assure la maintenance de tout type de bornes même celles installées par une autre société. 
+            <br><br>
+            Nos techniciens assurent la maintenance de niveau 1 - 2 - 3. 
+            Nous travaillons sur les bornes modes  3 - 4.
+            <br><br>
+            Il est essentiel de noter que les bornes de recharge sont fabriquées en utilisant un processus électronique qui est à la fois complexe et délicat. 
+            <br>
+            <br>
+            Par conséquent, même la plus petite défaillance de certains composants peut entraîner des conséquences graves pour le bon fonctionnement de votre borne. Afin de prévenir de tels dysfonctionnements, il est fortement conseillé d'effectuer un entretien préventif. 
+        </p>
+        <h4>Les deux types de maintenance</h4>
+        <div class="grid grid-cols-2">
+            <p>Maintenance <br> <span class="text-yellow">préventive</span></p>
+            <p>Maintenance <br> <span class="text-yellow">curative</span></p>
+        </div>
+        `,
+    },
+    {
+        id: 4,
+        title: "Nos produits",
+        content: `
+        <p>
+            Nous sommes fiers de vous présenter une gamme complète de bornes de recharge pour véhicules électriques, ainsi que des accessoires de qualité pour répondre à tous vos besoins en matière de recharge.
+        </p>
+        <h4>Des partenaires de haute qualité</h4>
+        <p>
+            Vous pouvez compter sur notre sélection de marques partenaires de renom telles que ALFEN, SCHNEIDER, LAFON, MICHAUD, et d'autres sur demande.
+            <br><br>
+            Toutes les bornes proposées répondent aux standards les plus hauts et aux normes applicables. Les produits proposés par PREEZEO sont “retrofit”.
+            <br>
+            Nous nous engageons à vous offrir des solutions évolutives et à la pointe de la technologie. 
+            <br><br>
+            Toutes nos bornes sont conçues pour être évolutives et communicantes, vous offrant une expérience de recharge optimale.
+        </p>
+        <div class="partners grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 items-center gap-6 mt-6"> 
+            <img src="/img/partners/alfen.png" loading="lazy" decoding="async" draggable="false" />
+            <img src="/img/partners/alpitronic.png" loading="lazy" decoding="async" draggable="false" />
+            <img src="/img/partners/kempower.png" loading="lazy" decoding="async" draggable="false" />
+            <img src="/img/partners/schneider.png" loading="lazy" decoding="async" draggable="false" />
+            <img src="/img/partners/hager.png" loading="lazy" decoding="async" draggable="false" />
+            <img src="/img/partners/lafon.png" loading="lazy" decoding="async" draggable="false" />
+        </div>
+        `,
+    },
+    {
+        id: 5,
+        title: "Technique",
+        content: `
+        <h4>Les chargeurs</h4>
+        <p>
+            <span class="text-yellow">Les chargeurs en courant continu</span>, atteignant jusqu'à 650 kW, permettent une recharge ultra-rapide en environ 20 minutes, adaptés aux voyages longs ou aux tournées logistiques. Les modèles 24 kW offrent déjà une recharge rapide en 1 à 2 heures.
+        </p>
+        <p>
+            <span class="text-yellow">Les chargeurs en courant alternatif</span>, puissance autour de 7 kW, sont idéaux pour la recharge au travail, à domicile ou dans des lieux publics comme les supermarchés.
+        </p>
+        <p>
+            <span class="text-yellow">Les chargeurs embarqués</span> sont cruciaux pour la recharge en courant alternatif (AC), transformant l'AC en courant continu (DC) pour atteindre la batterie. Leur puissance dépend du modèle du chargeur embarqué du véhicule. 
+            <br>
+            Utiliser le courant continu accélère la recharge, mais la puissance doit être compatible avec le chargeur embarqué pour des performances optimales. Chez PREEZEO, nous offrons des solutions adaptées à vos besoins pour une expérience de mobilité électrique optimale.
+        </p>
+        <h4>Capacités et consommation d’un VE</h4>
+        <p>
+            Lorsqu'on examine la fiche technique d'une voiture électrique, la capacité de sa batterie en kWh est un élément crucial, variant généralement entre 20&#8239;kWh et 100&#8239;kWh. 
+            <br>
+            Prenons les exemples opposés de la Dacia Spring (27,4&#8239;kWh) et de la Porsche Taycan Turbo S (93,4&#8239;kWh). La consommation d'énergie est exprimée en kWh/100 km. La Dacia Spring annonce 13,9&#8239;kWh/100&#8239;km, tandis que la Porsche Taycan Turbo S affiche 25,6&#8239;kWh/100&#8239;km. 
+            <br>
+            Ces données, fournies par les constructeurs, sont indicatives et peuvent varier en fonction du style de conduite. Pour estimer l'autonomie, divisez la capacité de la batterie par la consommation moyenne, puis multipliez par 100. Ainsi, la Dacia Spring aurait une autonomie d'environ 197 km, comparé aux 230 km indiqués, et la Porsche Taycan Turbo S aurait une autonomie d'environ 364 km, par rapport aux 412 km indiqués. 
+            <br>
+            Ces résultats sont indicatifs et peuvent varier en fonction de divers facteurs. Pour une estimation plus précise, il est recommandé de surveiller votre propre consommation moyenne sur plusieurs trajets.
+        </p>    
+        `,
+    },
+    {
+        id: 6,
+        title: "Preezeo",
+        content: `
+        <h4>Qui sommes nous ?</h4>
+        <p>
+            Chez PREEZEO, notre passion pour l'électromobilité et l'électricité a donné naissance à une entreprise unique. Fondée par deux ingénieurs et soutenue par quatre techniciens électriciens chevronnés, PREEZEO incarne l'alliance parfaite entre expertise technique et dévouement pour un avenir plus durable.
+            <br>
+            <br>
+            L'idée de PREEZEO est née de la vision partagée de trois esprits passionnés, animés par le désir de contribuer activement à la transition vers des solutions énergétiques respectueuses de l'environnement. Notre équipe est un mélange harmonieux d'ingénieurs débordant d'idées novatrices et de techniciens électriciens qui maîtrisent chaque aspect technique.
+            <br>
+            <br>
+            Nous croyons en la puissance de l'innovation, et c'est pourquoi nous nous sommes engagés à sélectionner et à proposer les meilleures solutions du marché. Notre expertise nous permet de vous offrir des produits de recharge électrique d'une qualité irréprochable, soutenus par des marques renommées qui partagent notre engagement pour l'excellence.
+        </p>   
+        <h4>Pourquoi choisir Preezeo ?</h4>
+        <p>
+            PREEZEO offre des solutions complètes pour les bornes de recharge avec des modules électroniques avancés et une facturation efficace, collaborant avec les marques les plus renommées.
+            <br>
+            Nos techniciens hautement qualifiés, formés régulièrement, garantissent des installations de qualité supérieure, adaptées à vos besoins spécifiques en recharge électrique.
+            <br>
+            L'installation d'une borne nécessite une évaluation approfondie, prenant en compte votre infrastructure électrique pour éviter des frais supplémentaires.
+            <br>
+            Choisissez la mobilité durable avec PREEZEO, respectant toutes les exigences légales, et découvrez notre gamme de produits pour une transition écologique sans compromis.
+        </p>     
+        `,
     },
 ]
 
@@ -85,18 +261,130 @@ productTypeButtons.forEach((button) => {
     });
 });
 
+
+// Cards 
+const cardScroller = document.querySelector('.card-scroller');
+let isDown = false;
+let startX;
+let scrollLeft;
+let saveScrollLeft;
+cardScroller.addEventListener('mousedown', (e) => {
+    isDown = true;
+    cardScroller.classList.add('active');
+    startX = (e as MouseEvent).clientX - (cardScroller as HTMLElement).offsetLeft;
+    scrollLeft = cardScroller.scrollLeft;
+    const cardScrollerElement = cardScroller as HTMLElement;
+    cardScrollerElement.style.cursor = 'grabbing';
+
+    cardScroller.querySelectorAll('.card').forEach((card) => {
+        const cardElement = card as HTMLElement;
+        cardElement.style.cursor = 'grabbing';
+    });
+    (cardScroller as HTMLElement).style.cursor = 'grabbing';
+});
+cardScroller.addEventListener('mouseleave', () => {
+    isDown = false;
+    cardScroller.classList.remove('active');
+});
+cardScroller.addEventListener('mouseup', () => {
+    isDown = false;
+    cardScroller.classList.remove('active');
+    cardScroller.querySelectorAll('.card').forEach((card) => {
+        const cardS = card as HTMLElement;
+        cardS.style.cursor = 'grab';
+    });
+    (cardScroller as HTMLElement).style.cursor = 'grab';
+    saveScrollLeft = scrollLeft;
+});
+cardScroller.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = (e as MouseEvent).pageX - (cardScroller as HTMLElement).offsetLeft;
+    const walk = (x - startX) * 3; 
+    cardScroller.scrollLeft = scrollLeft - walk;
+});
+
+
+// Modales
+const modaleTriggers = document.querySelectorAll('[data-modale-trigger]');
+const modaleCLosers = document.querySelectorAll('[data-modale-close]');
+const modaleContainer = document.querySelector('.modale-container');
+
+modaleTriggers.forEach((trigger) => {
+    // Trigger on enter and space keypress
+    trigger.addEventListener('keypress', (e) => {
+        if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
+            openModal(trigger.getAttribute('data-modale-trigger'))
+        }
+    });
+    trigger.addEventListener('click', () => {
+        openModal(trigger.getAttribute('data-modale-trigger'))
+    });
+});
+
+modaleCLosers.forEach((closer) => {
+    closer.addEventListener('click', () => {
+        closeModal(closer.getAttribute('data-modale-close'))
+    });
+});
+
+function openModal(id) {
+    document.querySelector('html').classList.add('overflow-clip');
+    const modale = document.querySelector(`[data-modale="${id}"]`) as HTMLElement;
+    modaleContainer.classList.add('active');
+    modale.classList.add('active');
+    // If this modale is taller than the 80% of the viewport, add a class to the .scroll-indicator
+    if (modale.offsetHeight > window.innerHeight * 0.9) {
+        document.querySelector('.scroll-indicator').classList.add('active');
+    } else {
+        document.querySelector('.scroll-indicator').classList.remove('active');
+    }
+    
+}
+
+function closeModal(id) {
+    document.querySelector('html').classList.remove('overflow-clip');
+    if(id === 'all') {
+        modaleContainer.classList.remove('active');
+        modaleTriggers.forEach((trigger) => {
+            const modaleId = trigger.getAttribute('data-modale-trigger');
+            const modale = document.querySelector(`[data-modale="${modaleId}"]`);
+            modale.classList.remove('active');
+        });
+    } else {
+        const modale = document.querySelector(`[data-modale="${id}"]`);
+        modale.classList.remove('active');
+    }
+    modaleContainer.classList.remove('active');
+}
+
+// If click outside modale when modale-container is active, use closeModal function to close modlae 
+modaleContainer.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).classList.contains('modale-container')) {
+        closeModal('all');
+    }
+});
+
+
+// Copy element content
+const copyButtons = document.querySelectorAll('.copy');
+copyButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const text = button.textContent;
+        navigator.clipboard.writeText(text);
+    });
+});
+
 </script>
 
 <Layout title="Preezeo la borne qu'il vous faut !">
-    <section class="container mt-6 lg:mt-10 max-md:px-[5%]">
-        
-        <div class="flex items-stretch justify-between max-md:flex-col gap-12">
-            <h2 class="paragraphe max-w-[500px] md:flex-1 md:w-1/2 max-md:w-full">
+    <section class="lg:container mt-6 lg:mt-10 max-lg:px-[5%]">
+        <div class="flex justify-between gap-12 items-stretch max-lg:items-center max-lg:gap-10 max-lg:flex-col max-xl:px-[5%]">
+            <h2 class="paragraphe lg:max-w-[500px] md:flex-1 lg:w-1/2 max-lg:w-full">
                 Labélisé Qualifelec, <span class="text-yellow">Preezeo</span> intervient dans toute la France métropolitaine afin d’installer et de maintenir vos <span class="text-yellow">bornes de recharge</span> pour véhicules électriques. 
                 Nous vous assurons un service de qualité effectué par des électriciens <span class="text-yellow">professionnels agréés IRVE</span>.
             </h2>
-
-            <div class="hero-animation-container max-w-[600px] md:flex-1 md:w-1/2 max-md:w-full">
+            <div class="hero-animation-container max-w-[600px] md:flex-1 lg:w-1/2 max-lg:w-full max-lg:min-h-[250px]">
                 <Image 
                     c="hero-animation hero-first lg:h-[300px]"
                     src="/img/illu/hero.svg"
@@ -111,15 +399,12 @@ productTypeButtons.forEach((button) => {
                 />
             </div>
         </div>
-
     </section>
     
-
-    <section class="overflow-x-clip max-w-full lg:mx-auto">
-        <div class="card-scroller flex justify-start items-stretch gap-8 w-full overflow-x-scroll overflow-y-clip pb-8 snap-x snap-mandatory snap-always px-[5%]">
-
-            <a href="#" class="card">
-                <div class="absolute z-[-1] h-full w-full left-4">
+    <section class="overflow-x-clip max-w-full lg:mx-auto max-lg:mt-8">
+        <div class="card-scroller flex justify-start items-stretch gap-8 w-full overflow-x-scroll overflow-y-clip max-lg:snap-x max-lg:snap-mandatory pb-8 px-[5%]">
+            <div data-modale-trigger="1" title="Guide irve" class="card" tabindex="0">
+                <div class="absolute z-[1] h-full w-[250px] lg:w-full lg:left-4 max-lg:right-0">
                     <Image src="/img/illu/card-illu-1.svg" alt="" />
                 </div>
                 <div class="card__overlay">
@@ -129,10 +414,10 @@ productTypeButtons.forEach((button) => {
                         <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
                     </svg>
                 </div>
-            </a>
+            </div>
 
-            <a href="#" class="card">
-                <div class="absolute z-[-1] h-full w-full left-0 -top-4">
+            <div data-modale-trigger="2" title="Aides & subventions" class="card" tabindex="0">
+                <div class="absolute z-[1] h-full w-full -left-2 lg:-top-4">
                     <Image src="/img/illu/card-illu-2.svg" alt="" />
                 </div>
                 <div class="card__overlay">
@@ -142,12 +427,14 @@ productTypeButtons.forEach((button) => {
                         <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
                     </svg>
                 </div>
-            </a>
+            </div>
 
-            <a href="#" class="card">
-                <div class="absolute z-[-1] h-full w-full -left-10 top-4">
-                    <Image src="/img/illu/card-illu-3.svg" alt="" />
-                </div>
+            <div data-modale-trigger="3" title="Installation & Maintenance" class="card" tabindex="0">
+                <svg  class="absolute z-[1] h-[85%] w-[260px] left-0 top-4" width="246" height="268" viewBox="0 0 246 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M101.297 169.063V124.085H82.0209V169.063H101.297Z" stroke="#FFB800" stroke-width="6.42551"/>
+                    <path d="M-22.5255 265.775H101.166C101.166 265.775 89.1886 234.38 101.166 222.403C113.142 210.426 132.561 234.38 144.538 222.403C156.515 210.426 132.109 190.538 144.538 179.031C156.045 168.375 184.697 179.031 184.697 179.031V265.775H244.133V97.1055H215.218C215.218 97.1055 193.933 67.5588 173.452 60.1588C154.573 53.3372 122.048 60.1588 122.048 60.1588C122.048 60.1588 129.796 33.6353 122.048 19.9994C108.413 -3.99979 65.0037 -3.99979 51.3678 19.9994C43.6202 33.6353 51.3678 60.1588 51.3678 60.1588C51.3678 60.1588 22.2581 52.6278 6.38927 60.1588C-10.1632 68.0142 -17.6808 79.4357 -22.5255 97.1055C-25.8431 109.205 -22.5255 129.233 -22.5255 129.233H59.3997C59.3997 129.233 53.6745 108.27 59.3997 97.1055C70.5639 75.3353 110.884 75.3353 122.048 97.1055C127.774 108.27 122.048 129.233 122.048 129.233H215.218V162.967H122.048C122.048 162.967 127.774 183.93 122.048 195.094C110.884 216.865 70.5639 216.865 59.3997 195.094C53.6745 183.93 59.3997 162.967 59.3997 162.967H-22.5255V265.775Z" stroke="#515BE0" stroke-width="3.21275"/>
+                </svg>
+
                 <div class="card__overlay">
                     <h2 class="font-montserrat font-black h-[2em] tracking-2 text-2xl mb-4">Installation & Maintenance</h2>
                     <p class="font-medium leading-snug text-lg">La pose et l’entretien de votre borne</p>
@@ -155,10 +442,10 @@ productTypeButtons.forEach((button) => {
                         <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
                     </svg>
                 </div>
-            </a>
+            </div>
 
-            <a href="#" class="card">
-                <div class="absolute z-[-1] h-full w-full -left-15 top-4">
+            <div data-modale-trigger="4" title="Nos produits" class="card" tabindex="0">
+                <div class="absolute z-[1] h-[80%] w-fit left-4 top-7">
                     <Image src="/img/illu/card-illu-4.svg" alt="" />
                 </div>
                 <div class="card__overlay">
@@ -168,10 +455,10 @@ productTypeButtons.forEach((button) => {
                         <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
                     </svg>
                 </div>
-            </a>
+            </div>
 
-            <a href="#" class="card">
-                <div class="absolute z-[-1] h-full w-1/2 -left-5 top-4">
+            <div data-modale-trigger="5" title="Technique" class="card" tabindex="0">
+                <div class="absolute z-[1] h-full w-[40%] left-4 -top-2">
                     <Image src="/img/illu/card-illu-5.svg" alt="" />
                 </div>
                 <div class="card__overlay">
@@ -181,10 +468,10 @@ productTypeButtons.forEach((button) => {
                         <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
                     </svg>
                 </div>
-            </a>
+            </div>
 
-            <a href="#" class="card">
-                <div class="absolute z-[-1] h-full w-1/2 inset-x-auto top-4 ">
+            <div data-modale-trigger="6" title="Preezeo" class="card" tabindex="0">
+                <div class="absolute z-[1] h-full w-[85%] left-1/2 -translate-x-1/2 top-0">
                     <Image src="/img/illu/card-illu-6.svg" alt="" />
                 </div>
                 <div class="card__overlay">
@@ -194,67 +481,47 @@ productTypeButtons.forEach((button) => {
                         <path d="M14.7241 9.04262C15.1241 8.66175 15.1396 8.02877 14.7587 7.62883L8.55205 1.11133C8.17118 0.711383 7.53821 0.695919 7.13826 1.07679C6.73831 1.45766 6.72285 2.09063 7.10372 2.49058L12.6207 8.28391L6.82739 13.8009C6.42745 14.1818 6.41198 14.8148 6.79285 15.2147C7.17372 15.6147 7.8067 15.6301 8.20664 15.2492L14.7241 9.04262ZM0.975576 8.9997L14.0101 9.31815L14.0589 7.31875L1.02442 7.0003L0.975576 8.9997Z" fill="white"/>
                     </svg>
                 </div>
-            </a>
+            </div>
         </div>
     </section>
 
-    <section class="container max-md:px-[5%]">
-        <h2 class="paragraphe max-w-[800px] mx-auto">
+    <section class="container max-lg:px-[5%]">
+        <h2 class="paragraphe max-w-[800px] mx-auto max-lg:text-center">
             <span class="text-purple">Preezeo</span> forme de manière régulière ses techniciens. 
             Nous favorisons des produits <span class="text-purple">fabriqués en France</span> qui peuvent être évolutifs. <br>
             <span class="text-purple">Spécialiste</span> de l’installation des bornes de recharge pour véhicules électriques.
         </h2>
     </section>
 
-
-    <section class="container max-md:px-[5%]">
-        <div class="flex items-stretch gap-10 mx-auto w-fit mb-6 lg:mb-16">
+    <section class="container max-lg:px-[5%]">
+        <div class="flex items-stretch mx-auto w-fit mb-10 gap-4 max-md:flex-col lg:mb-16 lg:gap-10">
             {contentType.map((item) => (
                 <button type="button" data-toggle-product-type={item.value} class="secondary-button">{ item.text }</button>
             ))}
         </div>
 
-        {contentType.map((item) => (
+        {contentType.map((item, index) => (
             <article 
                 class="flex gap-3 items-center relative flex-col w-full lg:flex-row hidden"
                 data-product-type-value={item.value}
             >
-                <div class="flex items-stretch justify-between w-full max-md:flex-col gap-12">
-                    <p class="text-lg max-w-[500px] md:flex-1 md:w-1/2 max-md:w-full" set:html={item.content}></p>
-
-                    <div class="hero-animation-container max-w-[600px] md:flex-1 md:w-1/2 max-md:w-full">
-                        <Image 
-                            c="hero-animation hero-first lg:h-[300px]"
-                            src={item.illustrations[0]}                            
-                            alt=""
-                            fetchPriority={true}
-                        />
-                        <Image 
-                            c="hero-animation hero-second lg:h-[300px]"
-                            src={item.illustrations[1]}
-                            alt=""
-                            fetchPriority={true}
-                        />
-                        <Image 
-                            c="hero-animation hero-second lg:h-[300px]"
-                            src={item.illustrations[2]}
-                            alt=""
-                            fetchPriority={true}
-                        />
+                <div class="flex lg:flex-row items-center justify-center w-full max-lg:flex-col gap-8 lg:gap-12">
+                    <p class="text-lg max-w-[580px] lg:basis-9/12 text-pretty max-lg:text-center" set:html={item.content}></p>
+                    <div class="flex lg:flex-col lg:basis-3/12 gap-4">
+                        <div data-modale-trigger={index + 7} class="third-button yellow py-[12px] max-lg:px-2 lg:px-5 w-fit" aria-labelledby={'En savoir plus : ' + contentType[index].text} tabindex="0">En savoir plus</div>
+                        <a href="#" class="third-button purple py-[12px] max-lg:px-2 lg:px-5 w-fit">Demander une étude</a>
                     </div>
                 </div>
             </article>
         ))}
-
     </section>
 
-
-    <section class="relative my-[10vw]">
-        <div class="absolute z-[-1] w-full -top-[33%]">
+    <section class="relative mt-20 lg:my-[10vw]">
+        <div class="absolute z-[-1] w-full -top-10 lg:-top-[33%]">
             <Image src="/img/illu/section.svg" alt="" cover={true} c="max-w-unset max-h-unset w-full h-full" />
         </div>
 
-        <div class="flex flex-col w-full max-w-[800px] mx-auto max-md:px-[5%]">
+        <div class="flex flex-col w-full max-w-[800px] mx-auto max-lg:px-[5%]">
             <article class="w-full flex flex-col items-center justify-center gap-5 p-6 lg:p-10 rounded-lg bg-home-cards border border-blue  backdrop-blur-xl">
                 <h2 class="text-yellow font-black text-xl">Offre de parrainage</h2>
                 <p class="paragraphe">
@@ -268,37 +535,637 @@ productTypeButtons.forEach((button) => {
                 </p>
             </article>
 
-            <ButtonContact c="justify-self-end ml-auto mt-4" />
+            <div data-modale-trigger="11">
+                <Button
+                    c="justify-self-end ml-auto mt-4"
+                    text="Nous contacter"
+                    color="yellow"
+                />
+            </div>
         </div>
-
     </section>
 
+    <section class="container max-lg:px-[5%] max-lg:mt-8">
+        <div class="grid items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
+            <div class="flex items-center justify-center text-center lg:min-w-[150px] max-h-[100px] max-w-[220px]">
+                <img src="/img/illu/avere.png" class="lg:min-w-[150px] max-h-[100px] max-w-full" alt="logo avere" decoding="async" draggable="false" />
+            </div>
+            <div class="flex items-center justify-center text-center lg:min-w-[150px] max-h-[100px] max-w-[220px]">
+                <img src="/img/illu/advenir.png" class="lg:min-w-[150px] max-h-[100px] max-w-full" alt="logo advenir" decoding="async" draggable="false" />
+            </div>
+            <div class="flex items-center justify-center text-center lg:min-w-[150px] max-h-[100px] max-w-[220px]">
+                <img src="/img/illu/qualifelec.png" class="lg:min-w-[150px] max-h-[100px] max-w-full" alt="logo qualifelec" decoding="async" draggable="false" />
+            </div>
+            <div class="flex items-center justify-center text-center lg:min-w-[150px] max-h-[100px] max-w-[220px]">
+                <img src="/img/illu/evready.png" class="lg:min-w-[150px] max-h-[100px] max-w-full" alt="logo evready" decoding="async" draggable="false" />
+            </div>
+            <div class="flex items-center justify-center text-center lg:min-w-[150px] max-h-[100px] max-w-[220px]">
+                <img src="/img/illu/irve.png" class="lg:min-w-[150px] max-h-[100px] max-w-full" alt="logo irve" decoding="async" draggable="false" />
+            </div>
+        </div>
+    </section>
 
-    <section class="container max-md:px-[5%]">
-        <div class="lg:grid grid-cols-5 gap-8 scrollbar-hide max-md:flex max-md:overflow-y-clip max-md:overflow-x-scroll">
-            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
-                <Image src="/img/illu/avere.png" alt="" />
+    <div class="modale-container">
+        {modales.map((modale) => (
+            <div class="modale" data-modale={modale.id}>
+                <div class="flex items-center justify-between mb-6">
+                    <h3>{ modale.title }</h3>
+
+                    <div class="close" data-modale-close={modale.id}>
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.5 0C12.8253 0 8.43062 1.82 5.12641 5.12641C1.82109 8.43062 0 12.8264 0 17.5C0 22.1736 1.82109 26.5694 5.12641 29.8736C8.43062 33.18 12.8253 35 17.5 35C22.1747 35 26.5694 33.18 29.8736 29.8736C33.1789 26.5694 35 22.1736 35 17.5C35 12.8264 33.1789 8.43062 29.8736 5.12641C26.5694 1.82 22.1747 0 17.5 0ZM29.1003 29.1003C26.0017 32.1989 21.8827 33.9062 17.5 33.9062C13.1173 33.9062 8.99828 32.1989 5.89969 29.1003C2.80109 26.0017 1.09375 21.8827 1.09375 17.5C1.09375 13.1173 2.80109 8.99828 5.89969 5.89969C8.99828 2.80109 13.1173 1.09375 17.5 1.09375C21.8827 1.09375 26.0017 2.80109 29.1003 5.89969C32.1989 8.99828 33.9062 13.1173 33.9062 17.5C33.9062 21.8827 32.1989 26.0017 29.1003 29.1003Z" fill="#E1FFF9"/>
+                            <path d="M24.0734 10.9256C23.8602 10.7123 23.5134 10.7123 23.3002 10.9256L17.5 16.7268L11.6998 10.9256C11.4866 10.7123 11.1398 10.7123 10.9266 10.9256C10.7133 11.1389 10.7133 11.4856 10.9266 11.6989L16.7267 17.5001L10.9266 23.3014C10.7133 23.5147 10.7133 23.8614 10.9266 24.0746C11.0337 24.1818 11.1738 24.2343 11.3138 24.2343C11.4538 24.2343 11.5938 24.1807 11.7009 24.0746L17.5 18.2734L23.3002 24.0746C23.4073 24.1818 23.5473 24.2343 23.6873 24.2343C23.8273 24.2343 23.9673 24.1807 24.0745 24.0746C24.2878 23.8614 24.2878 23.5147 24.0745 23.3014L18.2733 17.5001L24.0734 11.6989C24.2878 11.4856 24.2878 11.14 24.0734 10.9256Z" fill="#E1FFF9"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="content" set:html={modale.content}></div>
+                <a href="/doc/guide-IRVE.pdf" download="guide-preezeo" class="guide-link flex items-center gap-3">
+                    <span>Télécharger notre <span class="text-yellow">guide complet</span> en PDF</span>
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1.34615 21.5386C2.08961 21.5386 2.69231 22.1413 2.69231 22.8847C2.69231 25.4611 2.69516 27.2579 2.87745 28.6138C3.05451 29.9309 3.3784 30.6282 3.87515 31.125C4.3719 31.6218 5.06935 31.9456 6.38637 32.1228C7.74213 32.3049 9.53901 32.3078 12.1154 32.3078H22.8846C25.461 32.3078 27.2578 32.3049 28.6137 32.1228C29.9307 31.9456 30.628 31.6218 31.1249 31.125C31.6217 30.6282 31.9455 29.9309 32.1226 28.6138C32.3048 27.2579 32.3077 25.4611 32.3077 22.8847C32.3077 22.1413 32.9104 21.5386 33.6538 21.5386C34.3973 21.5386 35 22.1413 35 22.8847V22.9833C35 25.4379 35 27.4164 34.7909 28.9726C34.5737 30.5881 34.109 31.9483 33.0287 33.0286C31.9482 34.1091 30.588 34.5738 28.9725 34.791C27.4163 35.0001 25.4378 35.0001 22.9832 35.0001H12.0169C9.56225 35.0001 7.58373 35.0001 6.02763 34.791C4.41205 34.5738 3.05177 34.1091 1.9714 33.0288C0.891029 31.9483 0.426355 30.5881 0.209139 28.9726C-7.0983e-05 27.4164 -3.4957e-05 25.4379 9.40428e-07 22.9833C9.40428e-07 22.9504 9.40428e-07 22.9176 9.40428e-07 22.8847C9.40428e-07 22.1413 0.602701 21.5386 1.34615 21.5386Z" fill="#FFB800"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 26.0256C17.878 26.0256 18.2384 25.8668 18.4935 25.5879L25.673 17.7353C26.1746 17.1866 26.1366 16.3351 25.5879 15.8335C25.0392 15.3318 24.1877 15.3698 23.686 15.9185L18.8462 21.2122V1.34615C18.8462 0.6027 18.2434 0 17.5 0C16.7566 0 16.1539 0.6027 16.1539 1.34615V21.2122L11.314 15.9185C10.8124 15.3698 9.96088 15.3318 9.41219 15.8335C8.8635 16.3351 8.82536 17.1866 9.32702 17.7353L16.5065 25.5879C16.7616 25.8668 17.122 26.0256 17.5 26.0256Z" fill="#FFB800"/>
+                    </svg>
+                    <div class="borders">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
             </div>
-            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
-                <Image src="/img/illu/advenir.png" alt="" />
+        ))}
+        
+        <div class="modale" data-modale="7">
+            <div class="flex items-center justify-end">
+                <div class="close" data-modale-close="7">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 0C12.8253 0 8.43062 1.82 5.12641 5.12641C1.82109 8.43062 0 12.8264 0 17.5C0 22.1736 1.82109 26.5694 5.12641 29.8736C8.43062 33.18 12.8253 35 17.5 35C22.1747 35 26.5694 33.18 29.8736 29.8736C33.1789 26.5694 35 22.1736 35 17.5C35 12.8264 33.1789 8.43062 29.8736 5.12641C26.5694 1.82 22.1747 0 17.5 0ZM29.1003 29.1003C26.0017 32.1989 21.8827 33.9062 17.5 33.9062C13.1173 33.9062 8.99828 32.1989 5.89969 29.1003C2.80109 26.0017 1.09375 21.8827 1.09375 17.5C1.09375 13.1173 2.80109 8.99828 5.89969 5.89969C8.99828 2.80109 13.1173 1.09375 17.5 1.09375C21.8827 1.09375 26.0017 2.80109 29.1003 5.89969C32.1989 8.99828 33.9062 13.1173 33.9062 17.5C33.9062 21.8827 32.1989 26.0017 29.1003 29.1003Z" fill="#E1FFF9"/>
+                        <path d="M24.0734 10.9256C23.8602 10.7123 23.5134 10.7123 23.3002 10.9256L17.5 16.7268L11.6998 10.9256C11.4866 10.7123 11.1398 10.7123 10.9266 10.9256C10.7133 11.1389 10.7133 11.4856 10.9266 11.6989L16.7267 17.5001L10.9266 23.3014C10.7133 23.5147 10.7133 23.8614 10.9266 24.0746C11.0337 24.1818 11.1738 24.2343 11.3138 24.2343C11.4538 24.2343 11.5938 24.1807 11.7009 24.0746L17.5 18.2734L23.3002 24.0746C23.4073 24.1818 23.5473 24.2343 23.6873 24.2343C23.8273 24.2343 23.9673 24.1807 24.0745 24.0746C24.2878 23.8614 24.2878 23.5147 24.0745 23.3014L18.2733 17.5001L24.0734 11.6989C24.2878 11.4856 24.2878 11.14 24.0734 10.9256Z" fill="#E1FFF9"/>
+                    </svg>
+                </div>
             </div>
-            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
-                <Image src="/img/illu/qualifelec.png" alt="" />
+            <div class="flex items-center gap-14 max-lg:flex-col">
+                <div class="flex flex-col gap-4">
+                    <p>TVA 5.5 %</p>
+                    <p>Installation garantie dans la journée</p>
+                    <p>Visite technique + Etude + Devis gratuit</p>
+                    <p>Matériel et installation assurés et garantis par Preezeo</p>
+                    <p>Pour locataire et propriétaire</p>
+                    <p>Professionnel exerçant à domicile: <br> TVA 5.5 % + Prime ADVENIR plafond de 2000 euros</p>
+                    <a href="/doc/guide-IRVE.pdf" download="guide-preezeo" class="guide-link !mt-0 flex items-center gap-3">
+                        <span>Télécharger notre <span class="text-yellow">guide complet</span> en PDF</span>
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1.34615 21.5386C2.08961 21.5386 2.69231 22.1413 2.69231 22.8847C2.69231 25.4611 2.69516 27.2579 2.87745 28.6138C3.05451 29.9309 3.3784 30.6282 3.87515 31.125C4.3719 31.6218 5.06935 31.9456 6.38637 32.1228C7.74213 32.3049 9.53901 32.3078 12.1154 32.3078H22.8846C25.461 32.3078 27.2578 32.3049 28.6137 32.1228C29.9307 31.9456 30.628 31.6218 31.1249 31.125C31.6217 30.6282 31.9455 29.9309 32.1226 28.6138C32.3048 27.2579 32.3077 25.4611 32.3077 22.8847C32.3077 22.1413 32.9104 21.5386 33.6538 21.5386C34.3973 21.5386 35 22.1413 35 22.8847V22.9833C35 25.4379 35 27.4164 34.7909 28.9726C34.5737 30.5881 34.109 31.9483 33.0287 33.0286C31.9482 34.1091 30.588 34.5738 28.9725 34.791C27.4163 35.0001 25.4378 35.0001 22.9832 35.0001H12.0169C9.56225 35.0001 7.58373 35.0001 6.02763 34.791C4.41205 34.5738 3.05177 34.1091 1.9714 33.0288C0.891029 31.9483 0.426355 30.5881 0.209139 28.9726C-7.0983e-05 27.4164 -3.4957e-05 25.4379 9.40428e-07 22.9833C9.40428e-07 22.9504 9.40428e-07 22.9176 9.40428e-07 22.8847C9.40428e-07 22.1413 0.602701 21.5386 1.34615 21.5386Z" fill="#FFB800"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 26.0256C17.878 26.0256 18.2384 25.8668 18.4935 25.5879L25.673 17.7353C26.1746 17.1866 26.1366 16.3351 25.5879 15.8335C25.0392 15.3318 24.1877 15.3698 23.686 15.9185L18.8462 21.2122V1.34615C18.8462 0.6027 18.2434 0 17.5 0C16.7566 0 16.1539 0.6027 16.1539 1.34615V21.2122L11.314 15.9185C10.8124 15.3698 9.96088 15.3318 9.41219 15.8335C8.8635 16.3351 8.82536 17.1866 9.32702 17.7353L16.5065 25.5879C16.7616 25.8668 17.122 26.0256 17.5 26.0256Z" fill="#FFB800"/>
+                        </svg>
+                        <div class="borders">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="guide-cover max-lg:!m-0">
+                    <Image src="/img/illu/guide-cover.svg" alt="" />
+                </div>
             </div>
-            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
-                <Image src="/img/illu/evready.png" alt="" />
+        </div>
+         
+        <div class="modale" data-modale="8">
+            <div class="flex items-center justify-end">
+                <div class="close" data-modale-close="8">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 0C12.8253 0 8.43062 1.82 5.12641 5.12641C1.82109 8.43062 0 12.8264 0 17.5C0 22.1736 1.82109 26.5694 5.12641 29.8736C8.43062 33.18 12.8253 35 17.5 35C22.1747 35 26.5694 33.18 29.8736 29.8736C33.1789 26.5694 35 22.1736 35 17.5C35 12.8264 33.1789 8.43062 29.8736 5.12641C26.5694 1.82 22.1747 0 17.5 0ZM29.1003 29.1003C26.0017 32.1989 21.8827 33.9062 17.5 33.9062C13.1173 33.9062 8.99828 32.1989 5.89969 29.1003C2.80109 26.0017 1.09375 21.8827 1.09375 17.5C1.09375 13.1173 2.80109 8.99828 5.89969 5.89969C8.99828 2.80109 13.1173 1.09375 17.5 1.09375C21.8827 1.09375 26.0017 2.80109 29.1003 5.89969C32.1989 8.99828 33.9062 13.1173 33.9062 17.5C33.9062 21.8827 32.1989 26.0017 29.1003 29.1003Z" fill="#E1FFF9"/>
+                        <path d="M24.0734 10.9256C23.8602 10.7123 23.5134 10.7123 23.3002 10.9256L17.5 16.7268L11.6998 10.9256C11.4866 10.7123 11.1398 10.7123 10.9266 10.9256C10.7133 11.1389 10.7133 11.4856 10.9266 11.6989L16.7267 17.5001L10.9266 23.3014C10.7133 23.5147 10.7133 23.8614 10.9266 24.0746C11.0337 24.1818 11.1738 24.2343 11.3138 24.2343C11.4538 24.2343 11.5938 24.1807 11.7009 24.0746L17.5 18.2734L23.3002 24.0746C23.4073 24.1818 23.5473 24.2343 23.6873 24.2343C23.8273 24.2343 23.9673 24.1807 24.0745 24.0746C24.2878 23.8614 24.2878 23.5147 24.0745 23.3014L18.2733 17.5001L24.0734 11.6989C24.2878 11.4856 24.2878 11.14 24.0734 10.9256Z" fill="#E1FFF9"/>
+                    </svg>
+                </div>
             </div>
-            <div class="min-w-[150px] max-h-[150px] max-w-[220px]">
-                <Image src="/img/illu/irve.png" alt="" />
+            <div class="flex items-center gap-14 max-lg:flex-col">
+                <div class="flex flex-col gap-4">
+                    <p>TVA 5.5 %</p>
+                    <p>Installation garantie</p>
+                    <p>Visite technique + Etude + Devis gratuit</p>
+                    <p>Matériel et installation assurés et garantis par Preezeo</p>
+                    <p>Pour usage collectif ou individuel</p>
+                    <p>La décision requiert la majorité des participants à l’AG si usage collectif.</p>
+                    <a href="/doc/guide-IRVE.pdf" download="guide-preezeo" class="guide-link !mt-0 flex items-center gap-3">
+                        <span>Télécharger notre <span class="text-yellow">guide complet</span> en PDF</span>
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1.34615 21.5386C2.08961 21.5386 2.69231 22.1413 2.69231 22.8847C2.69231 25.4611 2.69516 27.2579 2.87745 28.6138C3.05451 29.9309 3.3784 30.6282 3.87515 31.125C4.3719 31.6218 5.06935 31.9456 6.38637 32.1228C7.74213 32.3049 9.53901 32.3078 12.1154 32.3078H22.8846C25.461 32.3078 27.2578 32.3049 28.6137 32.1228C29.9307 31.9456 30.628 31.6218 31.1249 31.125C31.6217 30.6282 31.9455 29.9309 32.1226 28.6138C32.3048 27.2579 32.3077 25.4611 32.3077 22.8847C32.3077 22.1413 32.9104 21.5386 33.6538 21.5386C34.3973 21.5386 35 22.1413 35 22.8847V22.9833C35 25.4379 35 27.4164 34.7909 28.9726C34.5737 30.5881 34.109 31.9483 33.0287 33.0286C31.9482 34.1091 30.588 34.5738 28.9725 34.791C27.4163 35.0001 25.4378 35.0001 22.9832 35.0001H12.0169C9.56225 35.0001 7.58373 35.0001 6.02763 34.791C4.41205 34.5738 3.05177 34.1091 1.9714 33.0288C0.891029 31.9483 0.426355 30.5881 0.209139 28.9726C-7.0983e-05 27.4164 -3.4957e-05 25.4379 9.40428e-07 22.9833C9.40428e-07 22.9504 9.40428e-07 22.9176 9.40428e-07 22.8847C9.40428e-07 22.1413 0.602701 21.5386 1.34615 21.5386Z" fill="#FFB800"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 26.0256C17.878 26.0256 18.2384 25.8668 18.4935 25.5879L25.673 17.7353C26.1746 17.1866 26.1366 16.3351 25.5879 15.8335C25.0392 15.3318 24.1877 15.3698 23.686 15.9185L18.8462 21.2122V1.34615C18.8462 0.6027 18.2434 0 17.5 0C16.7566 0 16.1539 0.6027 16.1539 1.34615V21.2122L11.314 15.9185C10.8124 15.3698 9.96088 15.3318 9.41219 15.8335C8.8635 16.3351 8.82536 17.1866 9.32702 17.7353L16.5065 25.5879C16.7616 25.8668 17.122 26.0256 17.5 26.0256Z" fill="#FFB800"/>
+                        </svg>
+                        <div class="borders">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="guide-cover max-lg:!m-0">
+                    <Image src="/img/illu/guide-cover.png" alt="" />
+                </div>
             </div>
+        </div>
+
+         <div class="modale" data-modale="9">
+            <div class="flex items-center justify-end">
+                <div class="close" data-modale-close="9">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 0C12.8253 0 8.43062 1.82 5.12641 5.12641C1.82109 8.43062 0 12.8264 0 17.5C0 22.1736 1.82109 26.5694 5.12641 29.8736C8.43062 33.18 12.8253 35 17.5 35C22.1747 35 26.5694 33.18 29.8736 29.8736C33.1789 26.5694 35 22.1736 35 17.5C35 12.8264 33.1789 8.43062 29.8736 5.12641C26.5694 1.82 22.1747 0 17.5 0ZM29.1003 29.1003C26.0017 32.1989 21.8827 33.9062 17.5 33.9062C13.1173 33.9062 8.99828 32.1989 5.89969 29.1003C2.80109 26.0017 1.09375 21.8827 1.09375 17.5C1.09375 13.1173 2.80109 8.99828 5.89969 5.89969C8.99828 2.80109 13.1173 1.09375 17.5 1.09375C21.8827 1.09375 26.0017 2.80109 29.1003 5.89969C32.1989 8.99828 33.9062 13.1173 33.9062 17.5C33.9062 21.8827 32.1989 26.0017 29.1003 29.1003Z" fill="#E1FFF9"/>
+                        <path d="M24.0734 10.9256C23.8602 10.7123 23.5134 10.7123 23.3002 10.9256L17.5 16.7268L11.6998 10.9256C11.4866 10.7123 11.1398 10.7123 10.9266 10.9256C10.7133 11.1389 10.7133 11.4856 10.9266 11.6989L16.7267 17.5001L10.9266 23.3014C10.7133 23.5147 10.7133 23.8614 10.9266 24.0746C11.0337 24.1818 11.1738 24.2343 11.3138 24.2343C11.4538 24.2343 11.5938 24.1807 11.7009 24.0746L17.5 18.2734L23.3002 24.0746C23.4073 24.1818 23.5473 24.2343 23.6873 24.2343C23.8273 24.2343 23.9673 24.1807 24.0745 24.0746C24.2878 23.8614 24.2878 23.5147 24.0745 23.3014L18.2733 17.5001L24.0734 11.6989C24.2878 11.4856 24.2878 11.14 24.0734 10.9256Z" fill="#E1FFF9"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="flex items-center gap-14 max-lg:flex-col">
+                <div class="flex flex-col gap-4">
+                    <p>Attirer une clientèle électromobile</p>
+                    <p>Améliorer l’expérience client</p>
+                    <p>Prolonger la durée de visite</p>
+                    <p>Promouvoir une image écologique</p>
+                    <p>Favoriser les déplacements professionnel</p>
+                    <p>Matériel et installation assurés et garantis par Preezeo</p>
+                    <a href="/doc/guide-IRVE.pdf" download="guide-preezeo" class="guide-link !mt-0 flex items-center gap-3">
+                        <span>Télécharger notre <span class="text-yellow">guide complet</span> en PDF</span>
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M1.34615 21.5386C2.08961 21.5386 2.69231 22.1413 2.69231 22.8847C2.69231 25.4611 2.69516 27.2579 2.87745 28.6138C3.05451 29.9309 3.3784 30.6282 3.87515 31.125C4.3719 31.6218 5.06935 31.9456 6.38637 32.1228C7.74213 32.3049 9.53901 32.3078 12.1154 32.3078H22.8846C25.461 32.3078 27.2578 32.3049 28.6137 32.1228C29.9307 31.9456 30.628 31.6218 31.1249 31.125C31.6217 30.6282 31.9455 29.9309 32.1226 28.6138C32.3048 27.2579 32.3077 25.4611 32.3077 22.8847C32.3077 22.1413 32.9104 21.5386 33.6538 21.5386C34.3973 21.5386 35 22.1413 35 22.8847V22.9833C35 25.4379 35 27.4164 34.7909 28.9726C34.5737 30.5881 34.109 31.9483 33.0287 33.0286C31.9482 34.1091 30.588 34.5738 28.9725 34.791C27.4163 35.0001 25.4378 35.0001 22.9832 35.0001H12.0169C9.56225 35.0001 7.58373 35.0001 6.02763 34.791C4.41205 34.5738 3.05177 34.1091 1.9714 33.0288C0.891029 31.9483 0.426355 30.5881 0.209139 28.9726C-7.0983e-05 27.4164 -3.4957e-05 25.4379 9.40428e-07 22.9833C9.40428e-07 22.9504 9.40428e-07 22.9176 9.40428e-07 22.8847C9.40428e-07 22.1413 0.602701 21.5386 1.34615 21.5386Z" fill="#FFB800"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 26.0256C17.878 26.0256 18.2384 25.8668 18.4935 25.5879L25.673 17.7353C26.1746 17.1866 26.1366 16.3351 25.5879 15.8335C25.0392 15.3318 24.1877 15.3698 23.686 15.9185L18.8462 21.2122V1.34615C18.8462 0.6027 18.2434 0 17.5 0C16.7566 0 16.1539 0.6027 16.1539 1.34615V21.2122L11.314 15.9185C10.8124 15.3698 9.96088 15.3318 9.41219 15.8335C8.8635 16.3351 8.82536 17.1866 9.32702 17.7353L16.5065 25.5879C16.7616 25.8668 17.122 26.0256 17.5 26.0256Z" fill="#FFB800"/>
+                        </svg>
+                        <div class="borders">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="guide-cover max-lg:!m-0">
+                    <Image src="/img/illu/guide-cover.png" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <div class="modale" data-modale="10">
+            <div class="flex items-center justify-between mb-6">
+                <h3>Mentions légales</h3>
+                <div class="close" data-modale-close="10">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 0C12.8253 0 8.43062 1.82 5.12641 5.12641C1.82109 8.43062 0 12.8264 0 17.5C0 22.1736 1.82109 26.5694 5.12641 29.8736C8.43062 33.18 12.8253 35 17.5 35C22.1747 35 26.5694 33.18 29.8736 29.8736C33.1789 26.5694 35 22.1736 35 17.5C35 12.8264 33.1789 8.43062 29.8736 5.12641C26.5694 1.82 22.1747 0 17.5 0ZM29.1003 29.1003C26.0017 32.1989 21.8827 33.9062 17.5 33.9062C13.1173 33.9062 8.99828 32.1989 5.89969 29.1003C2.80109 26.0017 1.09375 21.8827 1.09375 17.5C1.09375 13.1173 2.80109 8.99828 5.89969 5.89969C8.99828 2.80109 13.1173 1.09375 17.5 1.09375C21.8827 1.09375 26.0017 2.80109 29.1003 5.89969C32.1989 8.99828 33.9062 13.1173 33.9062 17.5C33.9062 21.8827 32.1989 26.0017 29.1003 29.1003Z" fill="#E1FFF9"/>
+                        <path d="M24.0734 10.9256C23.8602 10.7123 23.5134 10.7123 23.3002 10.9256L17.5 16.7268L11.6998 10.9256C11.4866 10.7123 11.1398 10.7123 10.9266 10.9256C10.7133 11.1389 10.7133 11.4856 10.9266 11.6989L16.7267 17.5001L10.9266 23.3014C10.7133 23.5147 10.7133 23.8614 10.9266 24.0746C11.0337 24.1818 11.1738 24.2343 11.3138 24.2343C11.4538 24.2343 11.5938 24.1807 11.7009 24.0746L17.5 18.2734L23.3002 24.0746C23.4073 24.1818 23.5473 24.2343 23.6873 24.2343C23.8273 24.2343 23.9673 24.1807 24.0745 24.0746C24.2878 23.8614 24.2878 23.5147 24.0745 23.3014L18.2733 17.5001L24.0734 11.6989C24.2878 11.4856 24.2878 11.14 24.0734 10.9256Z" fill="#E1FFF9"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="content">
+                <h4>ÉDITEUR DU SITE</h4>
+                <p>
+                    PREEZO.fr est édité par PREEZEO, SASU au capital de 7&#8239;500&#8239;€.
+                    <br>
+                    Numéro de RCS : 980253629 - Numéro de TVA : FR65980253629
+                    <br>
+                    Siège social : 57 avenue du Marechal Juin, 64200 Biarritz
+                    <br>
+                    Directeur de publication : PREEZEO SASU
+                    <br>
+                    Contact : 
+                    <span class="copy underline" title="Copier le texte" tabindex="0">
+                        contact@preezeo.fr
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"></path></svg>
+                    </span>
+                    <br>
+                    preezeo.fr est hébergé par OVH.
+                </p>   
+                <h4>DONNÉES PERSONNELLES & CONFIDENTIALITÉ</h4>
+                <p>
+                    Le site ne recueille aucunes informations personnelles, et n’est pas assujetti à déclaration à la CNIL.
+                </p>     
+                <h4>INFORMATIONS</h4>
+                <p>
+                    Les informations et documents du site sont présentés à titre indicatif, sans caractère exhaustif, et ne peuvent engager la responsabilité du propriétaire du site.
+                    <br>
+                    Le propriétaire du site ne peut être tenu responsable des dommages directs et indirects consécutifs à l’accès au site.
+                </p>     
+                <h4>PROPRIETE INTELLECTUELLE</h4>
+                <p>
+                    Sauf mention contraire, tous les éléments accessibles sur le site (textes, images, graphismes, logo, icônes, sons, logiciels, etc.) restent la propriété exclusive de leurs auteurs, en ce qui concerne les droits de propriété intellectuelle ou les droits d’usage.
+                    <br>
+                    Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l’auteur.
+                    <br>
+                    Toute exploitation non autorisée du site ou de l’un quelconque des éléments qu’il contient est considérée comme constitutive d’une contrefaçon et passible de poursuites.
+                    <br>
+                    Les marques et logos reproduits sur le site sont déposés par les sociétés qui en sont propriétaires.
+                </p>     
+                <h4>CRÉDITS</h4>
+                <p>
+                    Design: <a href="https://touch-of-pixels.com/" target="_blank" class="underline duration-200 hover:opacity-70">touch-of-pixels.com</a>
+                    <br>
+                    Développement: <a href="https://maximefontenay.fr/" target="_blank" class="underline duration-200 hover:opacity-70">maximefontenay.fr</a>
+                </p>     
+            </div>
+        </div>
+
+        <div class="modale contact" data-modale="11">
+            <div class="flex items-center mb-2 justify-end">
+                <div class="close" data-modale-close="11">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 0C12.8253 0 8.43062 1.82 5.12641 5.12641C1.82109 8.43062 0 12.8264 0 17.5C0 22.1736 1.82109 26.5694 5.12641 29.8736C8.43062 33.18 12.8253 35 17.5 35C22.1747 35 26.5694 33.18 29.8736 29.8736C33.1789 26.5694 35 22.1736 35 17.5C35 12.8264 33.1789 8.43062 29.8736 5.12641C26.5694 1.82 22.1747 0 17.5 0ZM29.1003 29.1003C26.0017 32.1989 21.8827 33.9062 17.5 33.9062C13.1173 33.9062 8.99828 32.1989 5.89969 29.1003C2.80109 26.0017 1.09375 21.8827 1.09375 17.5C1.09375 13.1173 2.80109 8.99828 5.89969 5.89969C8.99828 2.80109 13.1173 1.09375 17.5 1.09375C21.8827 1.09375 26.0017 2.80109 29.1003 5.89969C32.1989 8.99828 33.9062 13.1173 33.9062 17.5C33.9062 21.8827 32.1989 26.0017 29.1003 29.1003Z" fill="#E1FFF9"/>
+                        <path d="M24.0734 10.9256C23.8602 10.7123 23.5134 10.7123 23.3002 10.9256L17.5 16.7268L11.6998 10.9256C11.4866 10.7123 11.1398 10.7123 10.9266 10.9256C10.7133 11.1389 10.7133 11.4856 10.9266 11.6989L16.7267 17.5001L10.9266 23.3014C10.7133 23.5147 10.7133 23.8614 10.9266 24.0746C11.0337 24.1818 11.1738 24.2343 11.3138 24.2343C11.4538 24.2343 11.5938 24.1807 11.7009 24.0746L17.5 18.2734L23.3002 24.0746C23.4073 24.1818 23.5473 24.2343 23.6873 24.2343C23.8273 24.2343 23.9673 24.1807 24.0745 24.0746C24.2878 23.8614 24.2878 23.5147 24.0745 23.3014L18.2733 17.5001L24.0734 11.6989C24.2878 11.4856 24.2878 11.14 24.0734 10.9256Z" fill="#E1FFF9"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="flex max-lg:flex-col gap-8 lg:gap-20">
+               <div class="flex flex-col items-center flex-1 max-sm:items-center max-md:gap-4 sm:flex-row max-md:items-start max-md:justify-between lg:flex-col">
+                    <div class="max-md:max-w-[200px] flex items-center">
+                        <Image src="/img/logo/full_purple.svg" alt="Logo Preezeo" c="max-w-[200px] h-auto" />
+                    </div>
+
+                    <div class="flex flex-col grow-1 gap-4 justify-start items-start my-auto rounded-lg">
+                        <ul class="flex flex-col lg:gap-4 ">
+                            <li data-device="mail" class="flex items-center gap-4 py-1 duration-300 font-medium">
+                                <div class="flex items-center justify-center w-[30px] h-[30px]">
+                                    <Image 
+                                        src="/img/icons/mail.svg" 
+                                        alt="Mail icon"
+                                        fetchPriority={true}
+                                    />
+                                </div>
+                                <p class="select-text text-sm font-semibold tracking-2">contact@preezeo.fr</p>
+                            </li>
+                            <li data-device="phone" class="flex items-center gap-4 py-1 duration-300 font-medium">
+                                <div class="flex items-center justify-center w-[30px] h-[30px]">
+                                    <Image 
+                                        src="/img/icons/phone.svg" 
+                                        alt="Phone icon"
+                                        fetchPriority={true}
+                                    />
+                                </div>
+                                <p class="select-text text-sm font-semibold tracking-2">07 88 28 10 89</p>
+                            </li>
+                            <li class="flex items-center gap-4 py-1 duration-300 font-medium">
+                                <a class="flex items-center gap-4 hover:opacity-80" href="https://www.google.fr/maps/place/57+Av.+du+Mar%C3%A9chal+Juin,+64200+Biarritz/@43.470901,-1.5429779,17z/data=!3m1!4b1!4m6!3m5!1s0xd51153581b41ef9:0xf7cc06159a644b4!8m2!3d43.4708971!4d-1.540403!16s%2Fg%2F11bw44dfs2?entry=ttu" target="_blank">
+                                    <div class="flex items-center justify-center w-[30px] h-[30px]">
+                                        <Image 
+                                            src="/img/icons/location.svg" 
+                                            alt="Location icon"
+                                            fetchPriority={true}
+                                        />
+                                    </div>
+                                    <p class="select-text text-sm font-semibold tracking-2">57 Avenue du Maréchal Juin<br> 64500 Biarritz</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+               </div>
+                <div class="flex flex-col items-center gap-6 flex-1 bg-metal rounded-lg p-4 lg:p-10 lg:rounded-2xl">
+                    <form 
+                        class="flex flex-col items-stretch gap-5 w-100"
+                        method="post" 
+                        action="https://formspree.io/f/mleyadeq" 
+                    >
+                        <div class="form_group select-category flex flex-wrap gap-2">
+                            <input type="radio" id="category_individual" value="Particulier" name="category" checked required />
+                            <label for="category_individual">Particulier</label>
             
+                            <input type="radio" id="category_professional" value="Professionnel" name="category" required />
+                            <label for="category_professional">Professionnel</label>
+            
+                            <input type="radio" id="category_infrastructure" value="Infrastructure Collective" name="category" required />
+                            <label for="category_infrastructure">Infrastructure collective</label>
+                        </div>
+
+                        <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
+                            <label for="form_name" class="hidden">Name</label>
+                            <input type="text" id="form_name" name="name" placeholder="Nom*" autocomplete="name" required/>
+                        </div>
+
+                        <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
+                            <label for="form_email" class="hidden">Email</label>
+                            <input type="email" id="form_email" name="email" placeholder="Mail*" autocomplete="email" required />
+                        </div>
+
+                        <div class="form_group flex w-full lg:w-2/3 gap-2 border-b-2 border-purple">
+                            <label for="form_phone" class="hidden">Phone</label>
+                            <input type="tel" id="form_phone" name="phone" placeholder="Téléphone*" autocomplete="tel" required/>
+                        </div>
+
+                        <div class="form_group flex gap-2 border-b-2 border-purple">
+                            <label for="form_message" class="hidden">Message</label>
+                            <textarea id="form_message" name="message" placeholder="Message*" required></textarea>
+                        </div>
+
+                        <div class="form_group flex gap-2 mt-10 lg:mt-20">
+                            <div class="w-fit ml-auto">
+                                <Button
+                                    c="justify-self-end ml-auto mt-4"
+                                    text="Envoyer"
+                                    color="yellow"
+                                    type="submit"
+                                />
+                            </div>
+                        </div>
+                    </form>
+               </div>
+            </div>
         </div>
-    </section>
+
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-icon">
+                <span class="scroll-indicator-wheel"></span>
+            </div>
+        </div>
+    </div>
 </Layout>
 
 <style lang="scss" is:global>
 @use '../styles/_variables.scss' as *;
 
+.copy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px 0;
+    transition: .2s;
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.third-button {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%;
+    letter-spacing: 0.54px;
+    text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    transition: all .3s ease;
+    width: fit-content;
+    user-select: none;
+    cursor: pointer;
+    position:relative;
+    outline:none;
+    overflow:hidden;
+    
+    &.purple {
+        border-color: var(--purple);
+
+        &::before{
+            background-color: var(--purple);
+        }
+    }
+    &.yellow {
+        border-color: var(--yellow);
+        &::before{
+            background-color: var(--yellow);
+        }
+    }
+
+    &::before {
+        content:'';
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        z-index:-1;
+        transition: all .4s ease-in-out;
+        width:100%;
+        height:0;
+        transform:translate(-50%, -50%) rotate(45deg);
+    }
+    &:hover::before {
+        height:800%;
+    }
+}
+
+.modale-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5vh 5vw;
+    gap: 10vh;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    overflow-y: scroll;
+    overflow-x: clip;
+    max-height: 100vh;
+    transition: all .3s ease;
+    backdrop-filter: blur(15px);
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .modale {
+        width: 790px;
+        border-radius: 10px;
+        border: 2px solid var(--blue);
+        background: linear-gradient(0deg, #515BE0 -4.62%, rgba(49, 56, 70, 0.20) 43.93%);
+        backdrop-filter: blur(30px);
+        padding: 35px;
+        display: none;
+
+        @media (max-width: 700px) {
+            width: 100%;
+            padding: 15px;
+        }
+
+        &.contact {
+            width: auto;
+        }
+
+        &.active {
+           display: block;
+        }
+        .close {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: .3s ease;
+            will-change: transform;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        h3 {
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        .content {
+            h4 {
+                font-size: 24px;
+                font-style: normal;
+                color: var(--yellow);
+                font-weight: 900;
+                line-height: 150%;
+                letter-spacing: 0.72px;
+                margin: 30px 0 10px;
+            }
+
+            li {
+                margin: 0 0 10px;
+            }
+
+            p, span {
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 1.5em;
+                // line-height: 145%; /* 26.1px */
+                letter-spacing: 0.54px;
+            }
+        }
+
+        .guide-cover {
+            margin: 30px 30px 0 0;
+            box-shadow: 2px 2px 100px 0px rgba(225, 255, 249, 0.25);
+        }
+
+        .guide-link {
+            font-size: 18px;
+            position: relative;
+            text-decoration: none;
+            transition: .3s ease;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            padding: 10px 25px;
+            width: fit-content;
+            margin-top: 35px;
+            transition: .5s;
+            $color: white;
+            $borderWidth: 2px;
+            $speed: .2s;
+
+            .borders {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                pointer-events: none;
+            }
+
+            .borders span {
+                position: absolute;
+                display: block;
+                background-color: $color;
+
+                &:nth-child(1) {
+                    top: 0;
+                    left: 0;
+                    width: 50.5%;
+                    height: $borderWidth;
+                    transform: scaleX(0);
+                    transition: transform $speed;
+                    transform-origin: left;
+                }
+                &:nth-child(2) {
+                    top: 0;
+                    right: 0;
+                    width: 50.5%;
+                    height: $borderWidth;
+                    transform: scaleX(0);
+                    transition: transform $speed;
+                    transform-origin: right;
+                }
+                 &:nth-child(3) {
+                    top: 0;
+                    right: 0;
+                    width: $borderWidth;
+                    height: 100%;
+                    transform: scaleY(0);
+                    transition: transform $speed;
+                    transition-delay: calc(#{$speed} * .95);
+                    transform-origin: bottom;
+                }
+                 &:nth-child(4) {
+                    top: 0;
+                    left: 0;
+                    width: $borderWidth;
+                    height: 100%;
+                    transform: scaleY(0);
+                    transition: transform $speed;
+                    transition-delay: calc(#{$speed} * .95);
+                    transform-origin: bottom;
+                }
+                 &:nth-child(5) {
+                    bottom: 0;
+                    left: 0;
+                    width: 50.5%;;
+                    height: $borderWidth;
+                    transform: scaleX(0);
+                    transition: transform $speed;
+                    transition-delay: calc(#{$speed} * 1.9);
+                    transform-origin: right;
+                }
+                 &:nth-child(6) {
+                    bottom: 0;
+                    right: 0;
+                    width: 50.5%;;
+                    height: $borderWidth;
+                    transform: scaleX(0);
+                    transition: transform $speed;
+                    transition-delay: calc(#{$speed} * 1.9);
+                    transform-origin: left;
+                }
+            }
+
+            &:hover .borders span {
+                &:nth-child(1) {             
+                    transform: scaleX(1);
+                    transform-origin: right;
+                }
+                
+                &:nth-child(2) {             
+                    transform-origin: left;
+                    transform: scaleX(1);
+                }
+                
+                &:nth-child(3) {             
+                    transform-origin: top;
+                    transform: scaleY(1);
+                }
+                
+                &:nth-child(4) {             
+                    transform-origin: top;
+                    transform: scaleY(1);
+                }
+                
+                &:nth-child(5) {             
+                    transform-origin: left;
+                    transform: scaleX(1);
+                }
+                &:nth-child(6) {             
+                    transform-origin: right;
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+}
 
 .hero-animation-container {
     position: relative;
@@ -337,30 +1204,28 @@ productTypeButtons.forEach((button) => {
         }
 
         &.hero-first {
-            animation: swapOne 1s ease-in-out .5s infinite alternate;
+            animation: swapOne .85s linear .5s infinite alternate;
         }    
         
         &.hero-second {
-            animation: swapTwo 1s ease-in-out .5s infinite alternate;
+            animation: swapTwo .85s linear .5s infinite alternate;
         }
-    
     }
 }
-
 
 .secondary-button {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 26px;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 5px;
     border: solid 2px var(--purple);
     background: transparent;
 
     &:not(.active):hover {
-        color: var(--purple);
-        border: dashed 2px var(--purple);
+        box-shadow: 0 0 10px 0 var(--purple) inset, 0 0 20px 2px var(--purple);
+        border: 2px solid var(--purple);
     }
 
     &.active {
@@ -371,9 +1236,10 @@ productTypeButtons.forEach((button) => {
         cursor: default;
     }
 }
+
 .card-scroller {
+    cursor: grab;
     scroll-padding: 0 5%;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     mask: linear-gradient(90deg, transparent, white 5%, white 90%, transparent);
 
@@ -396,16 +1262,29 @@ productTypeButtons.forEach((button) => {
         border-radius: 99px;
         cursor: grab;
     }
+
+    @media (max-width: 768px) {
+        &::-webkit-scrollbar-track {
+            margin-left: 10vw;
+            margin-right: 10vw;
+        }
+    }
 }
 .card {
-    @apply relative overflow-clip min-w-[80%] md:min-w-[400px] bg-home-cards border border-blue rounded-lg snap-start;
+    @apply relative overflow-clip min-w-[80%] sm:min-w-[350px] bg-home-cards border border-blue rounded-lg snap-start cursor-pointer;
     min-height: 250px;
+    outline: none;
     --transition: .75s ease;
 
     @media screen and (min-width: 768px) {
         min-height: 340px;
     }
-    &:hover {
+
+    &:focus-visible {
+        border-color: var(--yellow);
+    }
+
+    &:hover, &:focus-visible {
        img {
             scale: 1.125;
             transition: var(--transition);
@@ -432,12 +1311,128 @@ productTypeButtons.forEach((button) => {
 
     &__overlay {
         @apply flex flex-col justify-center absolute w-[230px] h-full right-6 top-0 px-4 bg-white/5 backdrop-blur-xl;
+        z-index: 5;
     }
 }
 
 .paragraphe {
-    @apply text-xl lg:text-2xl font-semibold leading-relaxed 
+    @apply text-xl lg:text-2xl font-semibold leading-relaxed ;
 }
 
+html {
+    text-wrap: pretty;
+}
 
+.select-category input:checked + label {
+    @media screen and (max-width: 768px) {
+        color: var(--light);
+    }
+}
+
+.select-category label {
+    @include flex(center,center);
+    width: fit-content;
+    cursor: pointer;
+    background-color:$t;
+    height: 30px;
+    color: var(--blue);
+    font-size: 14px;
+    letter-spacing: 0.42px;
+    text-align: center;
+    width: fit-content;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: solid 1px var(--purple);
+    transition: .2s linear;
+    outline: 1.5px $t solid;
+
+    &:hover {
+        outline-color: var(--purple);
+    }
+}
+
+.form_group {
+    transition: .3s linear;
+
+    &:hover, &:focus-within {
+        border-color: var(--light-purple)
+    }
+}
+
+input, textarea {
+    width: 100%;
+    padding: 2px 5px;
+    outline: 1px solid $t;
+    transition: .2s linear;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &[type="radio"] {
+        display: none;
+        &:checked + label {
+            background-color: var(--purple);
+            outline-color: $t !important;
+        }
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus {
+        border-color: var(--purple);
+        -webkit-box-shadow: 0 0 0px 1000px var(--metal) inset;
+        transition: 5000s ease-in-out 0s;
+    }
+}
+
+textarea {
+    min-height: 100px;
+}
+
+.scroll-indicator {
+    position: fixed;
+    top: 50%;
+    left: calc(60% + 790px / 2);
+    translate: 0 -50%;
+    pointer-events: none;
+    opacity: 0;
+
+    &.active {
+        opacity: 1;
+    }
+
+    &-icon{
+        width: 25px;
+        height: 45px;
+        border: 2px solid white;
+        border-radius: 15px;
+        position: relative;
+        text-align: center;
+    }
+    &-wheel{
+        height: 6px;
+        margin: 2px auto 0;
+        display: block;
+        width: 3px;
+        background-color: white;
+        border-radius: 50%;
+        -webkit-animation: 1.6s ease infinite wheel-up-down;
+        -moz-animation: 1.6s ease infinite wheel-up-down;
+        animation: 1.6s ease infinite wheel-up-down;
+    }
+}
+
+@keyframes wheel-up-down {	
+    0% {
+	    margin-top: 2px;
+	    opacity: 0;
+	}
+	30% {
+	    opacity: 1;
+	}
+	100% {
+	    margin-top: 10px;
+	    opacity: 0;
+	}
+}
 </style>

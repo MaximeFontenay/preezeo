@@ -2,7 +2,7 @@
 import '../styles/main.scss';
 import Image from '../components/atom/Image.astro';
 import { ViewTransitions } from 'astro:transitions';
-import ButtonContact from '../components/ButtonContact.astro';
+import Button from '../components/atom/Button.astro';
 
 export interface Props {
 	title: string;
@@ -46,26 +46,54 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="flex flex-col bg-deep-blue text-white font-montserrat text-base font-normal leading-[140%]">
-		<header class="container mb-8 max-md:px-[5%]">
-			<nav class="flex justify-between items-center max-md:flex-wrap max-md:gap-10 py-4 lg:py-10">
-				<a href="/" class="max-md:order-1 max-md:max-w-[100px] flex items-center">
+		<header class="mb-4 lg:container lg:mb-8 max-xl:px-[5%]">
+			<nav class="flex justify-between items-center pt-6 lg:py-10">
+				<div class="max-md:max-w-[100px] md:max-w-[150px] flex items-center">
 					<Image src="/img/logo/full_purple.svg" alt="Logo Preezeo" c="max-w-[165px] h-auto" />
-				</a>
+				</div>
 				
-				<h1 class="max-md:order-3 font-alien uppercase text-center text-2xl"><span class="text-purple">La</span> <span class="text-yellow">borne</span> qu’il vous faut</h1>
+				<h1 class="font-alien uppercase text-center text-2xl"><span class="text-purple">La</span><span class="text-yellow"> borne</span> qu’il vous faut</h1>
 			
-				<ButtonContact c="max-md:order-2" />
+			<div data-modale-trigger="11">
+                <Button
+                    c=""
+                    text="Nous contacter"
+                    color="yellow"
+                />
+            </div>
 			</nav>
 		</header>
-		<main class="w-full flex flex-col gap-12 md:gap-52 xl:gap-[220px]">
+		<main class="w-full flex flex-col gap-12 md:gap-25 lg:gap-52 xl:gap-[220px]">
 			<slot />
 		</main>
-		<footer class="mt-20 py-8 px-8 lg:py-15 border border-purple">
-			<div class="flex flex-col max-md:items-center gap-8 container">
-				<a href="/" class="flex items-center">
-					<Image src="/img/logo/full_purple.svg" alt="Logo Preezeo" c="max-w-[165px] h-auto" />
-				</a>
-				<p class="text-lg max-md:text-center">57 avenue du Maréchal Juin 64200 Biarritz</p>
+		<footer class="mt-16 lg:mt-20 p-4 lg:pt-10 lg:pb-6">
+			<div class="flex justify-between md:items-end gap-8 max-lg:flex-col lg:container max-lg:px-[5%]">
+				<div class="flex flex-col max-md:items-center gap-6">
+					<div class="flex items-center">
+						<Image src="/img/logo/full_purple.svg" alt="Logo Preezeo" c="max-w-[165px] h-auto" />
+					</div>
+					<p class="text-lg max-md:text-center">57 avenue du Maréchal Juin 64200 Biarritz</p>
+				</div>
+
+				<div class="flex flex-col max-md:items-center gap-6">
+					<div data-modale-trigger="10" aria-labelledby="Voir les mentions légales" tabindex="0">
+						<p class="flex items-center gap-2 justify-end text-end cursor-pointer duration-200 hover:opacity-70">Mentions légales</p>
+					</div>
+					<p class="flex items-center gap-2 justify-end text-end">
+						<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g clip-path="url(#clip0_316_1588)">
+							<path d="M14.587 7.46111C10.4511 7.6877 7.28191 11.2242 7.5085 15.3602C7.7351 19.4961 11.2716 22.6653 15.4076 22.4387C17.3369 22.3329 19.1452 21.4652 20.4347 20.0262L20.536 19.9132C20.9967 19.3991 20.9534 18.6088 20.4392 18.1481C19.9251 17.6874 19.1349 17.7307 18.6741 18.2448L18.573 18.3577C17.7259 19.3029 16.5381 19.8729 15.2707 19.9424C12.5135 20.0934 10.1558 17.9807 10.0048 15.2234C9.8537 12.4661 11.9665 10.1084 14.7237 9.95736C15.9911 9.88794 17.234 10.3248 18.1792 11.1718L18.2922 11.273C18.8064 11.7337 19.5966 11.6904 20.0574 11.1763C20.518 10.6622 20.4747 9.87191 19.9606 9.41119L19.8476 9.30999C18.4086 8.02046 16.5164 7.35541 14.587 7.46111Z" fill="white"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M30 15C30 23.2843 23.2843 30 15 30C6.71572 30 0 23.2843 0 15C0 6.71572 6.71572 0 15 0C23.2843 0 30 6.71572 30 15ZM27.5 15C27.5 21.9035 21.9035 27.5 15 27.5C8.09644 27.5 2.5 21.9035 2.5 15C2.5 8.09644 8.09644 2.5 15 2.5C21.9035 2.5 27.5 8.09644 27.5 15Z" fill="white"/>
+							</g>
+							<defs>
+							<clipPath id="clip0_316_1588">
+							<rect width="30" height="30" fill="white"/>
+							</clipPath>
+							</defs>
+						</svg>
+						Preezeo 2024 by Touch Of Pixels
+					</p>
+				</div>
 			</div>
 		</footer>
 	</body>
@@ -74,4 +102,23 @@ const { title } = Astro.props;
 <style lang="scss" is:global>
 	@use '../styles/_variables.scss' as *;
 
+	html {
+		scrollbar-gutter: stable;
+	}
+
+	nav {
+		@media (max-width: 900px) {
+			row-gap: 70px;
+			column-gap: 10px;
+			flex-wrap: wrap;
+
+			h1 {
+				order: 3;
+				flex-basis: 1;
+				width: 100%;
+				line-height: 1.5em;
+			}
+		}
+
+	}
 </style>
