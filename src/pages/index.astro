@@ -267,7 +267,6 @@ const cardScroller = document.querySelector('.card-scroller');
 let isDown = false;
 let startX;
 let scrollLeft;
-let saveScrollLeft;
 cardScroller.addEventListener('mousedown', (e) => {
     isDown = true;
     cardScroller.classList.add('active');
@@ -294,7 +293,6 @@ cardScroller.addEventListener('mouseup', () => {
         cardS.style.cursor = 'grab';
     });
     (cardScroller as HTMLElement).style.cursor = 'grab';
-    saveScrollLeft = scrollLeft;
 });
 cardScroller.addEventListener('mousemove', (e) => {
     if(!isDown) return;
@@ -320,9 +318,13 @@ modaleTriggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
         openModal(trigger.getAttribute('data-modale-trigger'))
     });
-    trigger.addEventListener('touchend', () => {
-        openModal(trigger.getAttribute('data-modale-trigger'))
+    // open on touchestart for mobile devices but only if user is not scrolling
+    trigger.addEventListener('touchend', (e) => {
+        if (!isDown) {
+            openModal(trigger.getAttribute('data-modale-trigger'))
+        }
     });
+    
 });
 
 modaleCLosers.forEach((closer) => {
